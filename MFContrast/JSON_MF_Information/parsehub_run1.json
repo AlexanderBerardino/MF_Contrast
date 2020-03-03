@@ -1,0 +1,64 @@
+{
+ "Holdings": [
+  {
+   "name": "Microsoft Corp",
+   "Symbol": "MSFT",
+   "Symbol_url": "https://finance.yahoo.com/quote/MSFT?p=MSFT",
+   "Assets": "4.81%"
+  },
+  {
+   "name": "Apple Inc",
+   "Symbol": "AAPL",
+   "Symbol_url": "https://finance.yahoo.com/quote/AAPL?p=AAPL",
+   "Assets": "4.79%"
+  },
+  {
+   "name": "Amazon.com Inc",
+   "Symbol": "AMZN",
+   "Symbol_url": "https://finance.yahoo.com/quote/AMZN?p=AMZN",
+   "Assets": "3.10%"
+  },
+  {
+   "name": "Facebook Inc A",
+   "Symbol": "FB",
+   "Symbol_url": "https://finance.yahoo.com/quote/FB?p=FB",
+   "Assets": "1.80%"
+  },
+  {
+   "name": "Alphabet Inc Class C",
+   "Symbol": "GOOG",
+   "Symbol_url": "https://finance.yahoo.com/quote/GOOG?p=GOOG",
+   "Assets": "1.59%"
+  },
+  {
+   "name": "Alphabet Inc A",
+   "Symbol": "GOOGL",
+   "Symbol_url": "https://finance.yahoo.com/quote/GOOGL?p=GOOGL",
+   "Assets": "1.58%"
+  },
+  {
+   "name": "Berkshire Hathaway Inc B",
+   "Symbol": "BRK.B",
+   "Symbol_url": "https://finance.yahoo.com/quote/BRK.B?p=BRK.B",
+   "Assets": "1.58%"
+  },
+  {
+   "name": "JPMorgan Chase & Co",
+   "Symbol": "JPM",
+   "Symbol_url": "https://finance.yahoo.com/quote/JPM?p=JPM",
+   "Assets": "1.54%"
+  },
+  {
+   "name": "Johnson & Johnson",
+   "Symbol": "JNJ",
+   "Symbol_url": "https://finance.yahoo.com/quote/JNJ?p=JNJ",
+   "Assets": "1.45%"
+  },
+  {
+   "name": "Visa Inc Class A",
+   "Symbol": "V",
+   "Symbol_url": "https://finance.yahoo.com/quote/V?p=V",
+   "Assets": "1.26%"
+  }
+ ]
+}
