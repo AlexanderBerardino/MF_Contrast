@@ -10,6 +10,9 @@
             <Color x:Key="LightTextColor">#999999</Color>
         </ResourceDictionary>
     </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Help" Clicked="Help_Clicked" />
+    </ContentPage.ToolbarItems>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -28,7 +31,7 @@
                     <Label.FormattedText>
                         <FormattedString>
                             <FormattedString.Spans>
-                                <Span Text="AppName" FontAttributes="Bold" FontSize="22" />
+                                <Span Text="MFContrast" FontAttributes="Bold" FontSize="22" />
                                 <Span Text=" " />
                                 <Span Text="1.0" ForegroundColor="{StaticResource LightTextColor}" />
                             </FormattedString.Spans>
@@ -53,7 +56,7 @@
                             <FormattedString.Spans>
                                 <Span Text="It shares code with its" />
                                 <Span Text=" " />
-                                <Span Text="iOS, Android, and Windows" FontAttributes="Bold" />
+                                <Span Text="iOS and Android" FontAttributes="Bold" />
                                 <Span Text=" " />
                                 <Span Text="versions." />
                             </FormattedString.Spans>

@@ -14,5 +14,11 @@ namespace MFContrast.Views
         {
             InitializeComponent();
         }
+
+        // Example of a possible Alert event handler 
+        public void Help_Clicked(object sender, EventArgs e)
+        {
+            DisplayAlert("Good Help", "You clicked on help, best of luck", "Bad Help", "You clicked on help!? Too bad!");
+        }
     }
 }
