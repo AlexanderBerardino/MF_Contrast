@@ -5,6 +5,7 @@ using Xamarin.Forms.Xaml;
 
 using MFContrast.Models;
 using MFContrast.ViewModels;
+using MFContrast.Services;
 
 namespace MFContrast.Views
 {
@@ -19,28 +20,19 @@ namespace MFContrast.Views
         public ItemDetailPage(ItemDetailViewModel viewModel)
         {
             InitializeComponent();
-
-            BindingContext = this.viewModel = viewModel;
+            this.viewModel = viewModel;
+            BindingContext = this.viewModel;
         }
 
         public ItemDetailPage()
         {
             InitializeComponent();
-
-            var item = new Item
-            {
-                Text = "Item 1",
-                Description = "This is an item description."
-            };
-
-            viewModel = new ItemDetailViewModel(item);
+            viewModel = new ItemDetailViewModel();
             BindingContext = viewModel;
-        }
 
-        async void InitializeData()
-        {
-            var mockMutualFundDataStore = new Services.MockMutualFundDataStore();
-            FundList = await mockMutualFundDataStore.GetMutualFundSliceNamesAsync();
+
+
+
         }
     }
 }

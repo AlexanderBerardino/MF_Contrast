@@ -11,7 +11,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Help" Clicked="Help_Clicked" />
+        <ToolbarItem Text="Help" Clicked="Help_Clicked"  />
     </ContentPage.ToolbarItems>
     <Grid>
         <Grid.RowDefinitions>

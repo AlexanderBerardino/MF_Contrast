@@ -14,6 +14,9 @@ namespace MFContrast.ViewModels
     {
         public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
 
+        public IMutualFundDataStore MutualFundDataStore =>
+           DependencyService.Get<IMutualFundDataStore>() ?? new MutualFundDataStore();
+
         bool isBusy = false;
         public bool IsBusy
         {

@@ -14,7 +14,7 @@ namespace MFContrast
             InitializeComponent();
 
             DependencyService.Register<MockDataStore>();
-            MainPage = new MainPage();
+            MainPage = new ItemsPage();
         }
 
         protected override void OnStart()

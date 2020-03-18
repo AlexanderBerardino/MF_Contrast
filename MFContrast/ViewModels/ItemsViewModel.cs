@@ -4,29 +4,21 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
-
-using MFContrast.Models;
-using MFContrast.Views;
+using MFContrast.Models.AlternativeMutualFundModels;
 
 namespace MFContrast.ViewModels
 {
     public class ItemsViewModel : BaseViewModel
     {
-        public ObservableCollection<Item> Items { get; set; }
+        public ObservableCollection<AlternativeMutualFundWhole> Funds { get; set; }
         public Command LoadItemsCommand { get; set; }
 
         public ItemsViewModel()
         {
             Title = "Browse";
-            Items = new ObservableCollection<Item>();
+            Funds = new ObservableCollection<AlternativeMutualFundWhole>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
 
-            MessagingCenter.Subscribe<NewItemPage, Item>(this, "AddItem", async (obj, item) =>
-            {
-                var newItem = item as Item;
-                Items.Add(newItem);
-                await DataStore.AddItemAsync(newItem);
-            });
         }
 
         async Task ExecuteLoadItemsCommand()
@@ -38,11 +30,11 @@ namespace MFContrast.ViewModels
 
             try
             {
-                Items.Clear();
-                var items = await DataStore.GetItemsAsync(true);
-                foreach (var item in items)
+                Funds.Clear();
+                var funds = await MutualFundDataStore.GetItemsAsync();
+                foreach (var fund in funds)
                 {
-                    Items.Add(item);
+                    Funds.Add(fund);
                 }
             }
             catch (Exception ex)

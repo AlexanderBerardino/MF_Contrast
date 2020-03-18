@@ -1,0 +1,1077 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- saved from url=(0063)https://wrds-sol2.wharton.upenn.edu/output/0478b653205598cc.htm -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style> thead{display:table-header-group} </style>              <style> @media print {thead, tbody {zoom:70%}} </style>
+<meta name="Generator" content="SAS Software Version 9.4, see www.sas.com">
+
+<title>CRSP Mutual Funds</title>
+<style type="text/css">
+<!--
+.bycontentfolder
+{
+  margin-left: 6pt;
+}
+.bylinecontainer
+{
+  width: 100%;
+}
+.cellcontents
+{
+  text-align: center;
+}
+.cellstyle
+{
+  text-align: center;
+}
+.contentfolder
+{
+  margin-left: 6pt;
+}
+.contentitem
+{
+  margin-left: 6pt;
+}
+.contents
+{
+}
+.data
+{
+  text-align: center;
+}
+.data_num
+{
+  text-align: center;
+}
+.graph
+{
+  border: 3px solid #000000;
+  border-spacing: 1px;
+}
+.header
+{
+  background-color: #C0C0C0;
+  font-family: Times, Arial, Helvetica, Helv;
+  font-size: 12pt;
+  font-style: normal;
+  font-weight: bold;
+  text-align: center;
+}
+.indexitem
+{
+  margin-left: 6pt;
+}
+.linecontent
+{
+  text-align: center;
+}
+.output
+{
+  border: 3px solid #000000;
+  border-spacing: 1px;
+}
+.pages
+{
+}
+.pagesitem
+{
+  margin-left: 6pt;
+}
+.systemtitle
+{
+  background-color: #FFFFFF;
+  color: #0000FF;
+  font-family: Times, Arial, Helvetica,Helv;
+  font-size: 14pt;
+  font-style: normal;
+  font-weight: bold;
+  text-align: center;
+}
+.systemtitle10
+{
+  background-color: #FFFFFF;
+  color: #0000FF;
+  font-family: Times, Arial, Helvetica,Helv;
+  font-size: 14pt;
+  font-style: normal;
+  font-weight: bold;
+  text-align: center;
+}
+.systemtitle2
+{
+  background-color: #FFFFFF;
+  color: #0000FF;
+  font-family: Times, Arial, Helvetica,Helv;
+  font-size: 14pt;
+  font-style: normal;
+  font-weight: bold;
+  text-align: center;
+}
+.systemtitle3
+{
+  background-color: #FFFFFF;
+  color: #0000FF;
+  font-family: Times, Arial, Helvetica,Helv;
+  font-size: 14pt;
+  font-style: normal;
+  font-weight: bold;
+  text-align: center;
+}
+.systemtitle4
+{
+  background-color: #FFFFFF;
+  color: #0000FF;
+  font-family: Times, Arial, Helvetica,Helv;
+  font-size: 14pt;
+  font-style: normal;
+  font-weight: bold;
+  text-align: center;
+}
+.systemtitle5
+{
+  background-color: #FFFFFF;
+  color: #0000FF;
+  font-family: Times, Arial, Helvetica,Helv;
+  font-size: 14pt;
+  font-style: normal;
+  font-weight: bold;
+  text-align: center;
+}
+.systemtitle6
+{
+  background-color: #FFFFFF;
+  color: #0000FF;
+  font-family: Times, Arial, Helvetica,Helv;
+  font-size: 14pt;
+  font-style: normal;
+  font-weight: bold;
+  text-align: center;
+}
+.systemtitle7
+{
+  background-color: #FFFFFF;
+  color: #0000FF;
+  font-family: Times, Arial, Helvetica,Helv;
+  font-size: 14pt;
+  font-style: normal;
+  font-weight: bold;
+  text-align: center;
+}
+.systemtitle8
+{
+  background-color: #FFFFFF;
+  color: #0000FF;
+  font-family: Times, Arial, Helvetica,Helv;
+  font-size: 14pt;
+  font-style: normal;
+  font-weight: bold;
+  text-align: center;
+}
+.systemtitle9
+{
+  background-color: #FFFFFF;
+  color: #0000FF;
+  font-family: Times, Arial, Helvetica,Helv;
+  font-size: 14pt;
+  font-style: normal;
+  font-weight: bold;
+  text-align: center;
+}
+.systitleandfootercontainer
+{
+  width: 100%;
+}
+.table
+{
+  border: 1px solid #000000;
+  border-spacing: 0px;
+  text-align: center;
+  width: 100%;
+}
+.top_stacked_value
+{
+  padding-bottom: 1px;
+  border: 0;
+}
+.middle_stacked_value
+{
+  padding-top: 1px;
+  padding-bottom: 1px;
+  border: 0;
+}
+.bottom_stacked_value
+{
+  padding-top: 1px;
+  border: 0;
+}
+.titleandnotecontainer
+{
+  width: 100%;
+}
+.l {text-align: left }
+.c {text-align: center }
+.r {text-align: right }
+.d {text-align: right }
+.j {text-align: justify }
+.t {vertical-align: top }
+.m {vertical-align: middle }
+.b {vertical-align: bottom }
+TD, TH {vertical-align: top }
+.stacked_cell{padding: 0 }
+-->
+</style>
+<script language="javascript" type="text/javascript">
+<!-- 
+function startup(){
+
+}
+function shutdown(){
+
+}
+
+//-->
+</script>
+
+</head>
+<body onload="startup()" onunload="shutdown()" class="body" data-gr-c-s-loaded="true">
+
+<script language="javascript" type="text/javascript">
+<!-- 
+var _info = navigator.userAgent
+var _ie = (_info.indexOf("MSIE") > 0
+          && _info.indexOf("Win") > 0
+          && _info.indexOf("Windows 3.1") < 0);
+var _ie64 = _info.indexOf("x64") > 0
+
+//-->
+</script>
+
+<div class="branch">
+<a name="IDX"></a>
+<table class="systitleandfootercontainer" width="100%" summary="Page Layout">
+<tbody><tr>
+<td class="c systemtitle">CRSP Mutual Funds</td>
+</tr>
+</tbody></table><br>
+<div>
+<div align="center">
+<table class="table" cellspacing="0" cellpadding="2" rules="all" frame="box" summary="Procedure Report: Detailed and/or summarized report">
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="c header" scope="col">Portfolio Identifier</th>
+<th class="c header" scope="col">Date that CRSP obtained the information from source</th>
+<th class="c header" scope="col">Rank of Percentage of Total Net Assets in Portfolio</th>
+<th class="c header" scope="col">Security's Percentage of the Total Net Assets</th>
+<th class="c header" scope="col">Name of the Security Held</th>
+<th class="c header" scope="col">Ticker Symbol Given by the Exchange</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">          1</td>
+<td class="c data">  4.41</td>
+<td class="c data">MICROSOFT CORP</td>
+<td class="c data">MSFT</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">          2</td>
+<td class="c data">  4.33</td>
+<td class="c data">APPLE INC</td>
+<td class="c data">AAPL</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">          3</td>
+<td class="c data">  2.86</td>
+<td class="c data">AMAZON COM INC</td>
+<td class="c data">AMZN</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">          4</td>
+<td class="c data">  1.85</td>
+<td class="c data">FACEBOOK INC</td>
+<td class="c data">FB</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">          5</td>
+<td class="c data">  1.60</td>
+<td class="c data">BERKSHIRE HATHAWAY INC DEL</td>
+<td class="c data">BRK</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">          6</td>
+<td class="c data">  1.59</td>
+<td class="c data">JPMORGAN CHASE &amp; CO</td>
+<td class="c data">JPM</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">          7</td>
+<td class="c data">  1.51</td>
+<td class="c data">ALPHABET INC</td>
+<td class="c data">GOOG</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">          8</td>
+<td class="c data">  1.49</td>
+<td class="c data">ALPHABET INC</td>
+<td class="c data">GOOGL</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">          9</td>
+<td class="c data">  1.39</td>
+<td class="c data">JOHNSON &amp; JOHNSON</td>
+<td class="c data">JNJ</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         10</td>
+<td class="c data">  1.22</td>
+<td class="c data">VISA INC</td>
+<td class="c data">V</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         11</td>
+<td class="c data">  1.17</td>
+<td class="c data">PROCTER &amp; GAMBLE CO</td>
+<td class="c data">PG</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         12</td>
+<td class="c data">  1.10</td>
+<td class="c data">EXXON MOBIL CORP</td>
+<td class="c data">XOM</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         13</td>
+<td class="c data">  1.07</td>
+<td class="c data">BANK OF AMERICA CORP</td>
+<td class="c data">BAC</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         14</td>
+<td class="c data">  1.04</td>
+<td class="c data">A T &amp; T INC</td>
+<td class="c data">T</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         15</td>
+<td class="c data">  1.04</td>
+<td class="c data">DISNEY WALT CO</td>
+<td class="c data">DIS</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         16</td>
+<td class="c data">  1.01</td>
+<td class="c data">UNITEDHEALTH GROUP INC</td>
+<td class="c data">UNH</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         17</td>
+<td class="c data">  1.00</td>
+<td class="c data">MASTERCARD INC</td>
+<td class="c data">MA</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         18</td>
+<td class="c data">  0.98</td>
+<td class="c data">INTEL CORP</td>
+<td class="c data">INTC</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         19</td>
+<td class="c data">  0.95</td>
+<td class="c data">VERIZON COMMUNICATIONS INC</td>
+<td class="c data">VZ</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         20</td>
+<td class="c data">  0.92</td>
+<td class="c data">HOME DEPOT INC</td>
+<td class="c data">HD</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         21</td>
+<td class="c data">  0.85</td>
+<td class="c data">MERCK &amp; CO INC NEW</td>
+<td class="c data">MRK</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         22</td>
+<td class="c data">  0.85</td>
+<td class="c data">CHEVRON CORP NEW</td>
+<td class="c data">CVX</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         23</td>
+<td class="c data">  0.83</td>
+<td class="c data">WELLS FARGO &amp; CO NEW</td>
+<td class="c data">WFC</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         24</td>
+<td class="c data">  0.81</td>
+<td class="c data">PFIZER INC</td>
+<td class="c data">PFE</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         25</td>
+<td class="c data">  0.78</td>
+<td class="c data">COCA COLA CO</td>
+<td class="c data">KO</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         26</td>
+<td class="c data">  0.76</td>
+<td class="c data">COMCAST CORP NEW</td>
+<td class="c data">CMCSA</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         27</td>
+<td class="c data">  0.75</td>
+<td class="c data">BOEING CO</td>
+<td class="c data">BA</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         28</td>
+<td class="c data">  0.73</td>
+<td class="c data">CISCO SYSTEMS INC</td>
+<td class="c data">CSCO</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         29</td>
+<td class="c data">  0.73</td>
+<td class="c data">PEPSICO INC</td>
+<td class="c data">PEP</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         30</td>
+<td class="c data">  0.65</td>
+<td class="c data">CITIGROUP INC</td>
+<td class="c data">C</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         31</td>
+<td class="c data">  0.65</td>
+<td class="c data">WALMART INC</td>
+<td class="c data">WMT</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         32</td>
+<td class="c data">  0.58</td>
+<td class="c data">ABBOTT LABORATORIES</td>
+<td class="c data">ABT</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         33</td>
+<td class="c data">  0.57</td>
+<td class="c data">ADOBE INC</td>
+<td class="c data">ADBE</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         34</td>
+<td class="c data">  0.57</td>
+<td class="c data">MEDTRONIC PLC</td>
+<td class="c data">MDT</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         35</td>
+<td class="c data">  0.56</td>
+<td class="c data">MCDONALDS CORP</td>
+<td class="c data">MCD</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         36</td>
+<td class="c data">  0.55</td>
+<td class="c data">SALESFORCE COM INC</td>
+<td class="c data">CRM</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         37</td>
+<td class="c data">  0.54</td>
+<td class="c data">AMGEN INC</td>
+<td class="c data">AMGN</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         38</td>
+<td class="c data">  0.53</td>
+<td class="c data">NETFLIX INC</td>
+<td class="c data">NFLX</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         39</td>
+<td class="c data">  0.50</td>
+<td class="c data">NVIDIA CORP</td>
+<td class="c data">NVDA</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         40</td>
+<td class="c data">  0.50</td>
+<td class="c data">COSTCO WHOLESALE CORP NEW</td>
+<td class="c data">COST</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         41</td>
+<td class="c data">  0.50</td>
+<td class="c data">ABBVIE INC</td>
+<td class="c data">ABBV</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         42</td>
+<td class="c data">  0.49</td>
+<td class="c data">PHILIP MORRIS INTERNATIONAL INC</td>
+<td class="c data">PM</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         43</td>
+<td class="c data">  0.49</td>
+<td class="c data">HONEYWELL INTERNATIONAL INC</td>
+<td class="c data">HON</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         44</td>
+<td class="c data">  0.49</td>
+<td class="c data">ACCENTURE PLC IRELAND</td>
+<td class="c data">ACN</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         45</td>
+<td class="c data">  0.49</td>
+<td class="c data">PAYPAL HOLDINGS INC</td>
+<td class="c data">PYPL</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         46</td>
+<td class="c data">  0.48</td>
+<td class="c data">BROADCOM INC</td>
+<td class="c data">AVGO</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         47</td>
+<td class="c data">  0.48</td>
+<td class="c data">THERMO FISHER SCIENTIFIC INC</td>
+<td class="c data">TMO</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         48</td>
+<td class="c data">  0.47</td>
+<td class="c data">UNION PACIFIC CORP</td>
+<td class="c data">UNP</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         49</td>
+<td class="c data">  0.47</td>
+<td class="c data">ORACLE CORP</td>
+<td class="c data">ORCL</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         50</td>
+<td class="c data">  0.46</td>
+<td class="c data">UNITED TECHNOLOGIES CORP</td>
+<td class="c data">UTX</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         51</td>
+<td class="c data">  0.45</td>
+<td class="c data">INTERNATIONAL BUSINESS MACHS COR</td>
+<td class="c data">IBM</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         52</td>
+<td class="c data">  0.45</td>
+<td class="c data">NIKE INC</td>
+<td class="c data">NKE</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         53</td>
+<td class="c data">  0.44</td>
+<td class="c data">NEXTERA ENERGY INC</td>
+<td class="c data">NEE</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         54</td>
+<td class="c data">  0.43</td>
+<td class="c data">TEXAS INSTRUMENTS INC</td>
+<td class="c data">TXN</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         55</td>
+<td class="c data">  0.43</td>
+<td class="c data">Linde PLC ORD</td>
+<td class="c data">LIN</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         56</td>
+<td class="c data">  0.39</td>
+<td class="c data">STARBUCKS CORP</td>
+<td class="c data">SBUX</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         57</td>
+<td class="c data">  0.38</td>
+<td class="c data">LILLY ELI &amp; CO</td>
+<td class="c data">LLY</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         58</td>
+<td class="c data">  0.38</td>
+<td class="c data">GENERAL ELECTRIC CO</td>
+<td class="c data">GE</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         59</td>
+<td class="c data">  0.37</td>
+<td class="c data">C V S HEALTH CORP</td>
+<td class="c data">CVS</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         60</td>
+<td class="c data">  0.37</td>
+<td class="c data">3M CO</td>
+<td class="c data">MMM</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         61</td>
+<td class="c data">  0.37</td>
+<td class="c data">LOCKHEED MARTIN CORP</td>
+<td class="c data">LMT</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         62</td>
+<td class="c data">  0.36</td>
+<td class="c data">QUALCOMM INC</td>
+<td class="c data">QCOM</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         63</td>
+<td class="c data">  0.36</td>
+<td class="c data">AMERICAN TOWER CORP NEW</td>
+<td class="c data">AMT</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         64</td>
+<td class="c data">  0.36</td>
+<td class="c data">DANAHER CORP</td>
+<td class="c data">DHR</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         65</td>
+<td class="c data">  0.36</td>
+<td class="c data">BRISTOL MYERS SQUIBB CO</td>
+<td class="c data">BMY</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         66</td>
+<td class="c data">  0.35</td>
+<td class="c data">ALTRIA GROUP INC</td>
+<td class="c data">MO</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         67</td>
+<td class="c data">  0.35</td>
+<td class="c data">LOWES COMPANIES INC</td>
+<td class="c data">LOW</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         68</td>
+<td class="c data">  0.33</td>
+<td class="c data">U S BANCORP DEL</td>
+<td class="c data">USB</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         69</td>
+<td class="c data">  0.33</td>
+<td class="c data">GILEAD SCIENCES INC</td>
+<td class="c data">GILD</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         70</td>
+<td class="c data">  0.32</td>
+<td class="c data">FIDELITY NATIONAL INFO SVCS INC</td>
+<td class="c data">FIS</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         71</td>
+<td class="c data">  0.32</td>
+<td class="c data">UNITED PARCEL SERVICE INC</td>
+<td class="c data">UPS</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         72</td>
+<td class="c data">  0.31</td>
+<td class="c data">AMERICAN EXPRESS CO</td>
+<td class="c data">AXP</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         73</td>
+<td class="c data">  0.31</td>
+<td class="c data">CATERPILLAR INC</td>
+<td class="c data">CAT</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         74</td>
+<td class="c data">  0.31</td>
+<td class="c data">BOOKING HOLDINGS INC</td>
+<td class="c data">BKNG</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         75</td>
+<td class="c data">  0.29</td>
+<td class="c data">CHARTER COMMUNICATIONS INC NEW</td>
+<td class="c data">CHTR</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         76</td>
+<td class="c data">  0.29</td>
+<td class="c data">MONDELEZ INTERNATIONAL INC</td>
+<td class="c data">MDLZ</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         78</td>
+<td class="c data">  0.29</td>
+<td class="c data">CIGNA CORP NEW</td>
+<td class="c data">CI</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         79</td>
+<td class="c data">  0.28</td>
+<td class="c data">AUTOMATIC DATA PROCESSING INC</td>
+<td class="c data">ADP</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         80</td>
+<td class="c data">  0.28</td>
+<td class="c data">T J X COMPANIES INC NEW</td>
+<td class="c data">TJX</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         81</td>
+<td class="c data">  0.28</td>
+<td class="c data">ANTHEM INC</td>
+<td class="c data">ANTM</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         82</td>
+<td class="c data">  0.28</td>
+<td class="c data">C M E GROUP INC</td>
+<td class="c data">CME</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         83</td>
+<td class="c data">  0.27</td>
+<td class="c data">GOLDMAN SACHS GROUP INC</td>
+<td class="c data">GS</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         84</td>
+<td class="c data">  0.27</td>
+<td class="c data">CMT Market Liquidity Rate</td>
+<td class="c data">&nbsp;</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         85</td>
+<td class="c data">  0.27</td>
+<td class="c data">BECTON DICKINSON &amp; CO</td>
+<td class="c data">BDX</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         86</td>
+<td class="c data">  0.26</td>
+<td class="c data">CHUBB LTD</td>
+<td class="c data">CB</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         87</td>
+<td class="c data">  0.26</td>
+<td class="c data">INTUITIVE SURGICAL INC</td>
+<td class="c data">ISRG</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         87</td>
+<td class="c data">  0.26</td>
+<td class="c data">DOMINION ENERGY INC</td>
+<td class="c data">D</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         89</td>
+<td class="c data">  0.26</td>
+<td class="c data">P N C FINANCIAL SERVICES GRP INC</td>
+<td class="c data">PNC</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         90</td>
+<td class="c data">  0.26</td>
+<td class="c data">INTUIT INC</td>
+<td class="c data">INTU</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         91</td>
+<td class="c data">  0.25</td>
+<td class="c data">CONOCOPHILLIPS</td>
+<td class="c data">COP</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         92</td>
+<td class="c data">  0.25</td>
+<td class="c data">FISERV INC</td>
+<td class="c data">FISV</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         93</td>
+<td class="c data">  0.25</td>
+<td class="c data">STRYKER CORP</td>
+<td class="c data">SYK</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         94</td>
+<td class="c data">  0.25</td>
+<td class="c data">S &amp; P GLOBAL INC</td>
+<td class="c data">SPGI</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         95</td>
+<td class="c data">  0.25</td>
+<td class="c data">SOUTHERN CO</td>
+<td class="c data">SO</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         96</td>
+<td class="c data">  0.25</td>
+<td class="c data">DUKE ENERGY CORP NEW</td>
+<td class="c data">DUK</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         97</td>
+<td class="c data">  0.24</td>
+<td class="c data">TARGET CORP</td>
+<td class="c data">TGT</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         98</td>
+<td class="c data">  0.24</td>
+<td class="c data">MORGAN STANLEY DEAN WITTER &amp; CO</td>
+<td class="c data">MS</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">         99</td>
+<td class="c data">  0.23</td>
+<td class="c data">ALLERGAN PLC</td>
+<td class="c data">AGN</td>
+</tr>
+<tr>
+<td class="c data"> 1022248</td>
+<td class="c data">20191220</td>
+<td class="c data">        100</td>
+<td class="c data">  0.23</td>
+<td class="c data">RAYTHEON CO</td>
+<td class="c data">RTN</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<br>
+</div>
+
+
+<div id="new-tab-sidebar" class="hidden"><div class="wrap">        <img class="new-tab-logo" src="chrome-extension://meffljleomgifbbcffejnmhjagncfpbd/img/128x128.png">            <ul><li><a href="https://my.fairfield.edu/"><img class="fav" src="./CRSP_MF_1022248_files/favicons"><span class="title">my.fairfield.edu</span></a></li><li><a href="https://app.pluralsight.com/library/"><img class="fav" src="./CRSP_MF_1022248_files/favicons(1)"><span class="title">Pluralsight</span></a></li><li><a href="https://fairfield.blackboard.com/ultra/institution-page"><img class="fav" src="./CRSP_MF_1022248_files/favicons(2)"><span class="title">BlackBoard</span></a></li><li><a href="https://drive.google.com/drive/my-drive"><img class="fav" src="./CRSP_MF_1022248_files/favicons(3)"><span class="title">GoogleDrive</span></a></li><li><a href="https://angular.io/"><img class="fav" src="./CRSP_MF_1022248_files/favicons(4)"><span class="title">Angular</span></a></li><li><a href="https://mail.google.com/mail/u/0/#inbox"><img class="fav" src="./CRSP_MF_1022248_files/favicons(5)"><span class="title">Gmail</span></a></li><li><a href="https://quizlet.com/latest"><img class="fav" src="./CRSP_MF_1022248_files/favicons(6)"><span class="title">Quizlet</span></a></li><li><a href="http://trello.com/"><img class="fav" src="./CRSP_MF_1022248_files/favicons(7)"><span class="title">Trello</span></a></li><li><a href="http://hackernoon.com/"><img class="fav" src="./CRSP_MF_1022248_files/favicons(8)"><span class="title">Hackernoon</span></a></li></ul></div></div></body></html>

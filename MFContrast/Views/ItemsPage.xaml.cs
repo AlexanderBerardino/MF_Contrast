@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+using MFContrast.Models.AlternativeMutualFundModels;
+
 
 using MFContrast.Models;
-using MFContrast.Views;
 using MFContrast.ViewModels;
 
 namespace MFContrast.Views
@@ -29,11 +25,11 @@ namespace MFContrast.Views
 
         async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
         {
-            var item = args.SelectedItem as Item;
-            if (item == null)
+            var fund = args.SelectedItem as AlternativeMutualFundWhole;
+            if (fund == null)
                 return;
 
-            await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(item)));
+            await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(fund)));
 
             // Manually deselect item.
             ItemsListView.SelectedItem = null;
@@ -48,7 +44,7 @@ namespace MFContrast.Views
         {
             base.OnAppearing();
 
-            if (viewModel.Items.Count == 0)
+            if (viewModel.Funds.Count == 0)
                 viewModel.LoadItemsCommand.Execute(null);
         }
     }

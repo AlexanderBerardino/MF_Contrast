@@ -1,16 +1,27 @@
-﻿using System;
+﻿using MFContrast.Models.AlternativeMutualFundModels;
 
-using MFContrast.Models;
 
 namespace MFContrast.ViewModels
 {
     public class ItemDetailViewModel : BaseViewModel
     {
-        public Item Item { get; set; }
-        public ItemDetailViewModel(Item item = null)
+        public AlternativeMutualFundWhole Fund;
+
+        public ItemDetailViewModel(AlternativeMutualFundWhole fund = null)
         {
-            Title = item?.Text;
-            Item = item;
+            Title = fund?.FundName;
+            Fund = fund ?? new AlternativeMutualFundWhole();
         }
+
+        public string FundName
+        {
+            get => Fund.FundName;
+            set
+            {
+                Fund.FundName = value;
+                OnPropertyChanged();
+            }
+        }
+        
     }
 }
