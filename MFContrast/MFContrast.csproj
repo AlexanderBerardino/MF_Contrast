@@ -18,29 +18,15 @@
     <PackageReference Include="LumenWorksCsvReader" Version="4.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="JSON_MF_Information\" />
     <Folder Include="WRDS\" />
-    <Folder Include="Services\HtmTableConversionPath\" />
     <Folder Include="Services\CsvConversionPath\" />
-    <Folder Include="Services\JSON_ConversionPath\" />
     <Folder Include="Models\AlternativeMutualFundModels\" />
     <Folder Include="Services\MockMFDataStores\" />
-    <Folder Include="Models\DeprecatedMutualFundModels\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Services\MockMFDataStores\MockMutualFundDataStore.cs" />
-    <Compile Remove="Services\HtmTableConversionPath\ConvertHtmTable.cs" />
-    <Compile Remove="Services\JSON_ConversionPath\ConvertJSON.cs" />
-    <Compile Remove="Services\SQLiteDataStore.cs" />
-    <Compile Remove="Models\DeprecatedMutualFundModels\MutualFundSlice.cs" />
-    <Compile Remove="Models\DeprecatedMutualFundModels\MutualFundWhole.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Services\MockMFDataStores\MockMutualFundDataStore.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
-    <None Include="Services\HtmTableConversionPath\ConvertHtmTable.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
-    <None Include="Services\JSON_ConversionPath\ConvertJSON.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
-    <None Include="Services\SQLiteDataStore.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
-    <None Include="Models\DeprecatedMutualFundModels\MutualFundSlice.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
-    <None Include="Models\DeprecatedMutualFundModels\MutualFundWhole.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
   </ItemGroup>
 </Project>

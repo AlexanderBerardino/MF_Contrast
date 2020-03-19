@@ -10,6 +10,8 @@ namespace MFContrast.ViewModels
 {
     public class ItemsViewModel : BaseViewModel
     {
+        // This should be changed from an ObservableCollection to a List
+        // because the data is meant for display not change
         public ObservableCollection<AlternativeMutualFundWhole> Funds { get; set; }
         public Command LoadItemsCommand { get; set; }
 

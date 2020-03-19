@@ -14,6 +14,7 @@ namespace MFContrast.Services
         static MutualFundDataStore()
         {
             FundList = new List<AlternativeMutualFundWhole> {
+
             new AlternativeMutualFundWhole { Id = "0", FundName = "Vanguard" },
             new AlternativeMutualFundWhole { Id = "1", FundName = "Vanguard" },
             new AlternativeMutualFundWhole { Id = "2", FundName = "Vanguard" },
