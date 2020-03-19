@@ -143,6 +143,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\vfiax_holdings.csv" />
+    <Content Include="Resources\vfiax_holdings.csv" />
   </ItemGroup>
 </Project>

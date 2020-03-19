@@ -20,10 +20,10 @@ namespace MFContrast.Services
 
             // Declaration will need to be abstracted for different funds
             // Must add argument 'fileName' of type string to alter path for specific fund 
-            bool doesExist = File.Exists(@"MFContrast.iOS.Resources.vfiax_holdings.csv");
+            bool doesExist = File.Exists(@"vfiax_holdings.csv");
             if (doesExist)
             {
-                csvReader = new CsvReader(new StreamReader(File.OpenRead(@"MFContrast.iOS.Resources.vfiax_holdings.csv")), true);
+                csvReader = new CsvReader(new StreamReader(File.OpenRead(@"vfiax_holdings.csv")), true);
             }
             else
             {
