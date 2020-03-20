@@ -2,9 +2,6 @@
 using System.ComponentModel;
 using Xamarin.Forms;
 using MFContrast.Models.AlternativeMutualFundModels;
-
-
-using MFContrast.Models;
 using MFContrast.ViewModels;
 
 namespace MFContrast.Views
@@ -28,17 +25,25 @@ namespace MFContrast.Views
             var fund = args.SelectedItem as AlternativeMutualFundWhole;
             if (fund == null)
                 return;
-
-            await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(fund)));
+            // Might need to remove instance of NavigationPage
+            await Navigation.PushAsync((new ItemDetailPage(new ItemDetailViewModel(fund))));
 
             // Manually deselect item.
             ItemsListView.SelectedItem = null;
+        }
+
+        async void OnItemTapped(object sender, ItemTappedEventArgs args)
+        {
+            AlternativeMutualFundWhole tappedFund = args.Item as AlternativeMutualFundWhole;
+            await Navigation.PushAsync((new ItemDetailPage(new ItemDetailViewModel(tappedFund))));
+
         }
 
         async void AddItem_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushModalAsync(new NavigationPage(new NewItemPage()));
         }
+        
 
         protected override void OnAppearing()
         {

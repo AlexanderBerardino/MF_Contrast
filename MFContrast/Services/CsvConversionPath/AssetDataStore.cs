@@ -5,12 +5,12 @@ using MFContrast.Models.AlternativeMutualFundModels;
 
 namespace MFContrast.Services.CsvConversionPath
 {
-    public class InitializeCsvTableModel : ConvertCsvTable
+    public class AssetDataStore : ConvertCsvTable, IAssetDataStore
     {
       
         private readonly List<AltMutualFundSlice> assetList;
 
-        public InitializeCsvTableModel() : base()
+        public AssetDataStore() : base()
         {
             assetList = initializeAssetList();
 
@@ -29,7 +29,7 @@ namespace MFContrast.Services.CsvConversionPath
             return _assetList;
         }
 
-        public async Task<IList<AltMutualFundSlice>> getAssetListAsync()
+        public async Task<IList<AltMutualFundSlice>> GetAssetsAsync()
         {
             var returnAsset = new List<AltMutualFundSlice>();
             foreach(var asset in assetList)
@@ -49,7 +49,21 @@ namespace MFContrast.Services.CsvConversionPath
             return new AltMutualFundSlice { Name = asset.Name, Percentage = asset.Percentage, Rank = asset.Rank, Symbol = asset.Symbol };
         }
 
-        
+        public Task<string> AddAssetAsync(AltMutualFundSlice fundSlice)
+        {
+            throw new NotImplementedException();
+        }
 
+        public Task<AltMutualFundSlice> GetAssetAsync(string rank)
+        {
+            throw new NotImplementedException();
+        }
+
+      
+
+        public Task<IList<string>> GetAssetAsync()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

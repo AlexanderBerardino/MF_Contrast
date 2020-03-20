@@ -25,6 +25,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Services\MockMFDataStores\MockMutualFundDataStore.cs" />
+    <Compile Remove="Services\ItemDetailPage.xaml.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Services\MockMFDataStores\MockMutualFundDataStore.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
