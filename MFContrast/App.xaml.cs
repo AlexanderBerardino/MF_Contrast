@@ -14,7 +14,17 @@ namespace MFContrast
             InitializeComponent();
 
             DependencyService.Register<MockDataStore>();
-            MainPage = new ItemsPage();
+
+
+            // MainPage = new ItemsPage();
+
+
+            var tabs = new TabbedPage();
+
+            var page = new ItemsPage();
+            tabs.Children.Add(new NavigationPage(page) { Title = "Tab title" });
+            MainPage = tabs;
+
         }
 
         protected override void OnStart()

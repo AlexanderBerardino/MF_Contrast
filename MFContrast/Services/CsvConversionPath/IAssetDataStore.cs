@@ -5,13 +5,13 @@ using MFContrast.Models.AlternativeMutualFundModels;
 
 namespace MFContrast.Services.CsvConversionPath
 {
-    public interface I_InitializeCsvTableModel
+    public interface IAssetDataStore
     {
         Task<string> AddAssetAsync(AltMutualFundSlice fundSlice);
         // Task<bool> UpdateNoteAsync(Note courseNote);
         Task<AltMutualFundSlice> GetAssetAsync(string rank);
-        Task<IList<AltMutualFundSlice>> GetFundsAsync();
-        Task<IList<string>> GetFundAsync();
+        Task<IList<AltMutualFundSlice>> GetAssetsAsync();
+        Task<IList<string>> GetAssetAsync();
 
     }
 }

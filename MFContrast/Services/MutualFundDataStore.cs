@@ -16,9 +16,9 @@ namespace MFContrast.Services
             FundList = new List<AlternativeMutualFundWhole> {
 
             new AlternativeMutualFundWhole { Id = "0", FundName = "Vanguard" },
-            new AlternativeMutualFundWhole { Id = "1", FundName = "Vanguard" },
-            new AlternativeMutualFundWhole { Id = "2", FundName = "Vanguard" },
-            new AlternativeMutualFundWhole { Id = "3", FundName = "Vanguard" },
+            new AlternativeMutualFundWhole { Id = "1", FundName = "Fidelity" },
+            new AlternativeMutualFundWhole { Id = "2", FundName = "Bank of America" },
+            new AlternativeMutualFundWhole { Id = "3", FundName = "Facebook" },
             };
 
             nextFundId = FundList.Count;

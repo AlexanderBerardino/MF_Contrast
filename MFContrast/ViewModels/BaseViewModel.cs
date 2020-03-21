@@ -7,6 +7,7 @@ using Xamarin.Forms;
 
 using MFContrast.Models;
 using MFContrast.Services;
+using MFContrast.Services.CsvConversionPath;
 
 namespace MFContrast.ViewModels
 {
@@ -16,6 +17,8 @@ namespace MFContrast.ViewModels
 
         public IMutualFundDataStore MutualFundDataStore =>
            DependencyService.Get<IMutualFundDataStore>() ?? new MutualFundDataStore();
+        public IAssetDataStore AssetDataStore =>
+            DependencyService.Get<IAssetDataStore>() ?? new AssetDataStore();
 
         bool isBusy = false;
         public bool IsBusy

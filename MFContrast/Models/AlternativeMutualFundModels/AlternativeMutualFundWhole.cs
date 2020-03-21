@@ -12,11 +12,11 @@ namespace MFContrast.Models.AlternativeMutualFundModels
 
         public AlternativeMutualFundWhole()
         {
-            InitializeCsvTableModel tableData = new InitializeCsvTableModel();
+            AssetDataStore tableData = new AssetDataStore();
             AssetList = tableData.getAssetList();
             
         }
 
-       
+
     }
 }
