@@ -56,13 +56,14 @@ namespace MFContrast.ViewModels
         private Grid SetHeaderGrid()
         {
             Grid returnGrid = new Grid();
+            returnGrid.Padding = 10;
             returnGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
             returnGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(5, GridUnitType.Star) });
             returnGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(3, GridUnitType.Star) });
-
-            returnGrid.Children.Add(new Label { Text = "Rank" }, 0, 0); 
-            returnGrid.Children.Add(new Label { Text = "Name" }, 1, 0); 
-            returnGrid.Children.Add(new Label { Text = "Percentage" }, 2, 0); 
+            returnGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(10, GridUnitType.Star) });
+            returnGrid.Children.Add(new Label { Text = "Rank", FontAttributes = FontAttributes.Bold }, 0, 0); 
+            returnGrid.Children.Add(new Label { Text = "Name", FontAttributes = FontAttributes.Bold }, 1, 0);
+            returnGrid.Children.Add(new Label { Text = "Percentage", FontAttributes = FontAttributes.Bold }, 2, 0);
 
             return returnGrid;
         }

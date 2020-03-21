@@ -1,18 +1,34 @@
-﻿using System;
-using System.Windows.Input;
-using Xamarin.Essentials;
+﻿
 using Xamarin.Forms;
 
 namespace MFContrast.ViewModels
 {
     public class AboutViewModel : BaseViewModel
     {
+        public ListView AboutListView;
+        public StackLayout Layout;
         public AboutViewModel()
         {
             Title = "About";
-            OpenWebCommand = new Command(async () => await Browser.OpenAsync("https://xamarin.com"));
+            AboutListView = InitializeAboutListView();
+            Layout = new StackLayout();
+            Layout.Children.Add(AboutListView);
+
         }
 
-        public ICommand OpenWebCommand { get; }
+        public ListView InitializeAboutListView()
+        {
+            ListView listView = new ListView();
+            listView.ItemsSource = new string[]
+            {
+                "What is each page for?",
+                "How do I use the contrast functionality",
+                "Where does this data come from?",
+                "How often are the funds updated?",
+                "Are all assets in each fund viewable and being compared"
+            };
+            return listView;
+        }
+
     }
 }

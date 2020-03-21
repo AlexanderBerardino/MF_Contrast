@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using MFContrast.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -10,9 +11,12 @@ namespace MFContrast.Views
     [DesignTimeVisible(false)]
     public partial class AboutPage : ContentPage
     {
+        public AboutViewModel viewModel;
         public AboutPage()
         {
             InitializeComponent();
+            BindingContext = viewModel = new AboutViewModel();
+            Content = viewModel.Layout;
         }
 
         // Example of a possible Alert event handler 
@@ -20,5 +24,7 @@ namespace MFContrast.Views
         {
             DisplayAlert("Good Help", "You clicked on help, best of luck", "Bad Help", "You clicked on help!? Too bad!");
         }
+
+
     }
 }
