@@ -24,9 +24,6 @@ namespace MFContrast.Views
             BindingContext = this.viewModel;
 
             Content = viewModel.Layout;
-
-            
-
         }
 
         public ItemDetailPage()
