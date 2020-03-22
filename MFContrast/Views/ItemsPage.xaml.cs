@@ -26,7 +26,7 @@ namespace MFContrast.Views
             if (fund == null)
                 return;
             // Might need to remove instance of NavigationPage
-            await Navigation.PushAsync((new ItemDetailPage(new ItemDetailViewModel(fund))));
+            await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(fund)));
 
             // Manually deselect item.
             ItemsListView.SelectedItem = null;

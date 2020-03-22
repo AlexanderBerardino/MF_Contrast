@@ -32,7 +32,7 @@ namespace MFContrast.Views
         {
             AlternativeMutualFundWhole f1 = new AlternativeMutualFundWhole { Id = "0", FundName = "Vanguard" };
             AlternativeMutualFundWhole f2 = new AlternativeMutualFundWhole { Id = "1", FundName = "Fidelity" };
-            await Navigation.PushAsync((new PostComparePage(new PostCompareViewModel(f1, f2))));
+            await Navigation.PushAsync(new PostComparePage(new PostCompareViewModel(f1, f2)));
         }
 
     }

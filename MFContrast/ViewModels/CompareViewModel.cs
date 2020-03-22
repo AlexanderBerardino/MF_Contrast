@@ -20,12 +20,6 @@ namespace MFContrast.ViewModels
 
         }
 
-        void ContrastClicked(object sender, EventArgs e)
-        {
-            Console.WriteLine("Contrast Clicked");
-
-        }
-
 
         async Task ExecuteLoadItemsCommand()
         {
