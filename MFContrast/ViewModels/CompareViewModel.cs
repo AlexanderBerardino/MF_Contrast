@@ -16,8 +16,6 @@ namespace MFContrast.ViewModels
         {
             Funds = new ObservableCollection<AlternativeMutualFundWhole>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
-
-
         }
 
 

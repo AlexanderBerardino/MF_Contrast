@@ -28,11 +28,22 @@ namespace MFContrast.Views
             BindingContext = this.viewModel;
         }
 
-        async void ContrastClicked(object sender, EventArgs e)
+        public async void ContrastClicked(object sender, EventArgs eventArgs)
         {
+            // Eventually will use two picker choices or agruments
             AlternativeMutualFundWhole f1 = new AlternativeMutualFundWhole { Id = "0", FundName = "Vanguard" };
             AlternativeMutualFundWhole f2 = new AlternativeMutualFundWhole { Id = "1", FundName = "Fidelity" };
-            await Navigation.PushAsync(new PostComparePage(new PostCompareViewModel(f1, f2)));
+            try
+            {
+                PostCompareViewModel postCompareViewModel = new PostCompareViewModel(f1, f2);
+                PostComparePage postComparePage = new PostComparePage(postCompareViewModel);
+                await Navigation.PushAsync(postComparePage);
+
+            }
+            catch (NullReferenceException ex)
+            {
+                Console.WriteLine("Exception thrown:" + ex);
+            }
         }
 
     }

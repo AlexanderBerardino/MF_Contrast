@@ -49,9 +49,11 @@ namespace MFContrast.Services.CsvConversionPath
             return new AltMutualFundSlice { Name = asset.Name, Percentage = asset.Percentage, Rank = asset.Rank, Symbol = asset.Symbol };
         }
 
-        public Task<string> AddAssetAsync(AltMutualFundSlice fundSlice)
+        public async Task<string> AddAssetAsync(AltMutualFundSlice fundSlice)
         {
-            throw new NotImplementedException();
+            var retrunAsset = new AltMutualFundSlice { Name = fundSlice.Name, Percentage = fundSlice.Percentage, Rank = fundSlice.Rank, Symbol = fundSlice.Symbol };
+            return await Task.FromResult(retrunAsset.Name);
+
         }
 
         public Task<AltMutualFundSlice> GetAssetAsync(string rank)

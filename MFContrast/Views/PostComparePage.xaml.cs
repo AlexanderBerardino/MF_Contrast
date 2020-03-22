@@ -12,8 +12,7 @@ namespace MFContrast.Views
         public PostComparePage(PostCompareViewModel viewModel)
         {
             InitializeComponent();
-            this.viewModel = viewModel;
-            BindingContext = viewModel;
+            BindingContext = this.viewModel = viewModel;
         }
 
         

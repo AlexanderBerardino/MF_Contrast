@@ -23,6 +23,8 @@ namespace MFContrast.ViewModels
 
         }
 
+
+
         async Task ExecuteLoadItemsCommand()
         {
             if (IsBusy)
