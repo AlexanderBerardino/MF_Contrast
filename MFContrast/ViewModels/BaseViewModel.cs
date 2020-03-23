@@ -48,7 +48,7 @@ namespace MFContrast.ViewModels
             OnPropertyChanged(propertyName);
             return true;
         }
-
+        //event handler
         #region INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
