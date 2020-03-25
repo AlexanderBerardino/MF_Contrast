@@ -1,16 +1,4 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="MFContrast.Views.PostComparePage">
-    <ContentPage.Content>
-        <StackLayout>
-            <ListView ItemsSource="{Binding AssetOverlap}" x:Name="PCListView" VerticalOptions="FillAndExpand"
-                  HasUnevenRows="true" RefreshCommand="{Binding LoadItemsCommand}" IsPullToRefreshEnabled="true"
-                  IsRefreshing="{Binding IsBusy, Mode=OneWay}" >
-                <ListView.ItemTemplate>
-                     <DataTemplate>
-                           <TextCell x:Name="OverlappedAsset" Text="{Binding}" />
-                    </DataTemplate>
-                </ListView.ItemTemplate>                           
-            </ListView>
-        </StackLayout>
-    </ContentPage.Content>
+    
 </ContentPage>

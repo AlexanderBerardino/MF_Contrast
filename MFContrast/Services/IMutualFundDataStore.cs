@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using MFContrast.Models.AlternativeMutualFundModels;
+using MFContrast.Models;
 
 namespace MFContrast.Services
 {
@@ -13,12 +13,10 @@ namespace MFContrast.Services
         // be able to alter the Funds in any way i.e see how removing an asset from
         // a fund alters the comparison
 
-        Task<string> AddItemAsync(AlternativeMutualFundWhole fund);
-        Task<bool> UpdateItemAsync(AlternativeMutualFundWhole fund);
-        Task<bool> DeleteItemAsync(string id);
-        Task<AlternativeMutualFundWhole> GetItemAsync(string id);
-
-        Task<IList<AlternativeMutualFundWhole>> GetItemsAsync();
+        Task<string> AddItemAsync(MutualFund fund);
+        Task<MutualFund> GetItemAsync(string id);
+        Task<IList<MutualFund>> GetItemsAsync();
+        // Task<IList<Holding>> GetAssetsAsync(string id);
 
 
     }

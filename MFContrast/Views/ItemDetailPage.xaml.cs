@@ -1,12 +1,8 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 using MFContrast.Models;
 using MFContrast.ViewModels;
-using MFContrast.Services;
-using MFContrast.Models.AlternativeMutualFundModels;
 
 namespace MFContrast.Views
 {
@@ -28,7 +24,7 @@ namespace MFContrast.Views
 
         public ItemDetailPage()
         {
-            AlternativeMutualFundWhole holderFund = new AlternativeMutualFundWhole { FundName = "Holder Fund", Id = "0" };
+            MutualFund holderFund = new MutualFund("") { FundName = "Holder Fund", Id = "0" };
             InitializeComponent();
             viewModel = new ItemDetailViewModel(holderFund);
             BindingContext = viewModel;

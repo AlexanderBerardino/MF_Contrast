@@ -15,12 +15,12 @@ namespace MFContrast
 
             DependencyService.Register<MockDataStore>();
 
-            var tabs = new TabbedPage();
-            var page = new ItemsPage();
-            var newComparePage = new ComparePage();
-            var aboutPage = new AboutPage();
+            TabbedPage tabs = new TabbedPage();
+            ItemsPage page = new ItemsPage();
+            ComparePage comparePage = new ComparePage();
+            AboutPage aboutPage = new AboutPage();
             tabs.Children.Add(new NavigationPage(page) { Title = "View Funds" });
-            tabs.Children.Add(new NavigationPage(newComparePage) { Title = "MFContrast" });
+            tabs.Children.Add(new NavigationPage(comparePage) { Title = "MFContrast" });
             tabs.Children.Add(new NavigationPage(aboutPage) { Title = "About" });
             MainPage = tabs;
 

@@ -22,10 +22,10 @@ namespace MFContrast.ViewModels
             listView.ItemsSource = new string[]
             {
                 "What is each page for?",
-                "How do I use the contrast functionality",
+                "How do I use the contrast functionality?",
                 "Where does this data come from?",
                 "How often are the funds updated?",
-                "Are all assets in each fund viewable and being compared"
+                "Are all fund assets present?"
             };
             return listView;
         }

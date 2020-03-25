@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using MFContrast.Models.AlternativeMutualFundModels;
+using MFContrast.Models;
 using MFContrast.ViewModels;
 using Xamarin.Forms;
 
@@ -24,15 +24,16 @@ namespace MFContrast.Views
         public ComparePage(CompareViewModel viewModel)
         {
             InitializeComponent();
-            this.viewModel = viewModel;
-            BindingContext = this.viewModel;
+            BindingContext = this.viewModel = viewModel;
         }
+
 
         public async void ContrastClicked(object sender, EventArgs eventArgs)
         {
             // Eventually will use two picker choices or agruments
-            AlternativeMutualFundWhole f1 = new AlternativeMutualFundWhole { Id = "0", FundName = "Vanguard" };
-            AlternativeMutualFundWhole f2 = new AlternativeMutualFundWhole { Id = "1", FundName = "Fidelity" };
+            MutualFund f1 = await viewModel.MutualFundDataStore.GetItemAsync("0");
+            MutualFund f2 = await viewModel.MutualFundDataStore.GetItemAsync("1");
+
             try
             {
                 PostCompareViewModel postCompareViewModel = new PostCompareViewModel(f1, f2);
@@ -45,6 +46,15 @@ namespace MFContrast.Views
                 Console.WriteLine("Exception thrown:" + ex);
             }
         }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            if (viewModel.Funds.Count == 0)
+                viewModel.LoadItemsCommand.Execute(null);
+        }
+
 
     }
 }

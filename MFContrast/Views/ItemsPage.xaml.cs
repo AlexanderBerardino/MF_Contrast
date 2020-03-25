@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using Xamarin.Forms;
-using MFContrast.Models.AlternativeMutualFundModels;
+using MFContrast.Models;
 using MFContrast.ViewModels;
 
 namespace MFContrast.Views
@@ -11,7 +11,7 @@ namespace MFContrast.Views
     [DesignTimeVisible(false)]
     public partial class ItemsPage : ContentPage
     {
-        ItemsViewModel viewModel;
+        readonly ItemsViewModel viewModel;
 
         public ItemsPage()
         {
@@ -22,7 +22,7 @@ namespace MFContrast.Views
 
         async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
         {
-            var fund = args.SelectedItem as AlternativeMutualFundWhole;
+            MutualFund fund = args.SelectedItem as MutualFund;
             if (fund == null)
                 return;
             // Might need to remove instance of NavigationPage
@@ -34,7 +34,7 @@ namespace MFContrast.Views
 
         async void OnItemTapped(object sender, ItemTappedEventArgs args)
         {
-            AlternativeMutualFundWhole tappedFund = args.Item as AlternativeMutualFundWhole;
+            MutualFund tappedFund = args.Item as MutualFund;
             await Navigation.PushAsync((new ItemDetailPage(new ItemDetailViewModel(tappedFund))));
 
         }

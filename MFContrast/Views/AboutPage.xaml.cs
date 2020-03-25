@@ -2,7 +2,6 @@
 using System.ComponentModel;
 using MFContrast.ViewModels;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace MFContrast.Views
 {

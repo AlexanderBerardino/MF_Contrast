@@ -4,21 +4,20 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
-using MFContrast.Models.AlternativeMutualFundModels;
+using MFContrast.Models;
 
 namespace MFContrast.ViewModels
 {
     public class ItemsViewModel : BaseViewModel
     {
-        // This should be changed from an ObservableCollection to a List
-        // because the data is meant for display not change
-        public ObservableCollection<AlternativeMutualFundWhole> Funds { get; set; }
+
+        public ObservableCollection<MutualFund> Funds { get; set; }
         public Command LoadItemsCommand { get; set; }
 
         public ItemsViewModel()
         {
             Title = "Browse";
-            Funds = new ObservableCollection<AlternativeMutualFundWhole>();
+            Funds = new ObservableCollection<MutualFund>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
 
         }

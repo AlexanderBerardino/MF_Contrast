@@ -1,30 +1,38 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
-using MFContrast.Models.AlternativeMutualFundModels;
+using MFContrast.Models;
 
 namespace MFContrast.Services
 {
     public class MutualFundDataStore : IMutualFundDataStore
     {
-        private static readonly List<AlternativeMutualFundWhole> FundList;
+        
+        private static readonly List<MutualFund> FundList;
         private static int nextFundId;
 
         static MutualFundDataStore()
-        {
-            FundList = new List<AlternativeMutualFundWhole> {
+        {           
+            FundList = new List<MutualFund> {
 
-            new AlternativeMutualFundWhole { Id = "0", FundName = "Vanguard" },
-            new AlternativeMutualFundWhole { Id = "1", FundName = "Fidelity" },
-            new AlternativeMutualFundWhole { Id = "2", FundName = "Bank of America" },
-            new AlternativeMutualFundWhole { Id = "3", FundName = "Facebook" },
+            new MutualFund("vfiax") {
+                Id = "0",
+                FundName = "Vanguard",
+                // Ticker = "vfiax",
+
+        },
+            new MutualFund("fcntx") {
+                Id = "1",
+                FundName = "Fidelity",
+                // Ticker = "fcntx"
+            }
             };
-
+            
             nextFundId = FundList.Count;
         }
 
-        public async Task<string> AddItemAsync(AlternativeMutualFundWhole fund)
+        public async Task<string> AddItemAsync(MutualFund fund)
         {
             lock (this)
             {
@@ -35,15 +43,10 @@ namespace MFContrast.Services
             return await Task.FromResult(fund.Id);
         }
 
-        public Task<bool> DeleteItemAsync(string id)
-        {
-            throw new NotImplementedException();
-        }
 
-
-        public async Task<IList<AlternativeMutualFundWhole>> GetItemsAsync()
+        public async Task<IList<MutualFund>> GetItemsAsync()
         {
-            var returnFunds = new List<AlternativeMutualFundWhole>();
+            List<MutualFund> returnFunds = new List<MutualFund>();
             foreach (var fund in FundList)
             {
                 returnFunds.Add(CopyFund(fund));
@@ -51,30 +54,24 @@ namespace MFContrast.Services
             return await Task.FromResult(returnFunds);
         }
 
-        private static AlternativeMutualFundWhole CopyFund(AlternativeMutualFundWhole fund)
+        private static MutualFund CopyFund(MutualFund fund)
         {
-            return new AlternativeMutualFundWhole { FundName = fund.FundName, Id = fund.Id };
+            // return new MutualFund { FundName = fund.FundName, Id = fund.Id, Ticker = fund.Ticker };
+            return new MutualFund(fund.Ticker) { FundName = fund.FundName, Id = fund.Id };
         }
 
-        public async Task<bool> UpdateItemAsync(AlternativeMutualFundWhole fund)
-        {
-            var fundIndex = FundList.FindIndex((AlternativeMutualFundWhole arg) => arg.Id == fund.Id);
-            var fundFound = fundIndex != -1;
-            if (fundFound)
-            {
-                FundList[fundIndex].FundName = fund.FundName;
-                FundList[fundIndex].Id = fund.Id;
-            }
-            return await Task.FromResult(fundFound);
-        }
+      
 
-        public async Task<AlternativeMutualFundWhole> GetItemAsync(string id)
+        public async Task<MutualFund> GetItemAsync(string id)
         {
-            var fund = FundList.FirstOrDefault(courseNote => courseNote.Id == id);
+            MutualFund fund = FundList.FirstOrDefault(Fund => Fund.Id == id);
 
-            var returnFund = CopyFund(fund);
+            MutualFund returnFund = CopyFund(fund);
             return await Task.FromResult(returnFund);
         }
+
+        
+
     }
 
    

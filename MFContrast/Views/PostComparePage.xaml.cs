@@ -13,8 +13,21 @@ namespace MFContrast.Views
         {
             InitializeComponent();
             BindingContext = this.viewModel = viewModel;
+            Content = viewModel.PC_ParentLayout;
         }
 
-        
+        async void OnOverlapSelected(object sender, SelectedItemChangedEventArgs args)
+        {
+
+            await Navigation.PushAsync(new PostCompareOverlapPage(new PostCompareOverlapViewModel(viewModel.CompareService)));
+ 
+        }
+
+        /*
+        async void OnStatisticSelected(object sender, SelectedItemChangedEventArgs args)
+        {
+
+        }
+        */
     }
 }

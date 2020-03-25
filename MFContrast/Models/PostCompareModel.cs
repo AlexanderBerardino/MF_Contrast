@@ -1,23 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using MFContrast.Models.AlternativeMutualFundModels;
+﻿using System.Collections.Generic;
 
 namespace MFContrast.Models
 {
-    public class PostCompareModel
+    public class calculatePostCompare
     {
         // Funds Selected
-        public readonly AlternativeMutualFundWhole Fund1;
-        public readonly AlternativeMutualFundWhole Fund2;
+        public readonly MutualFund Fund1;
+        public readonly MutualFund Fund2;
+
+        // Holdings
+        public IList<Holding> Holdings1;
+        public IList<Holding> Holdings2;
 
         // Overlapping assets
-        public IList<AltMutualFundSlice> OverlappingHoldings { get; set; }
+        public IList<Holding> OverlappingHoldings { get; set; }
         // Number of Overlapping assets
         public int OverlappingHoldingsNumber { get; set; }
 
         // Assets unique to each fund
-        public IList<AltMutualFundSlice> Fund1UniqueHoldings { get; set; }
-        public IList<AltMutualFundSlice> Fund2UniqueHoldings { get; set; }
+        public IList<Holding> Fund1UniqueHoldings { get; set; }
+        public IList<Holding> Fund2UniqueHoldings { get; set; }
 
         // Overlap Percentage incorporating assets weight in each fund
         public float OverlapByWeight { get; set; }
@@ -28,10 +30,11 @@ namespace MFContrast.Models
 
 
 
-        public PostCompareModel(AlternativeMutualFundWhole fund1, AlternativeMutualFundWhole fund2)
+        public calculatePostCompare(MutualFund fund1, MutualFund fund2)
         {
             Fund1 = fund1;
             Fund2 = fund2;
+            
         }
     }
 }
