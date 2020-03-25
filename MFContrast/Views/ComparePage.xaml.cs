@@ -30,7 +30,7 @@ namespace MFContrast.Views
 
         public async void ContrastClicked(object sender, EventArgs eventArgs)
         {
-            // Eventually will use two picker choices or agruments
+            // Bind f1 and f2 to picker selections
             MutualFund f1 = await viewModel.MutualFundDataStore.GetItemAsync("0");
             MutualFund f2 = await viewModel.MutualFundDataStore.GetItemAsync("1");
 

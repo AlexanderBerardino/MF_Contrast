@@ -10,6 +10,10 @@ namespace MFContrast.Models
         public List<Holding> AssetList { get; set; }
         public string Ticker { get; set; }
         public string Id { get; set; }
+        // Expense ratio
+        // Number of holdings
+        // Type of holdings
+        // Type of fund 
 
 
         public MutualFund(string Ticker)

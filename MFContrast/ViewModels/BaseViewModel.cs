@@ -14,12 +14,13 @@ namespace MFContrast.ViewModels
     {
         public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
 
+        // Dependency Injection for MutualFundDataStore
         public IMutualFundDataStore MutualFundDataStore =>
            DependencyService.Get<IMutualFundDataStore>() ?? new MutualFundDataStore();
-        /*
-        public IAssetDataStore AssetDataStore(string csvPath) =>
-            DependencyService.Get<IAssetDataStore>() ?? new AssetDataStore(csvPath: csvPath);
-      */
+
+        // Dependency Injection for CalculatePostCompare
+        public ICalculatePostCompare CalculatePostCompare =>
+             DependencyService.Get<ICalculatePostCompare>() ?? new CalculatePostCompare();
 
 
         bool isBusy = false;
