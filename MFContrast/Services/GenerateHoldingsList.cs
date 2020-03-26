@@ -16,9 +16,7 @@ namespace MFContrast.Services
 
         public static string CreateCsvPath(string urlPrefix)
         {
-            string path = string.Join("", urlPrefix, "_holdings.csv");
-
-            return path;
+            return string.Join("", urlPrefix, "_holdings.csv");
         }
 
 

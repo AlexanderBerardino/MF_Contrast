@@ -16,7 +16,7 @@
             </Grid>
             <ScrollView>
                 <Grid>
-                    <Grid.RowDefinitions x:Name="RowDef">
+                    <Grid.RowDefinitions>
                         <RowDefinition Height="5*" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>

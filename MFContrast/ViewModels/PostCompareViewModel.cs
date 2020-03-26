@@ -18,8 +18,7 @@ namespace MFContrast.ViewModels
         public PostCompareViewModel(MutualFund Fund1, MutualFund Fund2)
         {
             PostCompareModel = new PostCompareModel(Fund1, Fund2);
-           
-        
+            Console.WriteLine("BreakPoint");
         }
 
 

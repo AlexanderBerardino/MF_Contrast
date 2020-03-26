@@ -14,6 +14,7 @@ namespace MFContrast.Views
             BindingContext = this.viewModel = viewModel;
         }
 
+        /*
 
         protected override void OnAppearing()
         {
@@ -29,7 +30,7 @@ namespace MFContrast.Views
                 viewModel.LoadItemsCommandTwo.Execute(null);
             }
         }
-
+        */
 
 
 

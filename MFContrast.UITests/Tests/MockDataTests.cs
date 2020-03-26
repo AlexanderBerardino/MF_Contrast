@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using Xamarin.UITest;
+using MFContrast.Models;
 
 namespace MFContrast.UITests
 {
@@ -15,6 +16,9 @@ namespace MFContrast.UITests
 
             ItemsPage.WaitForPageToLoad();
         }
+
+
+
 
         [Test]
         public void AddNewItem()

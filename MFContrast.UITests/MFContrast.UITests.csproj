@@ -44,6 +44,10 @@
       <ReferenceOutputAssembly>False</ReferenceOutputAssembly>
       <Private>False</Private>
     </ProjectReference>
+    <ProjectReference Include="..\MFContrast\MFContrast.csproj">
+      <Project>{B4F87733-EBA8-4755-B413-3035F345A2E1}</Project>
+      <Name>MFContrast</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Tests/BaseTest.cs" />

@@ -42,7 +42,6 @@ namespace MFContrast.Views
 
         public async void OnOverlapSelected(object sender, EventArgs args)
         {
-
             await Navigation.PushAsync(new PostCompareOverlapPage(new PostCompareOverlapViewModel(viewModel.PostCompareModel)));
         }
 

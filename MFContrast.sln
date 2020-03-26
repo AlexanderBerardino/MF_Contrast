@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MFContrast.UITests", "MFCon
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MFContrast", "MFContrast\MFContrast.csproj", "{B4F87733-EBA8-4755-B413-3035F345A2E1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MFUnitTests", "MFUnitTests\MFUnitTests.csproj", "{13375EE8-127F-4C4A-B7B0-2CC41B6B2E18}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,5 +69,17 @@ Global
 		{B4F87733-EBA8-4755-B413-3035F345A2E1}.Debug|iPhone.Build.0 = Debug|Any CPU
 		{B4F87733-EBA8-4755-B413-3035F345A2E1}.Release|iPhone.ActiveCfg = Release|Any CPU
 		{B4F87733-EBA8-4755-B413-3035F345A2E1}.Release|iPhone.Build.0 = Release|Any CPU
+		{13375EE8-127F-4C4A-B7B0-2CC41B6B2E18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13375EE8-127F-4C4A-B7B0-2CC41B6B2E18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13375EE8-127F-4C4A-B7B0-2CC41B6B2E18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13375EE8-127F-4C4A-B7B0-2CC41B6B2E18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13375EE8-127F-4C4A-B7B0-2CC41B6B2E18}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{13375EE8-127F-4C4A-B7B0-2CC41B6B2E18}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{13375EE8-127F-4C4A-B7B0-2CC41B6B2E18}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{13375EE8-127F-4C4A-B7B0-2CC41B6B2E18}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{13375EE8-127F-4C4A-B7B0-2CC41B6B2E18}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{13375EE8-127F-4C4A-B7B0-2CC41B6B2E18}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{13375EE8-127F-4C4A-B7B0-2CC41B6B2E18}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{13375EE8-127F-4C4A-B7B0-2CC41B6B2E18}.Release|iPhone.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

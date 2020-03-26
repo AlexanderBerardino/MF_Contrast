@@ -17,8 +17,8 @@ namespace MFContrast.ViewModels
         public Grid UniqueHoldingsHeader;
         public StackLayout UniqueHoldingsLayout;
 
-        public ObservableCollection<string> Unique1;
-        public ObservableCollection<string> Unique2;
+        // public ObservableCollection<string> Unique1;
+        // public ObservableCollection<string> Unique2;
 
         public Command LoadItemsCommandOne { get; set; }
         public Command LoadItemsCommandTwo { get; set; }
@@ -29,11 +29,11 @@ namespace MFContrast.ViewModels
 
         {
             PostCompareModel = compareModel;
-            LoadItemsCommandOne = new Command(async () => await ExecuteLoadItemsCommandOne());
-            LoadItemsCommandTwo = new Command(async () => await ExecuteLoadItemsCommandTwo());
+            // LoadItemsCommandOne = new Command(async () => await ExecuteLoadItemsCommandOne());
+            // LoadItemsCommandTwo = new Command(async () => await ExecuteLoadItemsCommandTwo());
 
         }
-
+        /*
         async Task ExecuteLoadItemsCommandOne()
         {
             if (IsBusy)
@@ -87,6 +87,6 @@ namespace MFContrast.ViewModels
                 IsBusy = false;
             }
         }
-
+        */
     }
 }

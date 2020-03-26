@@ -20,10 +20,8 @@ namespace MFContrast.Models
         {
 
             this.Ticker = Ticker;
-            AssetList = GenerateHoldingsList.Create(Ticker);
-            
+            AssetList = GenerateHoldingsList.Create(Ticker);           
         }
-
 
     }
 }
