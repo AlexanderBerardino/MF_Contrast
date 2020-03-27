@@ -10,7 +10,6 @@ namespace MFContrast.ViewModels
 
         private MutualFund F1;
         private MutualFund F2;
-
         private List<string> unique1;
         private List<string> unique2;
         private List<string> overlapList;

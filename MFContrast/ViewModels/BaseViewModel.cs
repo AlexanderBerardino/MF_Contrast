@@ -18,10 +18,6 @@ namespace MFContrast.ViewModels
         public IMutualFundDataStore MutualFundDataStore =>
            DependencyService.Get<IMutualFundDataStore>() ?? new MutualFundDataStore();
 
-        // Dependency Injection for CalculatePostCompare
-        public ICalculatePostCompare CalculatePostCompare =>
-             DependencyService.Get<ICalculatePostCompare>() ?? new CalculatePostCompare();
-
 
         bool isBusy = false;
         public bool IsBusy
