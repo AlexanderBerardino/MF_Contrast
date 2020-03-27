@@ -13,6 +13,12 @@ namespace MFContrast.Models
     // This will allow to access all funds and their holdings in an organized way
     // while also allowing for changes and additions to subclasses later
 
+    public enum FactoryEnum
+    {
+        Equity,
+        Bond,
+        Balanced
+    }
 
 
     // Three Branches of MutualFundTree will 

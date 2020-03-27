@@ -31,12 +31,25 @@ namespace MFContrast.Views
         public async void ContrastClicked(object sender, EventArgs eventArgs)
         {
             // Bind f1 and f2 to picker selections
-            MutualFund f1 = await viewModel.MutualFundDataStore.GetItemAsync("0");
-            MutualFund f2 = await viewModel.MutualFundDataStore.GetItemAsync("1");
+            // MutualFund f1 = await viewModel.MutualFundDataStore.GetItemAsync("0");
+            // MutualFund f2 = await viewModel.MutualFundDataStore.GetItemAsync("1");
+            MutualFund f3 = new MutualFund("vfiax")
+            {
+                Id = "0",
+                FundName = "Vanguard",
+                // Ticker = "vfiax",
+
+            };
+            MutualFund f4 = new MutualFund("fcntx")
+            {
+                Id = "1",
+                FundName = "Fidelity",
+                // Ticker = "fcntx"
+            };
 
             try
             {
-                PostCompareViewModel postCompareViewModel = new PostCompareViewModel(f1, f2);
+                PostCompareViewModel postCompareViewModel = new PostCompareViewModel(f3, f4);
                 PostComparePage postComparePage = new PostComparePage(postCompareViewModel);
                 await Navigation.PushAsync(postComparePage);
 

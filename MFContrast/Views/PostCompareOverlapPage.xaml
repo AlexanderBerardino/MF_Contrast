@@ -1,30 +1,4 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="MFContrast.Views.PostCompareOverlapPage">
-    <ContentPage.Content>
-        <StackLayout>
-            <Grid>
-                <Grid.RowDefinitions>  
-                    <RowDefinition Height="17" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="5*" />
-                    <ColumnDefinition Width="5*" />
-              
-                </Grid.ColumnDefinitions>
-                <Label Text="Unique Fund1" Grid.Column="0" Grid.Row="0" />
-                <Label Text="Unique Fund2" Grid.Column="1" Grid.Row="0" />
-            </Grid>
-            <ScrollView>
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="5*" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="5*" />
-                        <ColumnDefinition Width="5*" />
-                    </Grid.ColumnDefinitions>
-                </Grid>
-            </ScrollView>
-        </StackLayout>
-    </ContentPage.Content>
+    
 </ContentPage>

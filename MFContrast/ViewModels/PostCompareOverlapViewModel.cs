@@ -1,92 +1,99 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Threading.Tasks;
 using MFContrast.Models;
-using MFContrast.Services;
-using Xamarin.Forms;
 
 namespace MFContrast.ViewModels
 {
     public class PostCompareOverlapViewModel : BaseViewModel
     {
-        public PostCompareModel PostCompareModel;
 
-        public Grid UniqueHoldings;
-        public Grid UniqueHoldingsHeader;
-        public StackLayout UniqueHoldingsLayout;
+        private MutualFund F1;
+        private MutualFund F2;
 
-        // public ObservableCollection<string> Unique1;
-        // public ObservableCollection<string> Unique2;
+        private List<string> unique1;
+        private List<string> unique2;
+        private List<string> overlapList;
 
-        public Command LoadItemsCommandOne { get; set; }
-        public Command LoadItemsCommandTwo { get; set; }
-
-
-
-        public PostCompareOverlapViewModel(PostCompareModel compareModel)
-
+        public MutualFund Fund1
         {
-            PostCompareModel = compareModel;
-            // LoadItemsCommandOne = new Command(async () => await ExecuteLoadItemsCommandOne());
-            // LoadItemsCommandTwo = new Command(async () => await ExecuteLoadItemsCommandTwo());
-
+            get { return F1; }
+            set { F1 = value; }
         }
-        /*
-        async Task ExecuteLoadItemsCommandOne()
+        public MutualFund Fund2
         {
-            if (IsBusy)
-                return;
+            get { return F2; }
+            set { F2 = value; }
+        }
+        
+        public List<string> Unique1
+        {
+            get { return unique1; }
+            set { unique1 = value; }
+        }
+        public List<string> Unique2
+        {
+            get { return unique2; }
+            set { unique2 = value; }
+        }
+        
+        public List<string> OverlapList
+        {
+            get { return overlapList; }
+            set { overlapList = value; }
+        }
+        
+        public List<Holding> Holdings1 => Fund1.AssetList;
+        public List<Holding> Holdings2 => Fund2.AssetList;
+        public int OverlapListSize => OverlapList.Count;
+        public int U1Size => Unique1.Count;
+        public int U2Size => Unique2.Count;
+        public double F2InF1 => CalcWeightedAverage(Holdings1, DistillTickers2());
+        public double F1InF2 => CalcWeightedAverage(Holdings2, DistillTickers1());
+        public double OverlapPercentage => CalcOverlapPercentage(Holdings1, Holdings2, OverlapList);
+        
 
-            IsBusy = true;
+        public PostCompareOverlapViewModel(MutualFund f1, MutualFund f2)
 
-            try
+        {
+            Fund1 = f1;
+            Fund2 = f2;
+         
+            OverlapList = DistillTickers1().Intersect(DistillTickers2()).ToList();
+            Unique1 = DistillTickers1().Except(DistillTickers2()).ToList();
+            Unique2 = DistillTickers2().Except(DistillTickers1()).ToList();      
+        }
+        private List<string> DistillTickers1()
+        {
+            List<string> t1 = Holdings1.Select(Holding => Holding.Symbol).ToList();
+            return t1.Where(s => !string.IsNullOrWhiteSpace(s)).ToList();
+        }
+        private List<string> DistillTickers2()
+        {
+            List<string> t2 = Holdings2.Select(Holding => Holding.Symbol).ToList();
+            return t2.Where(s => !string.IsNullOrWhiteSpace(s)).ToList();
+        }
+
+        // Returns the total % of holdings of one Fund in the other by summing overlapping holding percentage
+        private double CalcWeightedAverage(List<Holding> enumerableHoldings, List<string> hasHolding)
+        {
+            List<double> total = new List<double>();
+            Dictionary<string, double> namePercentageDict =
+                enumerableHoldings.ToDictionary(Holding => Holding.Symbol, Holding => Convert.ToDouble(Holding.Percentage));
+            foreach(string name in hasHolding)
             {
-                Unique1.Clear();
-
-                var uniques = await CalculatePostCompare.CalculateUniqueHoldings1(PostCompareModel.Fund1, PostCompareModel.Fund2);
-                foreach (var unique in uniques)
-                {
-                    Unique1.Add(unique);
+                if (namePercentageDict.ContainsKey(name))
+                { 
+                    total.Add(namePercentageDict[name]);
                 }
             }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex);
-            }
-            finally
-            {
-                IsBusy = false;
-            }
+            return total.Sum();
         }
 
-        async Task ExecuteLoadItemsCommandTwo()
+        private double CalcOverlapPercentage(List<Holding> eh1, List<Holding> eh2, List<string> overlap)
         {
-            if (IsBusy)
-                return;
-
-            IsBusy = true;
-
-            try
-            {
-                Unique2.Clear();
-
-                var uniques = await CalculatePostCompare.CalculateUniqueHoldings2(PostCompareModel.Fund1, PostCompareModel.Fund2);
-                foreach (var unique in uniques)
-                {
-                    Unique2.Add(unique);
-                }
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex);
-            }
-            finally
-            {
-                IsBusy = false;
-            }
+            double x = CalcWeightedAverage(eh1, overlap) + CalcWeightedAverage(eh2, overlap);
+            return x / 2;
         }
-        */
     }
 }
