@@ -19,11 +19,12 @@ namespace MFContrast.Services
         }
 
         // Returns the total % of holdings of one Fund in the other by summing overlapping holding percentage
-        public double CalculateWeightedAverage(List<Holding> enumerableHoldings, List<string> uniqueHoldings)
+       
+        public double CalculateWeightedAverage(List<Holding> targetFund, List<string> otherFund)
         {
             List<double> total = new List<double>();
-            Dictionary<string, double> namePercentageDict = TickerPercentageDictionary(enumerableHoldings);
-            total.AddRange(from string name in uniqueHoldings
+            Dictionary<string, double> namePercentageDict = TickerPercentageDictionary(targetFund);
+            total.AddRange(from string name in otherFund
                            where namePercentageDict.ContainsKey(name)
                            select namePercentageDict[name]);
             return total.Sum();

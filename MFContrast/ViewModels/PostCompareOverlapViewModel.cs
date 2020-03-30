@@ -51,10 +51,10 @@ namespace MFContrast.ViewModels
         public int U1Size => Unique1.Count;
         public int U2Size => Unique2.Count;
 
-        
-        public double F2InF1 => C.CalculateWeightedAverage(Holdings1, C.DistillTickers(Holdings2));
-        public double F1InF2 => C.CalculateWeightedAverage(Holdings2, C.DistillTickers(Holdings1));
-        public double OverlapPercentage => C.CalculateOverlapPercentage(Holdings1, Holdings2, OverlapList);
+
+        public double F2InF1 => PercentFundZInTargetFund(Holdings1, Holdings2);
+        public double F1InF2 => PercentFundZInTargetFund(Holdings2, Holdings1);
+        public double OverlapPercentage => GetOverlapPercentage(Holdings1, Holdings2, OverlapList);
         
 
         public PostCompareOverlapViewModel(MutualFund f1, MutualFund f2)
@@ -75,19 +75,26 @@ namespace MFContrast.ViewModels
             
         }
 
-        // In order to change the view from displaying all unique holdings
-        // to instead the top ten biggest unique holdings, DistillTickers and all
-        // properties that use it will have to be converted from a List<string>
-        // of holdings ticker symbol, to a dictionary<string, double> of
-        // symbol, percentage pairs
 
         private List<string> DistillDifference(List<Holding> targetList, List<Holding> exceptList)
         {
             return C.DistillTickers(targetList).Except(C.DistillTickers(exceptList)).ToList();
         }
+
         private List<string> DistillUnion(List<Holding> listOne, List<Holding> listTwo)
         {
             return C.DistillTickers(listOne).Intersect(C.DistillTickers(listTwo)).ToList();
+        }
+
+        // Returns percentage of targetFund composed of assets found in FundZ 
+        private double PercentFundZInTargetFund(List<Holding> targetFund, List<Holding> FundZ)
+        {
+            return C.CalculateWeightedAverage(targetFund, C.DistillTickers(FundZ));
+        }
+
+        private double GetOverlapPercentage(List<Holding> one, List<Holding> two, List<string> overlapList)
+        {
+            return C.CalculateOverlapPercentage(one, two, overlapList);
         }
     }
 }
