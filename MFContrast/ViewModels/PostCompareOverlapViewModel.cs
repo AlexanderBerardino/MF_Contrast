@@ -15,6 +15,7 @@ namespace MFContrast.ViewModels
         private List<string> unique2;
         private List<string> overlapList;
 
+        // This can later be set through composition or inherited depending on use
         public ICompare C { get; set; }
         
         public MutualFund Fund1
@@ -52,8 +53,9 @@ namespace MFContrast.ViewModels
         public int U2Size => Unique2.Count;
 
 
-        public double F2InF1 => PercentFundZInTargetFund(Holdings1, Holdings2);
-        public double F1InF2 => PercentFundZInTargetFund(Holdings2, Holdings1);
+        public double F2InF1 => PercentFundZInTargetFund(targetFund: Holdings1, FundZ: Holdings2);
+        public double F1InF2 => PercentFundZInTargetFund(targetFund: Holdings2, FundZ: Holdings1);
+
         public double OverlapPercentage => GetOverlapPercentage(Holdings1, Holdings2, OverlapList);
         
 
@@ -86,7 +88,7 @@ namespace MFContrast.ViewModels
             return C.DistillTickers(listOne).Intersect(C.DistillTickers(listTwo)).ToList();
         }
 
-        // Returns percentage of targetFund composed of assets found in FundZ 
+        // Returns what percentage of targetFund is composed of holdings found in FundZ 
         private double PercentFundZInTargetFund(List<Holding> targetFund, List<Holding> FundZ)
         {
             return C.CalculateWeightedAverage(targetFund, C.DistillTickers(FundZ));

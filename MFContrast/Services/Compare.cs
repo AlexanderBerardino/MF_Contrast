@@ -12,6 +12,7 @@ namespace MFContrast.Services
         {
         }
 
+        // returns 0.5 * ((Sum of overlappingHoldings in eh1) + (Sum of overlappingHoldings in eh2))
         public double CalculateOverlapPercentage(List<Holding> eh1, List<Holding> eh2, List<string> overlapHoldings)
         {
             double x = CalculateWeightedAverage(eh1, overlapHoldings) + CalculateWeightedAverage(eh2, overlapHoldings);
@@ -19,7 +20,6 @@ namespace MFContrast.Services
         }
 
         // Returns the total % of holdings of one Fund in the other by summing overlapping holding percentage
-       
         public double CalculateWeightedAverage(List<Holding> targetFund, List<string> otherFund)
         {
             List<double> total = new List<double>();
@@ -30,16 +30,16 @@ namespace MFContrast.Services
             return total.Sum();
         }
 
+        // Returns list of Symbol^ property from list of Holdings  ^(AKA Ticker, i.e Apple=>APPL)
         public List<string> DistillTickers(List<Holding> enumerableHoldings)
         {
             List<string> t1 = enumerableHoldings.Select(Holding => Holding.Symbol).ToList();
             return t1.Where(s => !string.IsNullOrWhiteSpace(s)).ToList();
         }
-
+        // Returns Dictionary of <Symbol, Percentage>, i.e  { Name="Apple", Percentage="2.1", Rank=2, Symbol="AAPL } => <"AAPL", 2.1>
         public Dictionary<string, double> TickerPercentageDictionary(List<Holding> enumerableHoldings)
         {
             return enumerableHoldings.ToDictionary(Holding => Holding.Symbol, Holding => Convert.ToDouble(Holding.Percentage));
         }
-
     }
 }
