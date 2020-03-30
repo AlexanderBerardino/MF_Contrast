@@ -5,16 +5,21 @@ namespace MFContrast.ViewModels
 {
     public class AboutViewModel : BaseViewModel
     {
+
+
         public ListView AboutListView;
         public StackLayout Layout;
+
         public AboutViewModel()
         {
             Title = "About";
+           
             AboutListView = InitializeAboutListView();
             Layout = new StackLayout();
             Layout.Children.Add(AboutListView);
 
         }
+        
 
         public ListView InitializeAboutListView()
         {
@@ -29,6 +34,6 @@ namespace MFContrast.ViewModels
             };
             return listView;
         }
-
+        
     }
 }

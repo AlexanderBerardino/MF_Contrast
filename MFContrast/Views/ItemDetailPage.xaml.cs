@@ -11,7 +11,7 @@ namespace MFContrast.Views
     [DesignTimeVisible(false)]
     public partial class ItemDetailPage : ContentPage
     {
-        public ItemDetailViewModel viewModel;
+        public ItemDetailViewModel viewModel { get; set; }
 
         public ItemDetailPage(ItemDetailViewModel viewModel)
         {
@@ -25,6 +25,7 @@ namespace MFContrast.Views
         public ItemDetailPage()
         {
             MutualFund holderFund = new MutualFund("") { FundName = "Holder Fund", Id = "0" };
+       
             InitializeComponent();
             viewModel = new ItemDetailViewModel(holderFund);
             BindingContext = viewModel;

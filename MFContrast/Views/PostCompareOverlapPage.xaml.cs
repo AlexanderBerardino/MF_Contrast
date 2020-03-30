@@ -1,4 +1,5 @@
-﻿
+﻿using System.Collections;
+using System.Collections.Generic;
 using MFContrast.ViewModels;
 using Xamarin.Forms;
 
@@ -29,7 +30,7 @@ namespace MFContrast.Views
             AddLayoutChildren();
             Content = UniqueHoldingsLayout;
         }
-        public ListView SetListView()
+        private ListView SetListView()
         {
             ListView listView = new ListView
             {
@@ -46,7 +47,7 @@ namespace MFContrast.Views
             return listView;           
         }
 
-        public void AddLayoutChildren()
+        private void AddLayoutChildren()
         {
             UniqueHoldingsLayout.Children.Add(SetListView());
             UniqueHoldingsLayout.Children.Add(UniqueHoldingsHeader);
@@ -113,7 +114,7 @@ namespace MFContrast.Views
                 }, 1, i);
             }
         }
-
+        
         private void PopulateUnique2Column()
         {
             for (int i = 0; i < viewModel.Unique2.Count; i++)
@@ -128,7 +129,30 @@ namespace MFContrast.Views
                 }, 2, i);
             }
         }
+        
+        /*
+        private void PopulateUnique2Column()
+        {
+            List<Label> labelList = new List<Label>();
 
+
+            foreach(KeyValuePair<string, double> pair in viewModel.topUnique1)
+            {    
+                labelList.Add(new Label
+                {
+                    Text = string.Format("{0} : {1} %", pair.Key, pair.Value),
+                    VerticalOptions = LayoutOptions.Start,
+                    HorizontalOptions = LayoutOptions.Start,
+                    Style = Device.Styles.ListItemDetailTextStyle
+
+                });           
+            }
+            while(labelList.GetEnumerator().Current != null)
+            {
+
+            }
+        }
+        */
         private void PopulateGrid()
         {
             PopulateOverlapColumn();
