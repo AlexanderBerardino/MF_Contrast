@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Collections.Generic;
 using MFContrast.Models;
+using MFContrast.Services;
 
 namespace MFContrast.ViewModels
 {
@@ -13,6 +14,8 @@ namespace MFContrast.ViewModels
         private List<string> unique1;
         private List<string> unique2;
         private List<string> overlapList;
+
+        public ICompare C { get; set; }
         
         public MutualFund Fund1
         {
@@ -47,11 +50,11 @@ namespace MFContrast.ViewModels
         public int OverlapListSize => OverlapList.Count;
         public int U1Size => Unique1.Count;
         public int U2Size => Unique2.Count;
-        public double F2InF1 => CalcWeightedAverage(Holdings1, DistillTickers2());
-        public double F1InF2 => CalcWeightedAverage(Holdings2, DistillTickers1());
-        public double OverlapPercentage => CalcOverlapPercentage(Holdings1, Holdings2, OverlapList);
-        // public Dictionary<string, double> topUnique1 => TopUnique1(Holdings1);
-        // public SortedList<double, string> SortedH1 => SortedSymbolPercentageList(Holdings1);
+
+        
+        public double F2InF1 => C.CalculateWeightedAverage(Holdings1, C.DistillTickers(Holdings2));
+        public double F1InF2 => C.CalculateWeightedAverage(Holdings2, C.DistillTickers(Holdings1));
+        public double OverlapPercentage => C.CalculateOverlapPercentage(Holdings1, Holdings2, OverlapList);
         
 
         public PostCompareOverlapViewModel(MutualFund f1, MutualFund f2)
@@ -59,62 +62,32 @@ namespace MFContrast.ViewModels
         {
             Fund1 = f1;
             Fund2 = f2;
+            C = new Compare();
 
-            
-            OverlapList = DistillTickers1().Intersect(DistillTickers2()).ToList();
-            Unique1 = DistillTickers1().Except(DistillTickers2()).ToList();
-            Unique2 = DistillTickers2().Except(DistillTickers1()).ToList();
+            // Unique 1 Union Unique 2 
+            OverlapList = DistillUnion(Holdings1, Holdings2);
+
+            // Unique 1 Intersection Unique 2
+            Unique1 = DistillDifference(Holdings1, Holdings2);
+
+            // Unique 2 Intersection Unique 1
+            Unique2 = DistillDifference(Holdings2, Holdings1);
             
         }
-        
+
         // In order to change the view from displaying all unique holdings
         // to instead the top ten biggest unique holdings, DistillTickers and all
         // properties that use it will have to be converted from a List<string>
         // of holdings ticker symbol, to a dictionary<string, double> of
         // symbol, percentage pairs
 
-        private List<string> DistillTickers1()
+        private List<string> DistillDifference(List<Holding> targetList, List<Holding> exceptList)
         {
-            List<string> t1 = Holdings1.Select(Holding => Holding.Symbol).ToList();
-            return t1.Where(s => !string.IsNullOrWhiteSpace(s)).ToList();
+            return C.DistillTickers(targetList).Except(C.DistillTickers(exceptList)).ToList();
         }
-        /*
-        private Dictionary<string, double> TopUnique1(List<Holding> holdings)
+        private List<string> DistillUnion(List<Holding> listOne, List<Holding> listTwo)
         {
-            Dictionary<string, double> keyValuePairs = new Dictionary<string, double>();
-            for(int i=0; i < 10; i++)
-            {
-                var y = holdings.Find(x => x.Symbol.Equals(Unique1[i]));
-                keyValuePairs.Add(y.Symbol, Convert.ToDouble(y.Percentage));
-            }
-            return keyValuePairs;
-        }
-        */
-        private List<string> DistillTickers2()
-        {
-            List<string> t2 = Holdings2.Select(Holding => Holding.Symbol).ToList();
-            return t2.Where(s => !string.IsNullOrWhiteSpace(s)).ToList();
-        }
-        private Dictionary<string, double> SymbolPercentageDictionary(List<Holding> enumerableHoldings)
-        {
-            return enumerableHoldings.ToDictionary(Holding => Holding.Symbol, Holding => Convert.ToDouble(Holding.Percentage));
-        }
-
-        // Returns the total % of holdings of one Fund in the other by summing overlapping holding percentage
-        private double CalcWeightedAverage(List<Holding> enumerableHoldings, List<string> hasHolding)
-        {
-            List<double> total = new List<double>();
-            Dictionary<string, double> namePercentageDict = SymbolPercentageDictionary(enumerableHoldings);
-            total.AddRange(from string name in hasHolding
-                           where namePercentageDict.ContainsKey(name)
-                           select namePercentageDict[name]);
-            return total.Sum();
-        }
-
-        private double CalcOverlapPercentage(List<Holding> eh1, List<Holding> eh2, List<string> overlap)
-        {
-            double x = CalcWeightedAverage(eh1, overlap) + CalcWeightedAverage(eh2, overlap);
-            return x / 2;
+            return C.DistillTickers(listOne).Intersect(C.DistillTickers(listTwo)).ToList();
         }
     }
 }
