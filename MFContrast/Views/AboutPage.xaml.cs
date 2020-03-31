@@ -10,8 +10,6 @@ namespace MFContrast.Views
     [DesignTimeVisible(false)]
     public partial class AboutPage : ContentPage
     {
-        private ListView _AboutListView = new ListView();
-
         public AboutViewModel viewModel;
 
         public AboutPage()

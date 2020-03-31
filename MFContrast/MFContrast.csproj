@@ -15,9 +15,13 @@
     <PackageReference Include="Xamarin.Essentials" Version="1.3.1" />
     <PackageReference Include="LumenWorksCsvReader" Version="4.0.0" />
     <PackageReference Include="Microcharts.Forms" Version="0.7.1" />
+    <PackageReference Include="Microcharts" Version="0.7.1" />
   </ItemGroup>
   <ItemGroup>
   
     <Compile Remove="Services\ItemDetailPage.xaml.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microcharts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
   </ItemGroup>
 </Project>

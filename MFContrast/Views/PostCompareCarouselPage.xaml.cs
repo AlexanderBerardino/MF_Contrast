@@ -6,19 +6,17 @@ using Xamarin.Forms;
 namespace MFContrast.Views
 {
     public partial class PostCompareCarouselPage : CarouselPage
-    {
-        PostCompareOverlapViewModel viewModel;
-   
-
+    {   
         public PostCompareCarouselPage(PostCompareOverlapViewModel viewModel)
         {
             InitializeComponent();
-            BindingContext = this.viewModel = viewModel;
 
             PostCompareOverlapPage OverlapPage = new PostCompareOverlapPage(viewModel);
             PostCompareListPage CarouselListPage = new PostCompareListPage(viewModel);
+            PostCompareGraphicPage graphicPage = new PostCompareGraphicPage(viewModel);
             Children.Add(OverlapPage);
             Children.Add(CarouselListPage);
+            Children.Add(graphicPage);
 
         }
 

@@ -30,6 +30,9 @@
   <ItemGroup>
     <PackageReference Include="NUnit" Version="3.12.0" />
     <PackageReference Include="Xamarin.UITest" Version="3.0.3" />
+    <PackageReference Include="Microcharts.Forms">
+      <Version>0.7.1</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MFContrast.iOS\MFContrast.iOS.csproj">

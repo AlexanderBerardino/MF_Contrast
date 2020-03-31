@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using MFContrast.ViewModels;
 using Xamarin.Forms;
 
@@ -20,15 +21,18 @@ namespace MFContrast.Views
             UniqueHoldingsHeader = SetHeaderGridTemplate("Overlap", string.Join(separator: " ", UpperTicker1 + "Unique"), string.Join(separator: " ", UpperTicker2 + "Unique"));
             UniqueHoldingsBody = SetUniqueHoldingsBody();
             PopulateGrid();
-            UniqueHoldingsLayout = new StackLayout { Orientation = StackOrientation.Vertical };
-            AddLayoutChildren();
+            UniqueHoldingsLayout = new StackLayout {
+                Orientation = StackOrientation.Vertical,
+                Children = {
+                    UniqueHoldingsHeader,
+                    new ScrollView
+                    {
+                        Content = UniqueHoldingsBody,
+                        VerticalOptions = new LayoutOptions(LayoutAlignment.Fill, true)
+                    }
+                }
+            };
             Content = UniqueHoldingsLayout;
-        }
-
-        private void AddLayoutChildren()
-        {
-            UniqueHoldingsLayout.Children.Add(UniqueHoldingsHeader);
-            UniqueHoldingsLayout.Children.Add(new ScrollView { Content = UniqueHoldingsBody, VerticalOptions = new LayoutOptions(LayoutAlignment.Fill, true) });
         }
 
         private Grid SetHeaderGridTemplate(string C1Text, string C2Text, string C3Text)
@@ -63,55 +67,30 @@ namespace MFContrast.Views
             return returnGrid;
         }
 
-        private void PopulateOverlapColumn()
+        private void PopulateColumnTemplate(int endIndex, int rowNumber, List<string> sourceList)
         {
-            for (int i = 0; i < viewModel.OverlapList.Count; i++)
+            for (int i = 0; i < endIndex; i++)
             {
                 UniqueHoldingsBody.Children.Add(new Label
                 {
-                    Text = viewModel.OverlapList[i],
+                    Text = sourceList[i],
                     VerticalOptions = LayoutOptions.Start,
                     HorizontalOptions = LayoutOptions.Start,
                     Style = Device.Styles.ListItemDetailTextStyle
-                }, 0, i);
+                }, rowNumber, i);
             }
         }
-
-        private void PopulateUnique1Column()
-        {
-            for (int i = 0; i < viewModel.Unique1.Count; i++)
-            {
-                UniqueHoldingsBody.Children.Add(new Label
-                {
-                    Text = viewModel.Unique1[i],
-                    VerticalOptions = LayoutOptions.Start,
-                    HorizontalOptions = LayoutOptions.Start,
-                    Style = Device.Styles.ListItemDetailTextStyle
-
-                }, 1, i);
-            }
-        }
-
-        private void PopulateUnique2Column()
-        {
-            for (int i = 0; i < viewModel.Unique2.Count; i++)
-            {
-                UniqueHoldingsBody.Children.Add(new Label
-                {
-                    Text = viewModel.Unique2[i],
-                    VerticalOptions = LayoutOptions.Start,
-                    HorizontalOptions = LayoutOptions.Start,
-                    Style = Device.Styles.ListItemDetailTextStyle
-
-                }, 2, i);
-            }
-        }
-
+        
         private void PopulateGrid()
         {
-            PopulateOverlapColumn();
-            PopulateUnique1Column();
-            PopulateUnique2Column();
+            int ov = viewModel.OverlapList.Count;
+            int u1 = viewModel.Unique1.Count;
+            int u2 = viewModel.Unique2.Count;
+
+            PopulateColumnTemplate(ov, 0, viewModel.OverlapList);
+            PopulateColumnTemplate(u1, 1, viewModel.Unique1);
+            PopulateColumnTemplate(u2, 2, viewModel.Unique2);
+
         }
     }
 }
