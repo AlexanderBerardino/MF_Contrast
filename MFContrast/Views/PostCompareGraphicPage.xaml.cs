@@ -15,14 +15,15 @@ namespace MFContrast.Views
 
         public PostCompareOverlapViewModel ViewModel { get; set; }
 
-        public List<Entry> EntryList { get; set; }        
+        public List<Entry> OverlapEntryList { get; set; }
+        public List<Entry> BarEntryList { get; set; }
 
         public PostCompareGraphicPage(PostCompareOverlapViewModel viewModel)
         {
             InitializeComponent();
             ViewModel = viewModel;
             // LabelSize = 60f;
-            EntryList = new List<Entry>
+            OverlapEntryList = new List<Entry>
             {
                  new Entry(ViewModel.OverlapListSize)
                 {
@@ -50,13 +51,39 @@ namespace MFContrast.Views
                     // This entry corrects a formatting issue, no data added here
                 }
             };
+            // This data isn't correctly being displayed
+            // The F2InF1 and F1InF2 data should not be summed like below, instead
+            // it should be set against a total
+
+            // Will fix next iteration
+            BarEntryList = new List<Entry>
+            {
+                 new Entry((float)ViewModel.F2InF1)
+                {
+                    Color = SKColor.Parse("#EA2325"),
+                    Label = string.Join(" ", ViewModel.Fund2.Ticker.ToUpper(), "In", ViewModel.Fund1.Ticker.ToUpper()),
+                    ValueLabel = string.Join("", ViewModel.F2InF1.ToString(), "%"),
+                    TextColor = SKColor.Parse("#0A0909")
+                },
+                new Entry((float)ViewModel.F1InF2)
+                {
+                    Color = SKColor.Parse("#5FD419"),
+                    Label = string.Join(" ", ViewModel.Fund1.Ticker.ToUpper(), "In", ViewModel.Fund2.Ticker.ToUpper()),
+                    ValueLabel = string.Join("", ViewModel.F1InF2.ToString(), "%"),
+                    TextColor = SKColor.Parse("#0A0909")
+                }
+            };
 
             Chart1.Chart = new DonutChart {
                 HoleRadius = 0.20f,
                 // LabelTextSize = (float)Convert.ToDouble(Device.GetNamedSize(NamedSize.Large, typeof(Label))),
                 LabelTextSize = 40,
                 Margin = 50,
-                Entries = EntryList,
+                Entries = OverlapEntryList,
+            };
+            Chart2.Chart = new BarChart {
+                Entries = BarEntryList,
+                LabelTextSize = 30,
             };
         }
 
