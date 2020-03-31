@@ -28,29 +28,33 @@ namespace MFContrast.Views
                 {
                     Color = SKColor.Parse("#F7EF26"),
                     Label = "Overlap",
-                    ValueLabel = ViewModel.OverlapListSize.ToString(),
-                    TextColor = SKColor.Parse("#000000")
+                    ValueLabel = string.Join(" ", ViewModel.OverlapListSize.ToString(), "Holdings"),
+                    TextColor = SKColor.Parse("#0A0909")
                 },
                 new Entry(ViewModel.U1Size)
                 {
                     Color = SKColor.Parse("#EA2325"),
                     Label = string.Join(" ", ViewModel.Fund1.FundName, "Only"),
-                    ValueLabel = ViewModel.U1Size.ToString(),
-                    TextColor = SKColor.Parse("#000000")
+                    ValueLabel = string.Join(" ", ViewModel.U1Size.ToString(), "Holdings"),
+                    TextColor = SKColor.Parse("#0A0909")
                 },
                 new Entry(ViewModel.U2Size)
                 {
                     Color = SKColor.Parse("#5FD419"),
                     Label = string.Join(" ", ViewModel.Fund2.FundName, "Only"),
-                    ValueLabel = ViewModel.U2Size.ToString(),
-                    TextColor = SKColor.Parse("#000000")
+                    ValueLabel = string.Join(" ", ViewModel.U2Size.ToString(), "Holdings"),
+                    TextColor = SKColor.Parse("#0A0909")
+                },
+                new Entry(0)
+                {
+                    // This entry corrects a formatting issue, no data added here
                 }
             };
 
             Chart1.Chart = new DonutChart {
                 HoleRadius = 0.20f,
                 // LabelTextSize = (float)Convert.ToDouble(Device.GetNamedSize(NamedSize.Large, typeof(Label))),
-                LabelTextSize = 30,
+                LabelTextSize = 40,
                 Margin = 50,
                 Entries = EntryList,
             };
