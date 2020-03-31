@@ -22,7 +22,7 @@ namespace MFContrast
             ItemsPage page = new ItemsPage();
             ComparePage comparePage = new ComparePage();
             AboutPage aboutPage = new AboutPage();
-
+            
             tabs.Children.Add(new NavigationPage(page) { Title = "View Funds" });
             tabs.Children.Add(new NavigationPage(comparePage) { Title = "MFContrast" });
             tabs.Children.Add(new NavigationPage(aboutPage) { Title = "About" });

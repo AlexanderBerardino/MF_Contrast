@@ -8,7 +8,7 @@ namespace MFContrast.ViewModels
 {
     public class PostCompareOverlapViewModel : BaseViewModel
     {
-        
+        // This will be turned into the base of the carousel view
         private MutualFund F1;
         private MutualFund F2;
         private List<string> unique1;

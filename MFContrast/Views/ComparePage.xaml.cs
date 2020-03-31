@@ -49,9 +49,13 @@ namespace MFContrast.Views
 
             try
             {
-                PostCompareViewModel postCompareViewModel = new PostCompareViewModel(f3, f4);
-                PostComparePage postComparePage = new PostComparePage(postCompareViewModel);
-                await Navigation.PushAsync(postComparePage);
+                // PostCompareViewModel postCompareViewModel = new PostCompareViewModel(f3, f4);
+                // PostComparePage postComparePage = new PostComparePage(postCompareViewModel);
+                PostCompareOverlapViewModel postCompareOverlapViewModel = new PostCompareOverlapViewModel(f3, f4);
+                PostCompareCarouselPage postCompareCarouselPage = new PostCompareCarouselPage(postCompareOverlapViewModel);
+
+                // await Navigation.PushAsync(postComparePage);
+                await Navigation.PushAsync(postCompareCarouselPage);
 
             }
             catch (NullReferenceException ex)
