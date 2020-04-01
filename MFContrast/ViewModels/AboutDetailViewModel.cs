@@ -11,7 +11,6 @@ namespace MFContrast.ViewModels
         public AboutDetailViewModel(FAQ faq)
         {
             DetailFAQ = faq;
-            
         }
     }
 }
