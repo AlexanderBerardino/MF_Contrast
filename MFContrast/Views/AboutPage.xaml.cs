@@ -1,12 +1,11 @@
 ﻿using System;
 using System.ComponentModel;
+using MFContrast.Models;
 using MFContrast.ViewModels;
 using Xamarin.Forms;
 
 namespace MFContrast.Views
 {
-    // Learn more about making custom code visible in the Xamarin.Forms previewer
-    // by visiting https://aka.ms/xamarinforms-previewer
     [DesignTimeVisible(false)]
     public partial class AboutPage : ContentPage
     {
@@ -16,7 +15,13 @@ namespace MFContrast.Views
         {
             InitializeComponent();
             BindingContext = viewModel = new AboutViewModel();
-            Content = viewModel.Layout;
+        }
+
+        async void OnItemTapped(object sender, ItemTappedEventArgs args)
+        {
+            FAQ tappedFAQ = args.Item as FAQ;
+            await Navigation.PushAsync(new AboutDetailPage(new AboutDetailViewModel(tappedFAQ)));
+
         }
 
         // Example of a possible Alert event handler 

@@ -14,13 +14,12 @@
         <ToolbarItem Text="Help" Clicked="Help_Clicked"  />
     </ContentPage.ToolbarItems>
 
-    <ListView x:Name="AboutListView" ItemsSource="{Binding FrequentlyAskedQuestions}">
+    <ListView x:Name="AboutListView" ItemsSource="{Binding FAQ_List}" VerticalOptions="FillAndExpand"
+                  HasUnevenRows="true" ItemTapped="OnItemTapped">
           <ListView.ItemTemplate>
                 <DataTemplate>
-                   <TextCell Text="{Binding FrequentlyAskedQuestions}" />
+                   <TextCell Text="{Binding Question}" />
                 </DataTemplate>
             </ListView.ItemTemplate>
-        
-    </ListView>
-    
+        </ListView>
 </ContentPage>

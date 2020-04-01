@@ -1,39 +1,48 @@
 ﻿
+using System.Collections.Generic;
+using MFContrast.Models;
 using Xamarin.Forms;
 
 namespace MFContrast.ViewModels
 {
     public class AboutViewModel : BaseViewModel
     {
-
-
-        public ListView AboutListView;
-        public StackLayout Layout;
+        public List<FAQ> FAQ_List { get; set; }
 
         public AboutViewModel()
         {
             Title = "About";
-           
-            AboutListView = InitializeAboutListView();
-            Layout = new StackLayout();
-            Layout.Children.Add(AboutListView);
 
-        }
-        
-
-        public ListView InitializeAboutListView()
-        {
-            ListView listView = new ListView();
-            listView.ItemsSource = new string[]
+            FAQ_List = new List<FAQ>
             {
-                "What is each page for?",
-                "How do I use the contrast functionality?",
-                "Where does this data come from?",
-                "How often are the funds updated?",
-                "Are all fund assets present?"
+                new FAQ
+                {
+                    Question = "What is each page for?",
+                    Answer = "When opening the application, you have access to three pages: Browse, Compare and About. " +
+                    "The Compare page contains the functionality for comparing two mutual funds."
+                },
+                 new FAQ
+                {
+                    Question = "How do I use the compare functionality?",
+                    Answer = "Use the picker selectors to choose two mutual funds and click the 'Compare' Button."
+                },
+                  new FAQ
+                {
+                    Question = "Where does this data come from?",
+                    Answer = "This data comes from Wharton Research Data Services, the global standard for business research."
+                },
+                   new FAQ
+                {
+                    Question = "How often are the funds updated?",
+                    Answer = "Every quarterly update."
+                },
+                    new FAQ
+                {
+                    Question =  "Are all fund assets present?",
+                    Answer = "Currently only the first 100 biggest holdings in each fund are being indexed, " +
+                    "but if the fund contains less than 100 holdings, all will be indexed."
+                }
             };
-            return listView;
         }
-        
     }
 }

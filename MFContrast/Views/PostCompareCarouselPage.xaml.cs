@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using MFContrast.ViewModels;
+﻿using MFContrast.ViewModels;
 using Xamarin.Forms;
 
 namespace MFContrast.Views
 {
     public partial class PostCompareCarouselPage : CarouselPage
-    {   
+    {
         public PostCompareCarouselPage(PostCompareOverlapViewModel viewModel)
         {
             InitializeComponent();

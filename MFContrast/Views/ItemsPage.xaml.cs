@@ -6,8 +6,6 @@ using MFContrast.ViewModels;
 
 namespace MFContrast.Views
 {
-    // Learn more about making custom code visible in the Xamarin.Forms previewer
-    // by visiting https://aka.ms/xamarinforms-previewer
     [DesignTimeVisible(false)]
     public partial class ItemsPage : ContentPage
     {
@@ -25,7 +23,6 @@ namespace MFContrast.Views
             MutualFund fund = args.SelectedItem as MutualFund;
             if (fund == null)
                 return;
-            // Might need to remove instance of NavigationPage
             await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(fund)));
 
             // Manually deselect item.
@@ -44,7 +41,6 @@ namespace MFContrast.Views
             await Navigation.PushModalAsync(new NavigationPage(new NewItemPage()));
         }
         
-
         protected override void OnAppearing()
         {
             base.OnAppearing();

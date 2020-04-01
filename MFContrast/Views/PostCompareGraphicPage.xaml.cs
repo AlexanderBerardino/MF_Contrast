@@ -11,7 +11,7 @@ namespace MFContrast.Views
     public partial class PostCompareGraphicPage : ContentPage
     {
         // public float LabelSize { get; set; }
-        public ChartView ChartView { get; set; }
+        // public ChartView ChartView { get; set; }
 
         public PostCompareOverlapViewModel ViewModel { get; set; }
 
@@ -48,9 +48,12 @@ namespace MFContrast.Views
                 },
                 new Entry(0)
                 {
-                    // This entry corrects a formatting issue, no data added here
+                    // This entry corrects a formatting issue, no data added here.
+                    // With three data points it formats like as a triangle, with the middle point being covered
+                    // by the chart itself
                 }
             };
+
             // This data isn't correctly being displayed
             // The F2InF1 and F1InF2 data should not be summed like below, instead
             // it should be set against a total

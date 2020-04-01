@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Data;
-using System.Diagnostics;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using MFContrast.Models;
-using MFContrast.Services;
 using Xamarin.Forms;
 
 namespace MFContrast.ViewModels
@@ -37,20 +31,14 @@ namespace MFContrast.ViewModels
 
             Layout = new StackLayout { Orientation = StackOrientation.Vertical };
             AddLayoutChildren();
-
         }
-
-
-
 
         public void AddLayoutChildren()
         {
             Layout.Children.Add(HeaderGrid);
             Layout.Children.Add(new ScrollView { Content = ItemDetailGrid, VerticalOptions = new LayoutOptions(LayoutAlignment.Fill, true) });
-
         }
       
-
         private Grid SetItemDetailGrid()
         {
             Grid returnGrid = new Grid();
@@ -70,7 +58,6 @@ namespace MFContrast.ViewModels
             Grid returnGrid = new Grid
             {
                 Padding = 10,
-                
             };
             returnGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
             returnGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(5, GridUnitType.Star) });

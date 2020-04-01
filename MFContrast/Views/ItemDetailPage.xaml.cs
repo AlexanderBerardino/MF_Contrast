@@ -6,8 +6,6 @@ using MFContrast.ViewModels;
 
 namespace MFContrast.Views
 {
-    // Learn more about making custom code visible in the Xamarin.Forms previewer
-    // by visiting https://aka.ms/xamarinforms-previewer
     [DesignTimeVisible(false)]
     public partial class ItemDetailPage : ContentPage
     {
@@ -24,7 +22,7 @@ namespace MFContrast.Views
 
         public ItemDetailPage()
         {
-            MutualFund holderFund = new MutualFund("") { FundName = "Holder Fund", Id = "0" };
+            MutualFund holderFund = new MutualFund("MockFund") { FundName = "Holder Fund", Id = "0" };
        
             InitializeComponent();
             viewModel = new ItemDetailViewModel(holderFund);
