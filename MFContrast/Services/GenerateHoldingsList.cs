@@ -7,18 +7,23 @@ using MFContrast.Models;
 
 namespace MFContrast.Services
 {
-    public class GenerateHoldingsList
+    interface GetHoldingsList
+    {
+        List<Holding> Create(string Ticker);
+    }
+
+    public class GenerateHoldingsList : GetHoldingsList
     {
         public GenerateHoldingsList()
         {
         }
 
-        public static string CreateCsvPath(string urlPrefix)
+        static string CreateCsvPath(string urlPrefix)
         {
             return string.Join("", urlPrefix, "_holdings.csv");
         }
 
-        public static DataTable CreateDataTable(string tickerSymbol)
+        static DataTable CreateDataTable(string tickerSymbol)
         {
             DataTable CsvTable = new DataTable();
 
@@ -43,7 +48,7 @@ namespace MFContrast.Services
             }          
         }
 
-        public static List<Holding> Create(string Ticker)
+        public List<Holding> Create(string Ticker)
         {
             DataTable data = CreateDataTable(Ticker);
 

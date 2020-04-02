@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using MFContrast.Services;
+using Xamarin.Forms;
 
 namespace MFContrast.Models
 {
     public class MutualFund
     {
+        GetHoldingsList GetHoldingsList => DependencyService.Get<GetHoldingsList>();
+
         public string FundName { get; set; }
         public List<Holding> AssetList { get; set; }
         public string Ticker { get; set; }
@@ -20,7 +23,7 @@ namespace MFContrast.Models
         {
 
             this.Ticker = Ticker;
-            AssetList = GenerateHoldingsList.Create(Ticker);           
+            AssetList = GetHoldingsList.Create(Ticker);           
         }
 
     }
