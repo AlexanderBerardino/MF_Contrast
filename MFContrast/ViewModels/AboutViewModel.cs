@@ -1,7 +1,5 @@
-﻿
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using MFContrast.Models;
-using Xamarin.Forms;
 
 namespace MFContrast.ViewModels
 {

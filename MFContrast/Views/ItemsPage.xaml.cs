@@ -14,7 +14,6 @@ namespace MFContrast.Views
         public ItemsPage()
         {
             InitializeComponent();
-
             BindingContext = viewModel = new ItemsViewModel();
         }
 
@@ -33,7 +32,6 @@ namespace MFContrast.Views
         {
             MutualFund tappedFund = args.Item as MutualFund;
             await Navigation.PushAsync((new ItemDetailPage(new ItemDetailViewModel(tappedFund))));
-
         }
 
         async void AddItem_Clicked(object sender, EventArgs e)
@@ -44,7 +42,6 @@ namespace MFContrast.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
             if (viewModel.Funds.Count == 0)
                 viewModel.LoadItemsCommand.Execute(null);
         }

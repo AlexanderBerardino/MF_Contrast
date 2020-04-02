@@ -18,7 +18,6 @@ namespace MFContrast.ViewModels
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
         }
 
-     
         async Task ExecuteLoadItemsCommand()
         {
             if (IsBusy)

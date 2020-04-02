@@ -8,7 +8,7 @@ namespace MFContrast.Views
     public partial class PostCompareOverlapPage : ContentPage
     {
         PostCompareOverlapViewModel viewModel;
-    
+
         public string UpperTicker1 => viewModel.Fund1.Ticker.ToUpper();
         public string UpperTicker2 => viewModel.Fund2.Ticker.ToUpper();
         public string Name1 => viewModel.Fund1.FundName;

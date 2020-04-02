@@ -13,12 +13,10 @@ namespace MFContrast.Services
         {
         }
 
-
         public static string CreateCsvPath(string urlPrefix)
         {
             return string.Join("", urlPrefix, "_holdings.csv");
         }
-
 
         public static DataTable CreateDataTable(string tickerSymbol)
         {
@@ -42,8 +40,7 @@ namespace MFContrast.Services
             else
             {
                 throw new Exception("csvPath Constructor");
-            }
-           
+            }          
         }
 
         public static List<Holding> Create(string Ticker)

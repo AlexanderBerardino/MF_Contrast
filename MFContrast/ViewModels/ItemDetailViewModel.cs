@@ -15,7 +15,7 @@ namespace MFContrast.ViewModels
         public Grid HeaderGrid { get; set; }
         public StackLayout Layout { get; set; }
 
-        
+
         public ItemDetailViewModel(MutualFund fund)
         {
             FundName = Title = fund.FundName;
@@ -70,7 +70,6 @@ namespace MFContrast.ViewModels
             return returnGrid;
         }
 
-
         private void PopulateItemDetailGrid()
         {
             for (int i = 0; i < HoldingsList.Count; i++)
@@ -99,7 +98,5 @@ namespace MFContrast.ViewModels
                 }, 2, i);
             }
         }
-
-
     }
 }
