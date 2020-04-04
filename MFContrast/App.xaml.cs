@@ -14,6 +14,9 @@ namespace MFContrast
             InitializeComponent();
 
             DependencyService.Register<MockDataStore>();
+            // DependencyService.Register<GenerateHoldingsList>();
+            // DependencyService.Register<GenerateWebHoldingsList>();
+
 
             // tabs is the Main Page
             TabbedPage tabs = new TabbedPage();
