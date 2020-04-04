@@ -9,7 +9,7 @@ namespace MFContrast.Views
     [DesignTimeVisible(false)]
     public partial class ItemsPage : ContentPage
     {
-        readonly ItemsViewModel viewModel;
+        public ItemsViewModel viewModel { get; set; }
 
         public ItemsPage()
         {
@@ -19,10 +19,22 @@ namespace MFContrast.Views
 
         async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
         {
+            if (sender is null)
+            {
+                throw new ArgumentNullException(nameof(sender));
+            }
+
+            if (args is null)
+            {
+                throw new ArgumentNullException(nameof(args));
+            }
+
             MutualFund fund = args.SelectedItem as MutualFund;
-            if (fund == null)
-                return;
-            await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(fund)));
+            // MutualFund fund_instance = new MutualFund(fund.Ticker) { AssetList = fund.AssetList, FundName = fund.FundName, Id = fund.Id, Ticker = fund.Ticker };
+            // if (fund == null) { return; }
+            // await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(fund)));
+            await Navigation.PushAsync(new AboutPage());
+
 
             // Manually deselect item.
             ItemsListView.SelectedItem = null;
@@ -30,8 +42,13 @@ namespace MFContrast.Views
 
         async void OnItemTapped(object sender, ItemTappedEventArgs args)
         {
-            MutualFund tappedFund = args.Item as MutualFund;
-            await Navigation.PushAsync((new ItemDetailPage(new ItemDetailViewModel(tappedFund))));
+            MutualFund fund = args.Item as MutualFund;
+            if (fund == null) { return; }
+            await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(fund)));
+
+            //  Manually deselect item.
+
+            ItemsListView.SelectedItem = null;
         }
 
         async void AddItem_Clicked(object sender, EventArgs e)

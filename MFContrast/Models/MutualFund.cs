@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using MFContrast.Services;
-using Xamarin.Forms;
 
 namespace MFContrast.Models
 {
@@ -25,7 +23,7 @@ namespace MFContrast.Models
             this.Ticker = Ticker;
             var lister = new GenerateHoldingsList();
 
-            AssetList = lister.Create(Ticker);           
+            AssetList = lister.Create(Ticker);
         }
 
     }

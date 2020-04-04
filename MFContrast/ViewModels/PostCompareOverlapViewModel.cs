@@ -17,7 +17,7 @@ namespace MFContrast.ViewModels
 
         // This can later be set through composition or inherited depending on use
         public ICompare C { get; set; }
-        
+
         public MutualFund Fund1
         {
             get { return F1; }

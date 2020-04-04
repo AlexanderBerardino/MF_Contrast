@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using MFContrast.Models;
 using MFContrast.ViewModels;
@@ -26,37 +25,31 @@ namespace MFContrast.Views
             BindingContext = this.viewModel = viewModel;
         }
 
-
         public async void ContrastClicked(object sender, EventArgs eventArgs)
         {
-            // Bind f1 and f2 to picker selections
-            // MutualFund f1 = await viewModel.MutualFundDataStore.GetItemAsync("0");
-            // MutualFund f2 = await viewModel.MutualFundDataStore.GetItemAsync("1");
-
             Picker picker1 = FindByName("Picker1") as Picker;
             Picker picker2 = FindByName("Picker2") as Picker;
 
-            MutualFund f3 = picker1.SelectedItem as MutualFund;
+            MutualFund f1 = picker1.SelectedItem as MutualFund;
+            MutualFund f2 = picker2.SelectedItem as MutualFund;
 
-            MutualFund f4 = picker2.SelectedItem as MutualFund;
-
-            //MutualFund f3 = new MutualFund("vfiax")
-            //{
-            //    Id = "0",
-            //    FundName = "Vanguard",
-            //    // Ticker = "vfiax",
-
-            //};
-            //MutualFund f4 = new MutualFund("fcntx")
-            //{
-            //    Id = "1",
-            //    FundName = "Fidelity",
-            //    // Ticker = "fcntx"
-            //};
+            // Input must be set to instance
+            MutualFund F1 = new MutualFund(f1.Ticker) {
+                AssetList = f1.AssetList,
+                FundName = f1.FundName,
+                Id = f1.Id,
+                Ticker = f1.Ticker
+            };
+            MutualFund F2 = new MutualFund(f2.Ticker) {
+                AssetList = f2.AssetList,
+                FundName = f2.FundName,
+                Id = f2.Id,
+                Ticker = f2.Ticker
+            };
 
             try
             {
-                await Navigation.PushAsync(new PostCompareCarouselPage(new PostCompareOverlapViewModel(f3, f4)));
+                await Navigation.PushAsync(new PostCompareCarouselPage(new PostCompareOverlapViewModel(F1, F2)));
             }
             catch (NullReferenceException ex)
             {

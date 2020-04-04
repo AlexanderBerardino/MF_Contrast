@@ -1,5 +1,4 @@
-﻿using System;
-using MFContrast.Models;
+﻿using MFContrast.Models;
 
 namespace MFContrast.ViewModels
 {

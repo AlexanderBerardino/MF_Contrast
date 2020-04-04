@@ -1,6 +1,4 @@
-﻿using System;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+﻿using Xamarin.Forms;
 using MFContrast.Services;
 using MFContrast.Views;
 
@@ -22,11 +20,11 @@ namespace MFContrast
             TabbedPage tabs = new TabbedPage();
 
             // Children pages of tabs
-            ItemsPage page = new ItemsPage();
+            ItemsPage itemsPage = new ItemsPage();
             ComparePage comparePage = new ComparePage();
             AboutPage aboutPage = new AboutPage();
             
-            tabs.Children.Add(new NavigationPage(page) { Title = "View Funds" });
+            tabs.Children.Add(new NavigationPage(itemsPage) { Title = "View Funds" });
             tabs.Children.Add(new NavigationPage(comparePage) { Title = "MFContrast" });
             tabs.Children.Add(new NavigationPage(aboutPage) { Title = "About" });
 

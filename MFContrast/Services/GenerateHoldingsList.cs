@@ -7,12 +7,12 @@ using MFContrast.Models;
 
 namespace MFContrast.Services
 {
-    interface GetHoldingsList
+    interface IGetHoldingsList
     {
         List<Holding> Create(string Ticker);
     }
 
-    public class GenerateHoldingsList : GetHoldingsList
+    public class GenerateHoldingsList : IGetHoldingsList
     {
         public GenerateHoldingsList()
         {

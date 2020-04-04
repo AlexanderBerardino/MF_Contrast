@@ -8,27 +8,32 @@ namespace MFContrast.Services
 {
     public class MutualFundDataStore : IMutualFundDataStore
     {
-        
+
         private static readonly List<MutualFund> FundList;
         private static int nextFundId;
 
         static MutualFundDataStore()
-        {           
+        {
             FundList = new List<MutualFund> {
 
-            new MutualFund("vfiax") {
-                Id = "0",
-                FundName = "Vanguard",
-                // Ticker = "vfiax",
+                new MutualFund("vfiax") {
+                    Id = "0",
+                    FundName = "Vanguard",
+                    // Ticker = "vfiax",
 
-        },
-            new MutualFund("fcntx") {
-                Id = "1",
-                FundName = "Fidelity",
-                // Ticker = "fcntx"
-            }
+                },
+                new MutualFund("fcntx") {
+                    Id = "1",
+                    FundName = "Fidelity",
+                    // Ticker = "fcntx"
+                },
+
+                new MutualFund("vsmax")
+                {
+                    Id="2",
+                    FundName="Vanguard Small Cap"
+                }
             };
-            
             nextFundId = FundList.Count;
         }
 
@@ -42,7 +47,6 @@ namespace MFContrast.Services
             }
             return await Task.FromResult(fund.Id);
         }
-
 
         public async Task<IList<MutualFund>> GetItemsAsync()
         {
@@ -60,8 +64,6 @@ namespace MFContrast.Services
             return new MutualFund(fund.Ticker) { FundName = fund.FundName, Id = fund.Id };
         }
 
-      
-
         public async Task<MutualFund> GetItemAsync(string id)
         {
             MutualFund fund = FundList.FirstOrDefault(Fund => Fund.Id == id);
@@ -69,10 +71,5 @@ namespace MFContrast.Services
             MutualFund returnFund = CopyFund(fund);
             return await Task.FromResult(returnFund);
         }
-
-        
-
     }
-
-   
 }

@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using MFContrast.ViewModels;
 using Microcharts;
-using Microcharts.Forms;
 using SkiaSharp;
 using Xamarin.Forms;
 using Entry = Microcharts.Entry;

@@ -29,8 +29,5 @@ namespace MFContrast.Views
             BindingContext = viewModel;
 
         }
-
-
-
     }
 }

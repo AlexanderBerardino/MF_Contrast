@@ -1,5 +1,4 @@
-﻿using System;
-namespace MFContrast.Models
+﻿namespace MFContrast.Models
 {
     public class Holding
     {
