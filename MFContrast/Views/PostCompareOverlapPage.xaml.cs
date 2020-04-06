@@ -51,12 +51,12 @@ namespace MFContrast.Views
             {
                 ItemsSource = new string[]
                 {
-                    "Overlap Size: " + viewModel.OverlapListSize.ToString(),
-                    Name1 + string.Join("", "(", UpperTicker1 + ") ") + " # of Unique Holdings: " + viewModel.U1Size.ToString(),
-                    Name2 + string.Join("", "(", UpperTicker2 + ") ") + " # of Unique Holdings: " + viewModel.U2Size.ToString(),
-                    string.Join(" ", Name2, "in", Name1) + ": " + string.Format("{0:0.#####}", viewModel.F2InF1) + " %",
-                    string.Join(" ", Name1, "in", Name2) + ": " + string.Format("{0:0.#####}", viewModel.F1InF2) + " %",
-                    "Overlap By Weight: " + string.Format("{0:0.#####}", viewModel.OverlapPercentage) + " %"
+                    string.Join(" ","Overlap Size:", viewModel.OverlapListSize.ToString()),
+                    string.Join(" ", UpperTicker1, "# of Unique Holdings:", viewModel.U1Size.ToString()),
+                    string.Join(" ", UpperTicker2, "# of Unique Holdings:", viewModel.U2Size.ToString()),
+                    string.Join(" ", Name2, "in", Name1+":", string.Format("{0:0.#####}", viewModel.F2InF1), "%"),
+                    string.Join(" ", Name1, "in", Name2+":", string.Format("{0:0.#####}", viewModel.F1InF2), "%"),
+                    string.Join(" ", "Overlap By Weight:", string.Format("{0:0.#####}", viewModel.OverlapPercentage), "%")
                 }
             };
             return listView;           
