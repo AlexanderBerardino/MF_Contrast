@@ -13,8 +13,6 @@ namespace MFContrast.Views
 
         public string UpperTicker1 => viewModel.Fund1.Ticker.ToUpper();
         public string UpperTicker2 => viewModel.Fund2.Ticker.ToUpper();
-        public string Name1 => viewModel.Fund1.FundName;
-        public string Name2 => viewModel.Fund2.FundName;
         public ListView StatsView { get; set; }
         public Grid GridBody { get; set; }
         public Grid GridHead { get; set; }
@@ -45,7 +43,8 @@ namespace MFContrast.Views
             };
             Content = PageOneMainLayout;
         }
-        
+
+        // Numbers Formatted to End
         private ListView SetListView()
         {
             ListView listView = new ListView
@@ -55,8 +54,8 @@ namespace MFContrast.Views
                     string.Join(" ","Overlap Size:", viewModel.OverlapListSize.ToString()),
                     string.Join(" ", UpperTicker1, "# of Unique Holdings:", viewModel.U1Size.ToString()),
                     string.Join(" ", UpperTicker2, "# of Unique Holdings:", viewModel.U2Size.ToString()),
-                    string.Join(" ", Name2, "in", Name1+":", string.Format("{0:0.#####}", viewModel.F2InF1), "%"),
-                    string.Join(" ", Name1, "in", Name2+":", string.Format("{0:0.#####}", viewModel.F1InF2), "%"),
+                    string.Join(" ", UpperTicker2, "in", UpperTicker1+":", string.Format("{0:0.#####}", viewModel.F2InF1), "%"),
+                    string.Join(" ", UpperTicker1, "in", UpperTicker2+":", string.Format("{0:0.#####}", viewModel.F1InF2), "%"),
                     string.Join(" ", "Overlap By Weight:", string.Format("{0:0.#####}", viewModel.OverlapPercentage), "%"),
                     string.Join(" ", UpperTicker1, "Top Ten:", string.Format("{0:0.#####}", viewModel.F1TopTen), "%"),
                     string.Join(" ", UpperTicker2, "Top Ten:", string.Format("{0:0.#####}", viewModel.F2TopTen), "%"),

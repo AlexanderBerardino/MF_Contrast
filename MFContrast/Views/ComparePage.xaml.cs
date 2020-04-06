@@ -15,8 +15,7 @@ namespace MFContrast.Views
         public ComparePage()
         {
             InitializeComponent();
-            viewModel = new CompareViewModel();
-            BindingContext = viewModel;
+            BindingContext = viewModel = new CompareViewModel();
         }
 
         public ComparePage(CompareViewModel viewModel)
