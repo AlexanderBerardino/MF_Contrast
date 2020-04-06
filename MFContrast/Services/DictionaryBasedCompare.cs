@@ -14,6 +14,9 @@ namespace MFContrast.Services
         public List<Holding> S2Complement { get; set; }
         public List<string> S1UnionS2 { get; set; }
 
+        public double F1TopTen { get; set; }
+        public double F2TopTen { get; set; }
+
         public double F2InF1 { get; set; }
         public double F1InF2 { get; set; }
         public double OverlapPercentage => COP(F1InF2, F2InF1);
@@ -27,11 +30,14 @@ namespace MFContrast.Services
             S1UnionS2 = DistillUnion(S1, S2);
             F2InF1 = CalculateWeightedAverage(S1, S1UnionS2);
             F1InF2 = CalculateWeightedAverage(S2, S1UnionS2);
+            F1TopTen = TopTen(enumerableHoldings1);
+            F2TopTen = TopTen(enumerableHoldings2);
         }
 
         // Calculate Overlap Percentage
         private double COP(double x, double y) => (x + y) / 2;
 
+        // Remove Holdings With Empty String or null For Symbol or Name
         private static List<Holding> RemoveNull(List<Holding> holdings)
         {
             var query = from T1 in holdings
@@ -64,7 +70,12 @@ namespace MFContrast.Services
                         join T2 in exceptList on T1.Symbol equals T2.Symbol
                         select T1.Symbol;
             return query.ToList();
+        }
 
+        // Return sum of first ten holdings percentages 
+        private static double TopTen(List<Holding> targetList)
+        {
+            return targetList.Select(x => Convert.ToDouble(x.Percentage)).Take(10).Sum();
         }
     }
 }

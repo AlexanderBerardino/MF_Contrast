@@ -32,6 +32,7 @@ namespace MFContrast.Views
             PageOneMainLayout = new StackLayout
             {
                 Orientation = StackOrientation.Vertical,
+                Spacing = 20,
                 Children = {
                     StatsView,
                     GridHead,
@@ -56,7 +57,9 @@ namespace MFContrast.Views
                     string.Join(" ", UpperTicker2, "# of Unique Holdings:", viewModel.U2Size.ToString()),
                     string.Join(" ", Name2, "in", Name1+":", string.Format("{0:0.#####}", viewModel.F2InF1), "%"),
                     string.Join(" ", Name1, "in", Name2+":", string.Format("{0:0.#####}", viewModel.F1InF2), "%"),
-                    string.Join(" ", "Overlap By Weight:", string.Format("{0:0.#####}", viewModel.OverlapPercentage), "%")
+                    string.Join(" ", "Overlap By Weight:", string.Format("{0:0.#####}", viewModel.OverlapPercentage), "%"),
+                    string.Join(" ", UpperTicker1, "Top Ten:", string.Format("{0:0.#####}", viewModel.F1TopTen), "%"),
+                    string.Join(" ", UpperTicker2, "Top Ten:", string.Format("{0:0.#####}", viewModel.F2TopTen), "%"),
                 }
             };
             return listView;           
