@@ -6,70 +6,64 @@ namespace MFContrast.Services
 {
     public class DictionaryBasedCompare
     {
-        // This class will eventually replace the List<string> Based Compare Class
-        // The reason dictionary<string, double> works better is becuase many of
-        // the displays couple the Ticker (string) and Percentage (double) in their presentation
 
-        public Dictionary<string, double> s1 { get; set; }
-        public Dictionary<string, double> s2 { get; set; }
-        public Dictionary<string, double> s1Complement { get; set; }
-        public Dictionary<string, double> s2Complement { get; set; }
-        public Dictionary<string, double> s1Unions2 { get; set; }
-        public double F2InF1 => CalculateWeightedAverage(s1, s2);
-        public double F1InF2 => CalculateWeightedAverage(s2, s1);
-        public double OverlapPercentage => CalculateOverlapPercentage(s1, s2, s1Unions2);
+        private List<Holding> S1 { get; set; }
+        private List<Holding> S2 { get; set; }
+
+        public List<Holding> S1Complement { get; set; }
+        public List<Holding> S2Complement { get; set; }
+        public List<string> S1UnionS2 { get; set; }
+
+        public double F2InF1 { get; set; }
+        public double F1InF2 { get; set; }
+        public double OverlapPercentage => COP(F1InF2, F2InF1);
 
         public DictionaryBasedCompare(List<Holding> enumerableHoldings1, List<Holding> enumerableHoldings2)
         {
-            s1 = TickerPercentageDictionary(enumerableHoldings1);
-            s2 = TickerPercentageDictionary(enumerableHoldings2);
-            s1Complement = DistillDifference(s2, s1);
-            s2Complement = DistillDifference(s1, s2);
-            s1Unions2 = DistillUnion(s1, s2);
+            S1 = enumerableHoldings1;
+            S2 = enumerableHoldings2;
+            S1Complement = DistillDifference(S2, S1);
+            S2Complement = DistillDifference(S1, S2);
+            S1UnionS2 = DistillUnion(S1, S2);
+            F2InF1 = CalculateWeightedAverage(S1, S1UnionS2);
+            F1InF2 = CalculateWeightedAverage(S2, S1UnionS2);      
         }
 
-        public double CalculateOverlapPercentage(Dictionary<string, double> d1, Dictionary<string, double> d2, Dictionary<string, double> overlapHoldings)
+        // Calculate Overlap Percentage
+        private double COP(double x, double y) => (x + y) / 2;
+
+
+        private static double CalculateWeightedAverage(List<Holding> d1, List<string> originolOtherList)
         {
-            double x = CalculateWeightedAverage(d1, overlapHoldings) + CalculateWeightedAverage(d2, overlapHoldings);
-            return x / 2;
+            var query = from T1 in d1
+                        join T2 in originolOtherList on T1.Symbol equals T2
+                        select Convert.ToDouble(T1.Percentage);
+            return query.Sum();
         }
 
-        public static double CalculateWeightedAverage(Dictionary<string, double> targetFund, Dictionary<string, double> otherFund)
+     
+        private static List<Holding> DistillDifference(List<Holding> targetList, List<Holding> exceptList)
         {
-            List<double> total = new List<double>();
-            total.AddRange(from string name in otherFund
-                           where targetFund.ContainsKey(name)
-                           select targetFund[name]);
-            return total.Sum();
+            var query = exceptList.Select(X => X.Name);
+            var finalQuery = from T1 in targetList
+                             where !string.IsNullOrWhiteSpace(T1.Name)
+                             where !string.IsNullOrWhiteSpace(T1.Symbol)
+                             where !(query.Contains(T1.Name))
+                             select T1;
+            return finalQuery.ToList();
+             
         }
        
 
-        public static Dictionary<string, double> TickerPercentageDictionary(List<Holding> enumerableHoldings)
+        private static List<string> DistillUnion(List<Holding> targetList, List<Holding> exceptList)
         {
-            return enumerableHoldings.ToDictionary(Holding => Holding.Symbol, Holding => Convert.ToDouble(Holding.Percentage));
-        }
+            var query = from T1 in targetList
+                        where !string.IsNullOrWhiteSpace(T1.Name)
+                        where !string.IsNullOrWhiteSpace(T1.Symbol)
+                        join T2 in exceptList on T1.Symbol equals T2.Symbol
+                        select T1.Symbol;
+            return query.ToList();
 
-        private static Dictionary<string, double> DistillDifference(Dictionary<string, double> targetDict, Dictionary<string, double> exceptDict)
-        {
-            /*
-            Dictionary<string, double> returnDictionary = new Dictionary<string, double>();
-            foreach(KeyValuePair<string, double> keyValuePair in targetDict)
-            {
-                if (!ExceptDict.ContainsKey(keyValuePair.Key))
-                {
-                    returnDictionary.Add(keyValuePair.Key, keyValuePair.Value);
-                }
-            }
-            return returnDictionary;
-            */
-            return targetDict.Where(x => !exceptDict.ContainsKey(x.Key))
-                .ToDictionary(x => x.Key, x => x.Value);
-        }
-
-        private Dictionary<string, double> DistillUnion(Dictionary<string, double> primaryDict, Dictionary<string, double> secondaryDict)
-        {
-            return primaryDict.Where(x => secondaryDict.ContainsKey(x.Key))
-                         .ToDictionary(x => x.Key, x => x.Value);
         }
     }
 }

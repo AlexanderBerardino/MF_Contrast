@@ -21,7 +21,8 @@ namespace MFContrast.Views
             UniqueHoldingsHeader = SetHeaderGridTemplate("Overlap", string.Join(separator: " ", UpperTicker1 + "Unique"), string.Join(separator: " ", UpperTicker2 + "Unique"));
             UniqueHoldingsBody = SetUniqueHoldingsBody();
             PopulateGrid();
-            UniqueHoldingsLayout = new StackLayout {
+            UniqueHoldingsLayout = new StackLayout
+            {
                 Orientation = StackOrientation.Vertical,
                 Children = {
                     UniqueHoldingsHeader,

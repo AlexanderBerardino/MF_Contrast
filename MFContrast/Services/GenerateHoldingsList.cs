@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
+using System.Reflection;
 using LumenWorks.Framework.IO.Csv;
 using MFContrast.Models;
 
@@ -35,11 +36,11 @@ namespace MFContrast.Services
             if (doesExist)
             {
                 CsvReader reader = new CsvReader(new StreamReader(File.OpenRead(@csvPath)), true);
+
                 using (reader)
                 {
                     CsvTable.Load(reader);
                 }
-
                 return CsvTable;
             }
             else
