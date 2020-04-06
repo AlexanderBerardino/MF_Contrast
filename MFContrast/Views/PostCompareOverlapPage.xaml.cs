@@ -9,7 +9,7 @@ namespace MFContrast.Views
     public partial class PostCompareOverlapPage : ContentPage
     {
         // PostCompareOverlapViewModel viewModel;
-        PostCompareOverlapViewModelV2 viewModel;
+        PostCompareOverlapViewModel viewModel;
 
         public string UpperTicker1 => viewModel.Fund1.Ticker.ToUpper();
         public string UpperTicker2 => viewModel.Fund2.Ticker.ToUpper();
@@ -20,7 +20,7 @@ namespace MFContrast.Views
         public Grid GridHead { get; set; }
         public StackLayout PageOneMainLayout { get; set; }
 
-        public PostCompareOverlapPage(PostCompareOverlapViewModelV2 viewModel)
+        public PostCompareOverlapPage(PostCompareOverlapViewModel viewModel)
         {
             InitializeComponent();
             BindingContext = this.viewModel = viewModel;
