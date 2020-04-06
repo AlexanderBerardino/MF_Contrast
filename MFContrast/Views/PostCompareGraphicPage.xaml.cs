@@ -31,14 +31,14 @@ namespace MFContrast.Views
                 new Entry(ViewModel.U1Size)
                 {
                     Color = SKColor.Parse("#EA2325"),
-                    Label = string.Join(" ", ViewModel.Fund1.FundName, "Only"),
+                    Label = string.Join(" ", ViewModel.Fund1.Ticker.ToUpper(), "Only"),
                     ValueLabel = string.Join(" ", ViewModel.U1Size.ToString(), "Holdings"),
                     TextColor = SKColor.Parse("#0A0909")
                 },
                 new Entry(ViewModel.U2Size)
                 {
                     Color = SKColor.Parse("#5FD419"),
-                    Label = string.Join(" ", ViewModel.Fund2.FundName, "Only"),
+                    Label = string.Join(" ", ViewModel.Fund2.Ticker.ToUpper(), "Only"),
                     ValueLabel = string.Join(" ", ViewModel.U2Size.ToString(), "Holdings"),
                     TextColor = SKColor.Parse("#0A0909")
                 },
@@ -84,7 +84,8 @@ namespace MFContrast.Views
             Chart2.Chart = new RadialGaugeChart
             {
                 Entries = RadialEntryList,
-                LabelTextSize = 25,
+                LabelTextSize = 32,
+                Margin = 30
             };
         }
     }

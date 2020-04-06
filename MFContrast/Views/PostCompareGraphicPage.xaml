@@ -4,14 +4,14 @@
              x:Class="MFContrast.Views.PostCompareGraphicPage"
              xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms" >
     <ScrollView>
-        <StackLayout Orientation="Vertical" Padding="20" Spacing="75">
+        <StackLayout Orientation="Vertical" Padding="20" Spacing="40">
             <forms:ChartView
                 x:Name="Chart1"
                 HeightRequest="600"
                 WidthRequest="100" />
                 <forms:ChartView
                 x:Name="Chart2"
-                HeightRequest="400"
+                HeightRequest="450"
                 WidthRequest="100" />         
         </StackLayout>
     </ScrollView>
