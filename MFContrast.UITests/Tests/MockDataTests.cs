@@ -10,39 +10,39 @@ namespace MFContrast.UITests
         {
         }
 
-        public override void BeforeEachTest()
-        {
-            base.BeforeEachTest();
+        //public override void BeforeEachTest()
+        //{
+        //    base.BeforeEachTest();
 
-            ItemsPage.WaitForPageToLoad();
-        }
-
-
+        //    ItemsPage.WaitForPageToLoad();
+        //}
 
 
-        [Test]
-        public void AddNewItem()
-        {
-            //Arrange
-            const string itemName = "Item Name";
-            const string itemDescription = "Item Description";
 
-            //Act
-            ItemsPage.TapAddToolbarButton();
-            NewItemPage.EnterItemName(itemName);
-            NewItemPage.EnterItemDescription(itemDescription);
-            NewItemPage.TapSaveToolbarButton();
 
-            //Assert
-            Assert.IsTrue(ItemsPage.IsPageVisible);
-            Assert.IsTrue(app.Query(itemName).Length > 0);
-        }
+        //[Test]
+        //public void AddNewItem()
+        //{
+        //    //Arrange
+        //    const string itemName = "Item Name";
+        //    const string itemDescription = "Item Description";
 
-        [Ignore("")]
-        [Test]
-        public void Repl()
-        {
-            app.Repl();
-        }
+        //    //Act
+        //    ItemsPage.TapAddToolbarButton();
+        //    NewItemPage.EnterItemName(itemName);
+        //    NewItemPage.EnterItemDescription(itemDescription);
+        //    NewItemPage.TapSaveToolbarButton();
+
+        //    //Assert
+        //    Assert.IsTrue(ItemsPage.IsPageVisible);
+        //    Assert.IsTrue(app.Query(itemName).Length > 0);
+        //}
+
+        //[Ignore("")]
+        //[Test]
+        //public void Repl()
+        //{
+        //    app.Repl();
+        //}
     }
 }

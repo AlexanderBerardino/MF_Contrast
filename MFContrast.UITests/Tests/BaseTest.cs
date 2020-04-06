@@ -19,14 +19,14 @@ namespace MFContrast.UITests
             this.platform = platform;
         }
 
-        [SetUp]
-        virtual public void BeforeEachTest()
-        {
-            app = AppInitializer.StartApp(platform);
-            app.Screenshot("App Initialized");
+        //[SetUp]
+        //virtual public void BeforeEachTest()
+        //{
+        //    app = AppInitializer.StartApp(platform);
+        //    app.Screenshot("App Initialized");
 
-            ItemsPage = new ItemsPage(app, platform);
-            NewItemPage = new NewItemPage(app, platform);
-        }
+        //    ItemsPage = new ItemsPage(app, platform);
+        //    NewItemPage = new NewItemPage(app, platform);
+        //}
     }
 }
