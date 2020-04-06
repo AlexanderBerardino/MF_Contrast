@@ -9,10 +9,10 @@
                 x:Name="Chart1"
                 HeightRequest="600"
                 WidthRequest="100" />
-            <forms:ChartView
+                <forms:ChartView
                 x:Name="Chart2"
                 HeightRequest="400"
-                WidthRequest="100" />
+                WidthRequest="100" />         
         </StackLayout>
     </ScrollView>
 </ContentPage>

@@ -30,30 +30,24 @@ namespace MFContrast.Views
             Picker picker1 = FindByName("Picker1") as Picker;
             Picker picker2 = FindByName("Picker2") as Picker;
 
-            MutualFund f1 = picker1.SelectedItem as MutualFund;
-            MutualFund f2 = picker2.SelectedItem as MutualFund;
-
-            // Input must be set to instance
-            MutualFund F1 = new MutualFund(f1.Ticker) {
-                AssetList = f1.AssetList,
-                FundName = f1.FundName,
-                Id = f1.Id,
-                Ticker = f1.Ticker
-            };
-            MutualFund F2 = new MutualFund(f2.Ticker) {
-                AssetList = f2.AssetList,
-                FundName = f2.FundName,
-                Id = f2.Id,
-                Ticker = f2.Ticker
-            };
-
-            try
+            if (picker1.SelectedItem == null || picker2.SelectedItem == null || picker1.SelectedItem == picker2.SelectedItem)
             {
-                await Navigation.PushAsync(new PostCompareCarouselPage(new PostCompareOverlapViewModel(F1, F2)));
+                await DisplayAlert("Alert", "Must Compare Two Different Mutual Funds", "Ok");
             }
-            catch (NullReferenceException ex)
+            else
             {
-                Console.WriteLine("Exception thrown:" + ex);
+
+                MutualFund f1 = picker1.SelectedItem as MutualFund;
+                MutualFund f2 = picker2.SelectedItem as MutualFund;
+
+                try
+                {
+                    await Navigation.PushAsync(new PostCompareCarouselPage(new PostCompareOverlapViewModel(f1, f2)));
+                }
+                catch (NullReferenceException ex)
+                {
+                    Console.WriteLine("Exception thrown:" + ex);
+                }
             }
         }
 

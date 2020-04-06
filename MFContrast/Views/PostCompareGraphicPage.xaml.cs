@@ -9,19 +9,16 @@ namespace MFContrast.Views
 {
     public partial class PostCompareGraphicPage : ContentPage
     {
-        // public float LabelSize { get; set; }
-        // public ChartView ChartView { get; set; }
-
         public PostCompareOverlapViewModel ViewModel { get; set; }
 
         public List<Entry> OverlapEntryList { get; set; }
-        public List<Entry> BarEntryList { get; set; }
+        public List<Entry> RadialEntryList { get; set; }
 
         public PostCompareGraphicPage(PostCompareOverlapViewModel viewModel)
         {
             InitializeComponent();
             ViewModel = viewModel;
-            // LabelSize = 60f;
+
             OverlapEntryList = new List<Entry>
             {
                  new Entry(ViewModel.OverlapListSize)
@@ -53,61 +50,42 @@ namespace MFContrast.Views
                 }
             };
 
-            // This data isn't correctly being displayed
-            // The F2InF1 and F1InF2 data should not be summed like below, instead
-            // it should be set against a total
-
-            // Will fix next iteration
-            BarEntryList = new List<Entry>
+            RadialEntryList = new List<Entry>
             {
-                 new Entry((float)ViewModel.F2InF1)
+                new Entry(0),
+
+                new Entry((float)ViewModel.F2InF1)
                 {
                     Color = SKColor.Parse("#EA2325"),
                     Label = string.Join(" ", ViewModel.Fund2.Ticker.ToUpper(), "In", ViewModel.Fund1.Ticker.ToUpper()),
-                    ValueLabel = string.Join("", ViewModel.F2InF1.ToString(), "%"),
+                    ValueLabel = string.Join("", string.Format("{0:0.#####}", ViewModel.F2InF1), "%"),
                     TextColor = SKColor.Parse("#0A0909")
                 },
+
                 new Entry((float)ViewModel.F1InF2)
                 {
                     Color = SKColor.Parse("#5FD419"),
                     Label = string.Join(" ", ViewModel.Fund1.Ticker.ToUpper(), "In", ViewModel.Fund2.Ticker.ToUpper()),
-                    ValueLabel = string.Join("", ViewModel.F1InF2.ToString(), "%"),
+                    ValueLabel = string.Join("", string.Format("{0:0.#####}", ViewModel.F1InF2), "%"),
                     TextColor = SKColor.Parse("#0A0909")
-                }
+                },
+
+                new Entry(100)
             };
 
-            Chart1.Chart = new DonutChart {
+            Chart1.Chart = new DonutChart
+            {
                 HoleRadius = 0.20f,
-                // LabelTextSize = (float)Convert.ToDouble(Device.GetNamedSize(NamedSize.Large, typeof(Label))),
                 LabelTextSize = 40,
                 Margin = 50,
                 Entries = OverlapEntryList,
             };
-            Chart2.Chart = new BarChart {
-                Entries = BarEntryList,
-                LabelTextSize = 30,
+
+            Chart2.Chart = new RadialGaugeChart
+            {
+                Entries = RadialEntryList,
+                LabelTextSize = 25,
             };
         }
-
-        // To add below, you must add: PaintSurface="OnPaintSurface" To ChartView properties in Xaml 
-
-        /*
-        public void OnPaintSurface(object sender, SKPaintSurfaceEventArgs e)
-        {
-            float skScale = (float)(e.Info.Height / ((SKCanvasView)sender).Height);
-
-            // Scale the chart label font size to be the same as the standard labels on the screen
-            if (skScale != 0)
-                Chart1.Chart.LabelTextSize = LabelSize * skScale;
-
-            // Set the height of the chart view so that it takes up the full width of the screen minus the room needed for the labels
-            // We need to limit the height of the chart element to prevent the chart labels from being covered by the chart
-            if (skScale != 0)
-            {
-                int magicLabelMargin = (int)LabelSize * 13;
-                Chart1.HeightRequest = Chart1.Width - magicLabelMargin;
-            }
-        }
-        */
     }
 }
