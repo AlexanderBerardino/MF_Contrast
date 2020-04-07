@@ -149,9 +149,4 @@
       <Name>MFContrast</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="Resources\vfiax_holdings.csv" />
-    <Content Include="Resources\fcntx_holdings.csv" />
-    <Content Include="Resources\vsmax_holdings.csv" />
-  </ItemGroup>
 </Project>
