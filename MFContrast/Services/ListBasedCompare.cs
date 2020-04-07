@@ -4,7 +4,7 @@ using MFContrast.Models;
 
 namespace MFContrast.Services
 {
-    public class DictionaryBasedCompare : ListFundQuery<IList<Holding>, IEnumerable<Holding>>, ICompare
+    public class ListBasedCompare : ListFundQuery<IList<Holding>, IEnumerable<Holding>>, ICompare
     {
         // Modify to private for release
         public List<Holding> S1 { get; set; }
@@ -25,7 +25,7 @@ namespace MFContrast.Services
         public double F1TopTen => TopTen(S1);
         public double F2TopTen => TopTen(S2);
 
-        public DictionaryBasedCompare(List<Holding> enumerableHoldings1, List<Holding> enumerableHoldings2)
+        public ListBasedCompare(List<Holding> enumerableHoldings1, List<Holding> enumerableHoldings2)
         {
             // Cleaning Data
             S1 = RemoveNullHoldings(enumerableHoldings1).ToList();

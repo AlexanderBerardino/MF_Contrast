@@ -60,7 +60,7 @@ namespace MFContrast.ViewModels
         {
             Fund1 = f1;
             Fund2 = f2;
-            C = new DictionaryBasedCompare(Holdings1, Holdings2);
+            C = new ListBasedCompare(Holdings1, Holdings2);
             Unique1 = C.S2Complement;
             Unique2 = C.S1Complement;
             OverlapList = C.S1UnionS2;

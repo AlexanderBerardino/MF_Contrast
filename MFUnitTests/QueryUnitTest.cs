@@ -10,7 +10,7 @@ namespace MFUnitTests
     public class QueryUnitTest
     {
         public IFundQuery<IList<Holding>, IEnumerable<Holding>> Query { get; set; }
-        public DictionaryBasedCompare DictionaryBasedCompare { get; set; }
+        public ListBasedCompare DictionaryBasedCompare { get; set; }
 
         public MutualFund MockFundOne { get; set; }
         public MutualFund MockFundTwo { get; set; }
@@ -41,7 +41,7 @@ namespace MFUnitTests
             CleanedHoldings1 = Query.RemoveNullHoldings(Holdings1).ToList();
             CleanedHoldings2 = Query.RemoveNullHoldings(Holdings2).ToList();
 
-            DictionaryBasedCompare = new DictionaryBasedCompare(MockFundOne.AssetList, MockFundTwo.AssetList);
+            DictionaryBasedCompare = new ListBasedCompare(MockFundOne.AssetList, MockFundTwo.AssetList);
         }
 
         [Fact]

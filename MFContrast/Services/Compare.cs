@@ -7,7 +7,7 @@ namespace MFContrast.Services
 {
     public class Compare
     {
-        
+        // Currently Deprecated
         public Compare()
         {
         }

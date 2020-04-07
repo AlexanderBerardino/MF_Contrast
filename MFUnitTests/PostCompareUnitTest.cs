@@ -8,7 +8,7 @@ namespace MFUnitTests
     {
         public MutualFund MockFundOne { get; set; }
         public MutualFund MockFundTwo { get; set; }
-        public DictionaryBasedCompare Comparer {get; set;}
+        public ListBasedCompare Comparer {get; set;}
         // public PostCompareOverlapViewModelV2 ViewModel { get; set; }
 
         public PostCompareUnitTest()
@@ -27,7 +27,7 @@ namespace MFUnitTests
                 // Ticker = "fcntx"
             };
 
-            Comparer = new DictionaryBasedCompare(MockFundOne.AssetList, MockFundTwo.AssetList);
+            Comparer = new ListBasedCompare(MockFundOne.AssetList, MockFundTwo.AssetList);
             // ViewModel = new PostCompareOverlapViewModelV2(MockFundOne, MockFundTwo);
         }
 
