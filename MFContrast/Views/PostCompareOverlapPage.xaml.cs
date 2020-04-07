@@ -13,6 +13,7 @@ namespace MFContrast.Views
 
         public string UpperTicker1 => viewModel.Fund1.Ticker.ToUpper();
         public string UpperTicker2 => viewModel.Fund2.Ticker.ToUpper();
+
         public ListView StatsView { get; set; }
         public Grid GridBody { get; set; }
         public Grid GridHead { get; set; }
@@ -111,7 +112,7 @@ namespace MFContrast.Views
             }
         }
 
-        private void PopulateColumnTemplateString(int endIndex, int rowNumber, List<string> sourceList)
+        private void PopulateColumnTemplate(int endIndex, int rowNumber, List<string> sourceList)
         {
             for (int i = 0; i < endIndex; i++)
             {
@@ -131,7 +132,7 @@ namespace MFContrast.Views
             int u1 = viewModel.Unique1.Count;
             int u2 = viewModel.Unique2.Count;
 
-            PopulateColumnTemplateString(ov, 0, viewModel.OverlapList);
+            PopulateColumnTemplate(ov, 0, viewModel.OverlapList);
             PopulateColumnTemplate(u1, 1, viewModel.Unique1);
             PopulateColumnTemplate(u2, 2, viewModel.Unique2);
 

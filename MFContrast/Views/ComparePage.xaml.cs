@@ -40,7 +40,7 @@ namespace MFContrast.Views
 
                 try
                 {
-                    await Navigation.PushAsync(new PostCompareCarouselPage(new PostCompareOverlapViewModel(f1, f2)));
+                    await Navigation.PushAsync(new PostCompareCarouselPage(new PostCompareOverlapViewModelV2(f1, f2)));
                 }
                 catch (NullReferenceException ex)
                 {

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using MFContrast.Models;
 using MFContrast.ViewModels;
 using Xamarin.Forms;
 
@@ -6,7 +7,8 @@ namespace MFContrast.Views
 {
     public class PostCompareListPage : ContentPage
     {
-        PostCompareOverlapViewModel viewModel;
+        PostCompareOverlapViewModelV2 viewModel;
+
         public Grid UniqueHoldingsBody { get; set; }
         public Grid UniqueHoldingsHeader { get; set; }
         public StackLayout UniqueHoldingsLayout { get; set; }
@@ -14,10 +16,13 @@ namespace MFContrast.Views
         public string UpperTicker2 => viewModel.Fund2.Ticker.ToUpper();
 
 
-        public PostCompareListPage(PostCompareOverlapViewModel viewModel)
+        public PostCompareListPage(PostCompareOverlapViewModelV2 viewModel)
         {
             BindingContext = this.viewModel = viewModel;
-            UniqueHoldingsHeader = SetHeaderGridTemplate("Overlap", string.Join(separator: " ", UpperTicker1 + "Unique"), string.Join(separator: " ", UpperTicker2 + "Unique"));
+
+            UniqueHoldingsHeader = SetHeaderGridTemplate(
+                "Overlap", string.Join(separator: " ", UpperTicker1 + "Unique"),
+                string.Join(separator: " ", UpperTicker2 + "Unique"));
             UniqueHoldingsBody = SetUniqueHoldingsBody();
             PopulateGrid();
             UniqueHoldingsLayout = new StackLayout
@@ -65,6 +70,20 @@ namespace MFContrast.Views
                 returnGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(4, GridUnitType.Auto) });
             }
             return returnGrid;
+        }
+
+        private void PopulateColumnTemplate(int endIndex, int rowNumber, List<Holding> sourceList)
+        {
+            for (int i = 0; i < endIndex; i++)
+            {
+                UniqueHoldingsBody.Children.Add(new Label
+                {
+                    Text = string.Join(" ", sourceList[i].Symbol, ":", sourceList[i].Percentage),
+                    VerticalOptions = LayoutOptions.Start,
+                    HorizontalOptions = LayoutOptions.Start,
+                    Style = Device.Styles.ListItemDetailTextStyle
+                }, rowNumber, i);
+            }
         }
 
         private void PopulateColumnTemplate(int endIndex, int rowNumber, List<string> sourceList)

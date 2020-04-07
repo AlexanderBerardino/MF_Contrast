@@ -9,12 +9,12 @@ namespace MFContrast.Views
 {
     public partial class PostCompareGraphicPage : ContentPage
     {
-        public PostCompareOverlapViewModel ViewModel { get; set; }
+        public PostCompareOverlapViewModelV2 ViewModel { get; set; }
 
         public List<Entry> OverlapEntryList { get; set; }
         public List<Entry> RadialEntryList { get; set; }
 
-        public PostCompareGraphicPage(PostCompareOverlapViewModel viewModel)
+        public PostCompareGraphicPage(PostCompareOverlapViewModelV2 viewModel)
         {
             InitializeComponent();
             ViewModel = viewModel;
