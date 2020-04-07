@@ -30,11 +30,11 @@ namespace MFContrast.Views
             }
 
             MutualFund fund = args.SelectedItem as MutualFund;
-            // MutualFund fund_instance = new MutualFund(fund.Ticker) { AssetList = fund.AssetList, FundName = fund.FundName, Id = fund.Id, Ticker = fund.Ticker };
-            // if (fund == null) { return; }
-            // await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(fund)));
-            await Navigation.PushAsync(new AboutPage());
-
+            if (fund is null)
+            {
+                return;
+            }
+            await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(fund)));
 
             // Manually deselect item.
             ItemsListView.SelectedItem = null;
