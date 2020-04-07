@@ -35,7 +35,6 @@ namespace MFContrast.Views
             }
             else
             {
-
                 MutualFund f1 = picker1.SelectedItem as MutualFund;
                 MutualFund f2 = picker2.SelectedItem as MutualFund;
 

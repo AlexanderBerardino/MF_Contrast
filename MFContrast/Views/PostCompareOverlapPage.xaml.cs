@@ -110,6 +110,7 @@ namespace MFContrast.Views
                 }, rowNumber, i);
             }
         }
+
         private void PopulateColumnTemplateString(int endIndex, int rowNumber, List<string> sourceList)
         {
             for (int i = 0; i < endIndex; i++)

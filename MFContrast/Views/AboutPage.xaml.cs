@@ -21,7 +21,6 @@ namespace MFContrast.Views
         {
             FAQ tappedFAQ = args.Item as FAQ;
             await Navigation.PushAsync(new AboutDetailPage(new AboutDetailViewModel(tappedFAQ)));
-
         }
 
         // Example of a possible Alert event handler 
@@ -29,7 +28,5 @@ namespace MFContrast.Views
         {
             DisplayAlert("Good Help", "You clicked on help, best of luck", "Bad Help", "You clicked on help!? Too bad!");
         }
-
-
     }
 }

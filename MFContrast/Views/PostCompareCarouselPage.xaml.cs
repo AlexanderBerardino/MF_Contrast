@@ -11,8 +11,10 @@ namespace MFContrast.Views
 
             // PostCompareCarouselPage is a CarouselPage which is created upon
             // users clicking the 'Compare' button in ComparePage
+
             // This CarouselPage has three children: a PostCompareOverlapPage,
             // a PostCompareListPage, and a PostCompareGraphicPage
+
             PostCompareOverlapViewModelV2 tempv2 = new PostCompareOverlapViewModelV2(viewModel.Fund1, viewModel.Fund2);
 
             PostCompareOverlapPage OverlapPage = new PostCompareOverlapPage(tempv2);
@@ -21,8 +23,6 @@ namespace MFContrast.Views
             Children.Add(OverlapPage);
             Children.Add(CarouselListPage);
             Children.Add(graphicPage);
-
         }
-
     }
 }

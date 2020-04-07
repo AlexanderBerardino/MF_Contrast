@@ -15,7 +15,7 @@ namespace MFContrast.ViewModels
         private List<string> overlapList;
 
         // This can later be set through composition or inherited depending on use
-        public DictionaryBasedCompare C { get; set; }
+        public ICompare C { get; set; }
 
         public MutualFund Fund1
         {
