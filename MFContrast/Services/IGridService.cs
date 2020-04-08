@@ -40,9 +40,10 @@ namespace MFContrast.Services
             returnGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(5, GridUnitType.Star) });
 
             returnGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(17, GridUnitType.Absolute) });
-            returnGrid.Children.Add(new Label { Text = columnOneHeader, FontAttributes = FontAttributes.Bold }, 0, 0);
-            returnGrid.Children.Add(new Label { Text = columnTwoHeader, FontAttributes = FontAttributes.Bold }, 1, 0);
-            returnGrid.Children.Add(new Label { Text = columnThreeHeader, FontAttributes = FontAttributes.Bold }, 2, 0);
+            // FontAttributes = FontAttributes.Bold taken out for unit tests
+            returnGrid.Children.Add(new Label { Text = columnOneHeader }, 0, 0);
+            returnGrid.Children.Add(new Label { Text = columnTwoHeader }, 1, 0);
+            returnGrid.Children.Add(new Label { Text = columnThreeHeader }, 2, 0);
 
             return returnGrid;
         }
@@ -130,14 +131,44 @@ namespace MFContrast.Services
         }
     }
 
+
     public class GridServiceClient: GridService
     {
         public Grid HeaderGrid { get; set; }
         public Grid MainGrid { get; set; }
 
-        public GridServiceClient()
+        public GridServiceClient(string[] headerText, List<Holding> holdingList)
         {
+            if (ConstructorValidation(headerText) && ConstructorValidation(holdingList))
+            {
+                HeaderGrid = CreateHeaderGrid(headerText[0], headerText[1], headerText[2]);
+                MainGrid = CreateMainGrid(holdingList.Count);
+                PopulateMainGrid(holdingList, MainGrid);
+            }
+        }
 
+        private bool ConstructorValidation(string[] input)
+        {
+            if(input.Length == 3)
+            {
+                return true;
+            }
+            else
+            {
+                throw new ArgumentException("Expected Length 3, Actual Length: " + input.Length);
+            }
+        }
+
+        private bool ConstructorValidation(List<Holding> holdingsList)
+        {
+            if(holdingsList is null)
+            {
+                throw new ArgumentNullException("Input List of Holdings null");
+            }
+            else
+            {
+                return true;
+            }
         }
     }
 }
