@@ -24,4 +24,28 @@
   <ItemGroup>
     <Reference Include="Microcharts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
   </ItemGroup>
+  <ItemGroup>
+    <None Remove="fcntx_holdings.csv" />
+    <None Remove="vfiax_holdings.csv" />
+    <None Remove="vsmax_holdings.csv" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\PostCompareCarouselPage.xaml.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="fcntx_holdings.csv">
+      <IncludeInPackage>true</IncludeInPackage>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="vfiax_holdings.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInPackage>true</IncludeInPackage>
+    </EmbeddedResource>
+    <EmbeddedResource Include="vsmax_holdings.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInPackage>true</IncludeInPackage>
+    </EmbeddedResource>
+  </ItemGroup>
 </Project>

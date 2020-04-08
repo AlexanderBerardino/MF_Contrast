@@ -21,7 +21,7 @@ namespace MFContrast.Services
 
         static string CreateCsvPath(string urlPrefix)
         {
-            return string.Join("", urlPrefix, "_holdings.csv");
+            return "MFContrast." +  urlPrefix + "_holdings.csv";
         }
 
         static DataTable CreateDataTable(string tickerSymbol)
@@ -30,12 +30,12 @@ namespace MFContrast.Services
 
             string csvPath = CreateCsvPath(tickerSymbol);
 
-            // Declaration will need to be abstracted for different funds
-            // Must add argument 'fileName' of type string to alter path for specific fund 
-            bool doesExist = File.Exists(csvPath);
-            if (doesExist)
+            var assembly = Assembly.GetAssembly(typeof(GenerateHoldingsList));
+            var pclStream = assembly.GetManifestResourceStream(csvPath);
+
+            if (null != pclStream)
             {
-                CsvReader reader = new CsvReader(new StreamReader(File.OpenRead(@csvPath)), true);
+                CsvReader reader = new CsvReader(new StreamReader(pclStream), true);
 
                 using (reader)
                 {
