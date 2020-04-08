@@ -17,11 +17,11 @@ namespace MFContrast.Views
 
             PostCompareOverlapPage OverlapPage = new PostCompareOverlapPage(viewModel);
             PostCompareListPage CarouselListPage = new PostCompareListPage(viewModel);
-            PostCompareGraphicPage graphicPage = new PostCompareGraphicPage(viewModel);
+            PostCompareGraphicPage GraphicPage = new PostCompareGraphicPage(viewModel);
 
             Children.Add(OverlapPage);
             Children.Add(CarouselListPage);
-            Children.Add(graphicPage);
+            Children.Add(GraphicPage);
         }
     }
 }

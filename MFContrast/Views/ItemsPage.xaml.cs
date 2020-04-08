@@ -9,24 +9,19 @@ namespace MFContrast.Views
     [DesignTimeVisible(false)]
     public partial class ItemsPage : ContentPage
     {
-        public ItemsViewModel viewModel { get; set; }
+        public ItemsViewModel ViewModel;
 
         public ItemsPage()
         {
             InitializeComponent();
-            BindingContext = viewModel = new ItemsViewModel();
+            BindingContext = ViewModel = new ItemsViewModel();
         }
 
         async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
         {
-            if (sender is null)
+            if (sender is null || args is null)
             {
-                throw new ArgumentNullException(nameof(sender));
-            }
-
-            if (args is null)
-            {
-                throw new ArgumentNullException(nameof(args));
+                throw new ArgumentNullException(nameof(sender), nameof(args));
             }
 
             MutualFund fund = args.SelectedItem as MutualFund;
@@ -38,17 +33,19 @@ namespace MFContrast.Views
 
             // Manually deselect item.
             ItemsListView.SelectedItem = null;
+        
         }
 
         async void OnItemTapped(object sender, ItemTappedEventArgs args)
         {
+            if (args is null)
+            {
+                throw new ArgumentNullException(nameof(args));
+            }
+
             MutualFund fund = args.Item as MutualFund;
-            if (fund == null) { return; }
+
             await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(fund)));
-
-            //  Manually deselect item.
-
-            ItemsListView.SelectedItem = null;
         }
 
         async void AddItem_Clicked(object sender, EventArgs e)
@@ -59,8 +56,10 @@ namespace MFContrast.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            if (viewModel.Funds.Count == 0)
-                viewModel.LoadItemsCommand.Execute(null);
+            if (ViewModel.Funds.Count == 0)
+            {
+                ViewModel.LoadItemsCommand.Execute(null);
+            }
         }
     }
 }

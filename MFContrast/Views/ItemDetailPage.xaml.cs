@@ -14,9 +14,7 @@ namespace MFContrast.Views
         public ItemDetailPage(ItemDetailViewModel viewModel)
         {
             InitializeComponent();
-            this.viewModel = viewModel;
-            BindingContext = this.viewModel;
-
+            BindingContext = this.viewModel = viewModel;
             Content = viewModel.Layout;
         }
 
@@ -25,9 +23,7 @@ namespace MFContrast.Views
             MutualFund holderFund = new MutualFund("MockFund") { FundName = "Holder Fund", Id = "0" };
        
             InitializeComponent();
-            viewModel = new ItemDetailViewModel(holderFund);
-            BindingContext = viewModel;
-
+            BindingContext = viewModel = new ItemDetailViewModel(holderFund);
         }
     }
 }

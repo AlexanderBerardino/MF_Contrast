@@ -16,15 +16,11 @@ namespace MFContrast.Models
         // Type of holdings
         // Type of fund 
 
-
         public MutualFund(string Ticker)
         {
-
             this.Ticker = Ticker;
             var lister = new GenerateHoldingsList();
-
             AssetList = lister.Create(Ticker);
         }
-
     }
 }

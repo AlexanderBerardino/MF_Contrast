@@ -3,17 +3,15 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add" Clicked="AddItem_Clicked" />
     </ContentPage.ToolbarItems>
-    <StackLayout>
         <ListView x:Name="ItemsListView" ItemsSource="{Binding Funds}" VerticalOptions="FillAndExpand"
                   HasUnevenRows="true" RefreshCommand="{Binding LoadItemsCommand}" IsPullToRefreshEnabled="true"
-                  IsRefreshing="{Binding IsBusy, Mode=OneWay}" CachingStrategy="RecycleElement" ItemSelected="OnItemSelected">
+                  IsRefreshing="{Binding IsBusy, Mode=OneWay}" CachingStrategy="RecycleElement" ItemTapped="OnItemTapped">
           <ListView.ItemTemplate>
                 <DataTemplate>
                    <TextCell Text="{Binding FundName}" />
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-    </StackLayout>
 </ContentPage>
 
   

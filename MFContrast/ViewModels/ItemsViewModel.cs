@@ -2,7 +2,6 @@
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using MFContrast.Models;
 
@@ -10,7 +9,6 @@ namespace MFContrast.ViewModels
 {
     public class ItemsViewModel : BaseViewModel
     {
-
         public ObservableCollection<MutualFund> Funds { get; set; }
         public Command LoadItemsCommand { get; set; }
 
@@ -19,7 +17,6 @@ namespace MFContrast.ViewModels
             Title = "Browse";
             Funds = new ObservableCollection<MutualFund>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
-
         }
 
         async Task ExecuteLoadItemsCommand()
