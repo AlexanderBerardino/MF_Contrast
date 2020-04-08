@@ -32,6 +32,9 @@ namespace MFContrast.Services
             return (H)query;
         }
 
+        // Currently total percentage based on added percentages of top 100 funds
+        // therefore comparing a mutual fund to itself will not yield 100% similarity 
+        // Returns the total % of holdings of one Fund in the other by summing overlapping holding percentage
         public double WeightedAverage(T d1, List<string> originolOtherList)
         {
             var query = from T1 in d1
