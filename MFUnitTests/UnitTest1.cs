@@ -36,4 +36,24 @@ namespace MFUnitTests
             Assert.Contains("MICROSOFT", firstHolding.Name);
         }
     }
+
+    public class MockFunds
+    {
+        public MutualFund MockFund1 { get; set; }
+        public MutualFund MockFund2 { get; set; }
+
+        public MockFunds()
+        {
+            MockFund1 = new MutualFund("vfiax")
+            {
+                Id = "0",
+                FundName = "Vanguard",
+            };
+            MockFund2 = new MutualFund("fcntx")
+            {
+                Id = "1",
+                FundName = "Fidelity",
+            };
+        }
+    }
 }
