@@ -1,6 +1,4 @@
-﻿using System;
-using Xamarin.Forms;
-using MFContrast.Services;
+﻿using MFContrast.Services;
 using Xunit;
 
 namespace MFUnitTests
