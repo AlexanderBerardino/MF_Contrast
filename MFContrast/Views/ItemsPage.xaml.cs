@@ -23,7 +23,6 @@ namespace MFContrast.Views
             {
                 throw new ArgumentNullException(nameof(sender), nameof(args));
             }
-
             MutualFund fund = args.SelectedItem as MutualFund;
             if (fund is null)
             {
@@ -33,7 +32,6 @@ namespace MFContrast.Views
 
             // Manually deselect item.
             ItemsListView.SelectedItem = null;
-        
         }
 
         async void OnItemTapped(object sender, ItemTappedEventArgs args)
@@ -42,9 +40,7 @@ namespace MFContrast.Views
             {
                 throw new ArgumentNullException(nameof(args));
             }
-
             MutualFund fund = args.Item as MutualFund;
-
             await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(fund)));
         }
 

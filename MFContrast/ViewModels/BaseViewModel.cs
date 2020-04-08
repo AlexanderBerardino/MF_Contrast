@@ -5,6 +5,9 @@ using System.Runtime.CompilerServices;
 using Xamarin.Forms;
 using MFContrast.Models;
 using MFContrast.Services;
+using System.Threading.Tasks;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
 
 namespace MFContrast.ViewModels
 {
@@ -52,6 +55,32 @@ namespace MFContrast.ViewModels
                 return;
 
             changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public async Task ExecuteLoadItemsCommand(ObservableCollection<MutualFund> Funds)
+        {
+            if (IsBusy)
+                return;
+
+            IsBusy = true;
+
+            try
+            {
+                Funds.Clear();
+                var funds = await MutualFundDataStore.GetItemsAsync();
+                foreach (var fund in funds)
+                {
+                    Funds.Add(fund);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
+            finally
+            {
+                IsBusy = false;
+            }
         }
         #endregion
     }
