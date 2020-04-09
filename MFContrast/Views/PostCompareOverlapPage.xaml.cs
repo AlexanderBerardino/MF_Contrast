@@ -14,14 +14,22 @@ namespace MFContrast.Views
             InitializeComponent();
             BindingContext = ViewModel = viewModel;
 
-            for (int i = 0; i < viewModel.ListMaxRow; i++)
+            //for (int i = 0; i < viewModel.ListMaxRow; i++)
+            //{
+            //    PostCompareMainGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(4, GridUnitType.Auto) });
+            //}
+
+            //PopulateColumnTemplate(viewModel.OverlapListSize, 0, viewModel.OverlapList);
+            //PopulateColumnTemplate(viewModel.U1Size, 1, viewModel.Unique1);
+            //PopulateColumnTemplate(viewModel.U2Size, 2, viewModel.Unique2);
+            for (int i = 0; i < 10; i++)
             {
                 PostCompareMainGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(4, GridUnitType.Auto) });
             }
 
-            PopulateColumnTemplate(viewModel.OverlapListSize, 0, viewModel.OverlapList);
-            PopulateColumnTemplate(viewModel.U1Size, 1, viewModel.Unique1);
-            PopulateColumnTemplate(viewModel.U2Size, 2, viewModel.Unique2);
+            PopulateColumnTemplate(10, 0, viewModel.OverlapList);
+            PopulateColumnTemplate(10, 1, viewModel.Unique1);
+            PopulateColumnTemplate(10, 2, viewModel.Unique2);
 
         }
 

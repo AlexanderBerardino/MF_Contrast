@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using MFContrast.Models;
 using MFContrast.Services;
 
@@ -57,24 +58,61 @@ namespace MFContrast.ViewModels
     {
         public string UpperTicker1 => Fund1.Ticker.ToUpper();
         public string UpperTicker2 => Fund2.Ticker.ToUpper();
-        public string[] PCOLVItemsSource { get; set; }
+        public ObservableCollection<GroupedStatModel> StatsGrouped { get; set; }
+
+        // Move This Functionality To OverlapListPage
         public string HGL1 { get; set; }
         public string HGL2 { get; set; }
         public string HGL3 { get; set; }
 
         public PostCompareOverlapViewModelSpecific(MutualFund f1, MutualFund f2) : base(f1, f2)
         {
-            PCOLVItemsSource = new string[]
+            StatsGrouped = new ObservableCollection<GroupedStatModel>();
+            var uniqueGroup = new GroupedStatModel() { GroupStatTitle = "Unique Holdings" };
+            var percentXInYGroup = new GroupedStatModel() { GroupStatTitle = "Percent X In Y" };
+            var overlapGroup = new GroupedStatModel() { GroupStatTitle = "Overlap Statistics" };
+            var topTenGroup = new GroupedStatModel() { GroupStatTitle = "Top Ten Holdings" };
+
+            uniqueGroup.Add(new StatModel()
             {
-                    string.Join(" ","Overlap Size:", OverlapListSize.ToString()),
-                    string.Join(" ", UpperTicker1, "# of Unique Holdings:", U1Size.ToString()),
-                    string.Join(" ", UpperTicker2, "# of Unique Holdings:", U2Size.ToString()),
-                    string.Join(" ", UpperTicker2, "in", UpperTicker1+":", string.Format("{0:0.#####}", F2InF1), "%"),
-                    string.Join(" ", UpperTicker1, "in", UpperTicker2+":", string.Format("{0:0.#####}", F1InF2), "%"),
-                    string.Join(" ", "Overlap By Weight:", string.Format("{0:0.#####}", OverlapPercentage), "%"),
-                    string.Join(" ", UpperTicker1, "Top Ten:", string.Format("{0:0.#####}", F1TopTen), "%"),
-                    string.Join(" ", UpperTicker2, "Top Ten:", string.Format("{0:0.#####}", F2TopTen), "%"),
-            };
+                StatTitle = string.Join(" ", UpperTicker1, "# of Unique Holdings"),
+                StatValue = U1Size.ToString()
+            });
+            uniqueGroup.Add(new StatModel()
+            {
+                StatTitle = string.Join(" ", UpperTicker2, "# of Unique Holdings"),
+                StatValue = U2Size.ToString()
+            });
+            percentXInYGroup.Add(new StatModel()
+            {
+                StatTitle = string.Join(" ", UpperTicker2, "in", UpperTicker1),
+                StatValue = string.Format("{0:0.#####}", F2InF1)
+            });
+            percentXInYGroup.Add(new StatModel()
+            {
+                StatTitle = string.Join(" ", UpperTicker1, "in", UpperTicker2),
+                StatValue = string.Format("{0:0.#####}", F1InF2)
+            });
+            overlapGroup.Add(new StatModel()
+            {
+                StatTitle = "Overlap Size",
+                StatValue = OverlapListSize.ToString()
+            });
+            topTenGroup.Add(new StatModel()
+            {
+                StatTitle = string.Join(" ", UpperTicker1, "Top Ten %"),
+                StatValue = string.Format("{0:0.#####}", F1TopTen)
+            });
+            topTenGroup.Add(new StatModel()
+            {
+                StatTitle = string.Join(" ", UpperTicker2, "Top Ten %"),
+                StatValue = string.Format("{0:0.#####}", F2TopTen)
+            });
+
+            StatsGrouped.Add(uniqueGroup);
+            StatsGrouped.Add(percentXInYGroup);
+            StatsGrouped.Add(overlapGroup);
+            StatsGrouped.Add(topTenGroup);
 
             HGL1 = "Overlap";
             HGL2 = HGFormatter(UpperTicker1);

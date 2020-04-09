@@ -4,11 +4,21 @@
              x:Class="MFContrast.Views.PostCompareOverlapPage"
              Title="Stat Breakdown">
     <ContentPage.Content>
-        <StackLayout Orientation="Vertical" Spacing="20">
+        <StackLayout
+            Orientation="Vertical"
+            Spacing="20"
+            VerticalOptions="FillAndExpand">
             <ListView
                 x:Name="PCOverlapListView"
-                ItemsSource="{Binding PCOLVItemsSource}"
-                VerticalOptions="FillAndExpand">
+                ItemsSource="{Binding StatsGrouped}"
+                IsGroupingEnabled="True"
+                GroupDisplayBinding="{Binding GroupStatTitle}"          
+                VerticalOptions="FillAndExpand" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding StatValue}" Detail="{Binding StatTitle}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
             </ListView>
             <Grid x:Name="PostCompareHeaderGrid" Padding="10">
                 <Grid.ColumnDefinitions>
