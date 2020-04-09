@@ -58,6 +58,7 @@ namespace MFContrast.ViewModels
     {
         public string UpperTicker1 => Fund1.Ticker.ToUpper();
         public string UpperTicker2 => Fund2.Ticker.ToUpper();
+
         public ObservableCollection<GroupedStatModel> StatsGrouped { get; set; }
 
         // Move This Functionality To OverlapListPage
@@ -68,17 +69,21 @@ namespace MFContrast.ViewModels
         public PostCompareOverlapViewModelSpecific(MutualFund f1, MutualFund f2) : base(f1, f2)
         {
             StatsGrouped = new ObservableCollection<GroupedStatModel>();
-            var uniqueGroup = new GroupedStatModel() { GroupStatTitle = "Unique Holdings" };
+            var holdingsNumberGroup = new GroupedStatModel() { GroupStatTitle = "Number of Holdings" };
             var percentXInYGroup = new GroupedStatModel() { GroupStatTitle = "Percent X In Y" };
-            var overlapGroup = new GroupedStatModel() { GroupStatTitle = "Overlap Statistics" };
             var topTenGroup = new GroupedStatModel() { GroupStatTitle = "Top Ten Holdings" };
 
-            uniqueGroup.Add(new StatModel()
+            holdingsNumberGroup.Add(new StatModel()
+            {
+                StatTitle = "# of Overlapping Holdings",
+                StatValue = OverlapListSize.ToString()
+            });
+            holdingsNumberGroup.Add(new StatModel()
             {
                 StatTitle = string.Join(" ", UpperTicker1, "# of Unique Holdings"),
                 StatValue = U1Size.ToString()
             });
-            uniqueGroup.Add(new StatModel()
+            holdingsNumberGroup.Add(new StatModel()
             {
                 StatTitle = string.Join(" ", UpperTicker2, "# of Unique Holdings"),
                 StatValue = U2Size.ToString()
@@ -93,11 +98,7 @@ namespace MFContrast.ViewModels
                 StatTitle = string.Join(" ", UpperTicker1, "in", UpperTicker2),
                 StatValue = string.Format("{0:0.#####}", F1InF2)
             });
-            overlapGroup.Add(new StatModel()
-            {
-                StatTitle = "Overlap Size",
-                StatValue = OverlapListSize.ToString()
-            });
+           
             topTenGroup.Add(new StatModel()
             {
                 StatTitle = string.Join(" ", UpperTicker1, "Top Ten %"),
@@ -109,9 +110,8 @@ namespace MFContrast.ViewModels
                 StatValue = string.Format("{0:0.#####}", F2TopTen)
             });
 
-            StatsGrouped.Add(uniqueGroup);
+            StatsGrouped.Add(holdingsNumberGroup);
             StatsGrouped.Add(percentXInYGroup);
-            StatsGrouped.Add(overlapGroup);
             StatsGrouped.Add(topTenGroup);
 
             HGL1 = "Overlap";

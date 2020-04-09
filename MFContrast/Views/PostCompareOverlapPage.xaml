@@ -12,8 +12,22 @@
                 x:Name="PCOverlapListView"
                 ItemsSource="{Binding StatsGrouped}"
                 IsGroupingEnabled="True"
-                GroupDisplayBinding="{Binding GroupStatTitle}"          
-                VerticalOptions="FillAndExpand" >
+                GroupDisplayBinding="{Binding GroupStatTitle}"
+                Header="Analysis"
+                VerticalOptions="StartAndExpand" >
+                <ListView.HeaderTemplate>
+                    <DataTemplate>
+                        <StackLayout Orientation="Horizontal">
+                            <Label
+                                Text="{Binding .}"
+                                FontSize="Title"
+                                HorizontalTextAlignment="Center"
+                                FontAttributes="Bold"
+                                Padding="5"
+                                HorizontalOptions="CenterAndExpand"/>                                
+                        </StackLayout>
+                    </DataTemplate>
+                </ListView.HeaderTemplate>
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextCell Text="{Binding StatValue}" Detail="{Binding StatTitle}" />
