@@ -7,12 +7,12 @@ namespace MFContrast.Views
 {
     public partial class PostCompareOverlapPage : ContentPage
     {
-        PostCompareOverlapViewModelSpecific viewModel;
+        public PostCompareOverlapViewModelSpecific ViewModel { get; set; }
 
         public PostCompareOverlapPage(PostCompareOverlapViewModelSpecific viewModel)
         {
             InitializeComponent();
-            BindingContext = this.viewModel = viewModel;
+            BindingContext = ViewModel = viewModel;
 
             for (int i = 0; i < viewModel.ListMaxRow; i++)
             {
@@ -25,6 +25,7 @@ namespace MFContrast.Views
 
         }
 
+        // Eventually move function up to viewmodel
         private void PopulateColumnTemplate(int endIndex, int rowNumber, List<Holding> sourceList)
         {
             for (int i = 0; i < endIndex; i++)
@@ -39,6 +40,7 @@ namespace MFContrast.Views
             }
         }
 
+        // Eventually move function up to viewmodel
         private void PopulateColumnTemplate(int endIndex, int rowNumber, List<string> sourceList)
         {
             for (int i = 0; i < endIndex; i++)

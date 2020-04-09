@@ -7,7 +7,6 @@ namespace MFContrast.Services
 {
     public class MutualFundDataStore : IMutualFundDataStore
     {
-
         private static readonly List<MutualFund> FundList;
         private static int nextFundId;
 
@@ -59,7 +58,6 @@ namespace MFContrast.Services
 
         private static MutualFund CopyFund(MutualFund fund)
         {
-            // return new MutualFund { FundName = fund.FundName, Id = fund.Id, Ticker = fund.Ticker };
             return new MutualFund(fund.Ticker) { FundName = fund.FundName, Id = fund.Id };
         }
 

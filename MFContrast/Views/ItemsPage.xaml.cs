@@ -9,7 +9,7 @@ namespace MFContrast.Views
     [DesignTimeVisible(false)]
     public partial class ItemsPage : ContentPage
     {
-        public ItemsViewModel ViewModel;
+        private readonly ItemsViewModel ViewModel;
 
         public ItemsPage()
         {

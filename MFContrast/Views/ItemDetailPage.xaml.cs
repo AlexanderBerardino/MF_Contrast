@@ -8,7 +8,7 @@ namespace MFContrast.Views
     [DesignTimeVisible(false)]
     public partial class ItemDetailPage : ContentPage
     {
-        public ItemDetailViewModel ViewModel { get; set; }
+        private readonly ItemDetailViewModel ViewModel;
 
         public ItemDetailPage(ItemDetailViewModel viewModel)
         {

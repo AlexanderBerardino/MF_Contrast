@@ -1,5 +1,4 @@
-﻿using System;
-namespace MFContrast.Models
+﻿namespace MFContrast.Models
 {
     // To Be Implemented in each 'FundType' Branch of MutualFundTree
 
