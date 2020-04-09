@@ -14,8 +14,8 @@ namespace MFContrast.Views
 
             // This CarouselPage has three children: a PostCompareOverlapPage,
             // a PostCompareListPage, and a PostCompareGraphicPage
-
-            PostCompareOverlapPage OverlapPage = new PostCompareOverlapPage(viewModel);
+            PostCompareOverlapViewModelSpecific specific = new PostCompareOverlapViewModelSpecific(viewModel.Fund1, viewModel.Fund2);
+            PostCompareOverlapPage OverlapPage = new PostCompareOverlapPage(specific);
             PostCompareListPage CarouselListPage = new PostCompareListPage(viewModel);
             PostCompareGraphicPage GraphicPage = new PostCompareGraphicPage(viewModel);
 

@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel;
 using Xamarin.Forms;
-
 using MFContrast.Models;
 using MFContrast.ViewModels;
 
