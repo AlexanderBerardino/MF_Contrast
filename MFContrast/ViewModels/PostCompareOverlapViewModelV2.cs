@@ -29,6 +29,8 @@ namespace MFContrast.ViewModels
         public double F1TopTen => C.F1TopTen;
         public double F2TopTen => C.F2TopTen;
         public int ListMaxRow => MaxOfThree(OverlapListSize, U1Size, U2Size);
+        public string UpperTicker1 => Fund1.Ticker.ToUpper();
+        public string UpperTicker2 => Fund2.Ticker.ToUpper();
 
 
         public PostCompareOverlapViewModelV2(MutualFund f1, MutualFund f2)
@@ -56,8 +58,7 @@ namespace MFContrast.ViewModels
 
     public class PostCompareOverlapViewModelSpecific : PostCompareOverlapViewModelV2
     {
-        public string UpperTicker1 => Fund1.Ticker.ToUpper();
-        public string UpperTicker2 => Fund2.Ticker.ToUpper();
+        
 
         public ObservableCollection<GroupedStatModel> StatsGrouped { get; set; }
 
@@ -114,6 +115,25 @@ namespace MFContrast.ViewModels
             StatsGrouped.Add(percentXInYGroup);
             StatsGrouped.Add(topTenGroup);
 
+            HGL1 = "Overlap";
+            HGL2 = HGFormatter(UpperTicker1);
+            HGL3 = HGFormatter(UpperTicker2);
+        }
+
+        private string HGFormatter(string formatee)
+        {
+            return string.Join(separator: " ", formatee, "Unique");
+        }
+    }
+
+    public class PostCompareGridViewModel : PostCompareOverlapViewModelV2
+    {
+        public string HGL1 { get; set; }
+        public string HGL2 { get; set; }
+        public string HGL3 { get; set; }
+
+        public PostCompareGridViewModel(MutualFund f1, MutualFund f2) : base(f1, f2)
+        {
             HGL1 = "Overlap";
             HGL2 = HGFormatter(UpperTicker1);
             HGL3 = HGFormatter(UpperTicker2);

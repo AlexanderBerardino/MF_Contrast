@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="MFContrast.Views.PostCompareGridPage">
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical">
+            <Grid x:Name="PostCompareGridHeaderGrid" Padding="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*" />
+                    <ColumnDefinition Width="5*" />
+                    <ColumnDefinition Width="5*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="17" />
+                </Grid.RowDefinitions>
+                <Label x:Name="HGL1" Text="{Binding HGL1}" Grid.Column="0" Grid.Row="0" FontAttributes="Bold" />
+                <Label x:Name="HGL2" Text="{Binding HGL2}" Grid.Column="1" Grid.Row="0" FontAttributes="Bold" />
+                <Label x:Name="HGL3" Text="{Binding HGL3}" Grid.Column="2" Grid.Row="0" FontAttributes="Bold" />
+            </Grid>
+
+            <ScrollView>
+                <Grid x:Name="PostCompareGridMainGrid">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5*" />
+                        <ColumnDefinition Width="5*" />
+                        <ColumnDefinition Width="5*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                </Grid>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
