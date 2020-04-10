@@ -6,13 +6,10 @@ namespace MFContrast.Services
 {
     public class ListBasedCompare : ListFundQuery<IList<Holding>, IEnumerable<Holding>>, ICompare
     {
-        // Modify to private for release
         public List<Holding> S1 { get; set; }
-        // Modify to private for release
         public List<Holding> S2 { get; set; }
 
         public List<Holding> S1Complement => DistillDifference(S2, S1).ToList();
-
         public List<Holding> S2Complement => DistillDifference(S1, S2).ToList();
 
         public List<string> S1UnionS2 => DistillUnion(S1, S2);

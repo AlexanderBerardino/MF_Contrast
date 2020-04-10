@@ -9,7 +9,7 @@ namespace MFContrast.Views
     [DesignTimeVisible(false)]
     public partial class ItemsPage : ContentPage
     {
-        public ItemsViewModel ViewModel;
+        private readonly ItemsViewModel ViewModel;
 
         public ItemsPage()
         {
@@ -17,7 +17,7 @@ namespace MFContrast.Views
             BindingContext = ViewModel = new ItemsViewModel();
         }
 
-        async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
+        private async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
         {
             if (sender is null || args is null)
             {
@@ -34,7 +34,7 @@ namespace MFContrast.Views
             ItemsListView.SelectedItem = null;
         }
 
-        async void OnItemTapped(object sender, ItemTappedEventArgs args)
+        private async void OnItemTapped(object sender, ItemTappedEventArgs args)
         {
             if (args is null)
             {
@@ -44,7 +44,7 @@ namespace MFContrast.Views
             await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(fund)));
         }
 
-        async void AddItem_Clicked(object sender, EventArgs e)
+        private async void AddItem_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushModalAsync(new NavigationPage(new NewItemPage()));
         }

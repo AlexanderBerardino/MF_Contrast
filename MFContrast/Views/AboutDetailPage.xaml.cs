@@ -5,12 +5,12 @@ namespace MFContrast.Views
 {
     public partial class AboutDetailPage : ContentPage
     {
-        public AboutDetailViewModel viewModel { get; set; }
+        public AboutDetailViewModel ViewModel { get; set; }
 
         public AboutDetailPage(AboutDetailViewModel viewModel)
         {
             InitializeComponent();
-            BindingContext = this.viewModel = viewModel;
+            BindingContext = ViewModel = viewModel;
             AboutLabel.Style = Device.Styles.BodyStyle;
         }
     }

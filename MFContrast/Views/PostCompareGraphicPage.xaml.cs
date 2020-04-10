@@ -11,6 +11,7 @@ namespace MFContrast.Views
     {
         public PostCompareOverlapViewModelV2 ViewModel { get; set; }
 
+        // Move these up to viewmodel
         public List<Entry> OverlapEntryList { get; set; }
         public List<Entry> RadialEntryList { get; set; }
 

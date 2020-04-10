@@ -9,12 +9,12 @@ namespace MFContrast.Views
     [DesignTimeVisible(false)]
     public partial class AboutPage : ContentPage
     {
-        public AboutViewModel viewModel;
+        public AboutViewModel ViewModel { get; set; }
 
         public AboutPage()
         {
             InitializeComponent();
-            BindingContext = viewModel = new AboutViewModel();
+            BindingContext = ViewModel = new AboutViewModel();
         }
 
         async void OnItemTapped(object sender, ItemTappedEventArgs args)

@@ -9,18 +9,15 @@ namespace MFContrast.Views
         {
             InitializeComponent();
 
-            // PostCompareCarouselPage is a CarouselPage which is created upon
-            // users clicking the 'Compare' button in ComparePage
+            PostCompareOverlapViewModelSpecific specific = new PostCompareOverlapViewModelSpecific(viewModel.Fund1, viewModel.Fund2);
+            PostCompareGridViewModel gridViewModel = new PostCompareGridViewModel(viewModel.Fund1, viewModel.Fund2);
 
-            // This CarouselPage has three children: a PostCompareOverlapPage,
-            // a PostCompareListPage, and a PostCompareGraphicPage
-
-            PostCompareOverlapPage OverlapPage = new PostCompareOverlapPage(viewModel);
-            PostCompareListPage CarouselListPage = new PostCompareListPage(viewModel);
+            PostCompareOverlapPage OverlapPage = new PostCompareOverlapPage(specific);
+            PostCompareGridPage GridPage = new PostCompareGridPage(gridViewModel);
             PostCompareGraphicPage GraphicPage = new PostCompareGraphicPage(viewModel);
 
             Children.Add(OverlapPage);
-            Children.Add(CarouselListPage);
+            Children.Add(GridPage);
             Children.Add(GraphicPage);
         }
     }

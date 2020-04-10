@@ -10,18 +10,18 @@ namespace MFContrast.Views
     [DesignTimeVisible(false)]
     public partial class ComparePage : ContentPage
     {
-        public CompareViewModel viewModel;
+        public CompareViewModel ViewModel { get; set; }
 
         public ComparePage()
         {
             InitializeComponent();
-            BindingContext = viewModel = new CompareViewModel();
+            BindingContext = ViewModel = new CompareViewModel();
         }
 
         public ComparePage(CompareViewModel viewModel)
         {
             InitializeComponent();
-            BindingContext = this.viewModel = viewModel;
+            BindingContext = ViewModel = viewModel;
         }
 
         public async void ContrastClicked(object sender, EventArgs eventArgs)
@@ -53,8 +53,8 @@ namespace MFContrast.Views
         {
             base.OnAppearing();
 
-            if (viewModel.Funds.Count == 0)
-                viewModel.LoadItemsCommand.Execute(null);
+            if (ViewModel.Funds.Count == 0)
+                ViewModel.LoadItemsCommand.Execute(null);
         }
     }
 }

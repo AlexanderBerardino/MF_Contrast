@@ -5,6 +5,7 @@ using MFContrast.Models;
 
 namespace MFContrast.Services
 {
+    // Convert to Strategy
     public interface IFundQuery<T, H>
     {
         H RemoveNullHoldings(T holdings);

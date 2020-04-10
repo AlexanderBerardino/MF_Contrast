@@ -23,7 +23,7 @@
             </Picker>
 
 
-            <Button Text="Contrast" FontSize="Large" Padding="10" Clicked="ContrastClicked"/>
+            <Button Text="Contrast" FontSize="Large" Padding="10" Clicked="ContrastClicked" />
 
             </StackLayout>
 
