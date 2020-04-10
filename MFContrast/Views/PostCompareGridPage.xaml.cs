@@ -35,7 +35,8 @@ namespace MFContrast.Views
                 {
                     Text = string.Join(" ", sourceList[i].Symbol, ":", sourceList[i].Percentage),
                     VerticalOptions = LayoutOptions.Start,
-                    HorizontalOptions = LayoutOptions.Start,
+                    HorizontalTextAlignment = TextAlignment.Center,
+                    HorizontalOptions = LayoutOptions.StartAndExpand,
                     Style = Device.Styles.ListItemDetailTextStyle
                 }, rowNumber, i);
             }
@@ -50,7 +51,8 @@ namespace MFContrast.Views
                 {
                     Text = sourceList[i],
                     VerticalOptions = LayoutOptions.Start,
-                    HorizontalOptions = LayoutOptions.Start,
+                    HorizontalTextAlignment = TextAlignment.Center,
+                    HorizontalOptions = LayoutOptions.StartAndExpand,
                     Style = Device.Styles.ListItemDetailTextStyle
                 }, rowNumber, i);
             }

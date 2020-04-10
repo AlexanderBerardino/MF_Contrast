@@ -10,6 +10,7 @@ namespace MFContrast.ViewModels
     {
 
         // This can later be set through composition or inherited depending on use
+        internal const string title = "Graphical View";
         public ICompare C { get; set; }
 
         public MutualFund Fund1 { get; set; }
@@ -58,8 +59,8 @@ namespace MFContrast.ViewModels
 
     public class PostCompareOverlapViewModelSpecific : PostCompareOverlapViewModelV2
     {
-        
 
+        internal new const string title = "Statistical View";
         public ObservableCollection<GroupedStatModel> StatsGrouped { get; set; }
 
         // Move This Functionality To OverlapListPage
@@ -69,6 +70,7 @@ namespace MFContrast.ViewModels
 
         public PostCompareOverlapViewModelSpecific(MutualFund f1, MutualFund f2) : base(f1, f2)
         {
+            Title = title;
             StatsGrouped = new ObservableCollection<GroupedStatModel>();
             var holdingsNumberGroup = new GroupedStatModel() { GroupStatTitle = "Number of Holdings" };
             var percentXInYGroup = new GroupedStatModel() { GroupStatTitle = "Percent X In Y" };
@@ -131,12 +133,14 @@ namespace MFContrast.ViewModels
         public string HGL1 { get; set; }
         public string HGL2 { get; set; }
         public string HGL3 { get; set; }
+        internal new const string title = "Grid View";
 
         public PostCompareGridViewModel(MutualFund f1, MutualFund f2) : base(f1, f2)
         {
             HGL1 = "Overlap";
             HGL2 = HGFormatter(UpperTicker1);
             HGL3 = HGFormatter(UpperTicker2);
+            Title = title;
         }
 
         private string HGFormatter(string formatee)
