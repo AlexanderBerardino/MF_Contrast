@@ -11,11 +11,14 @@ namespace MFContrast.Views
     public partial class ComparePage : ContentPage
     {
         public CompareViewModel ViewModel { get; set; }
+        public static string CompareTitleLabelText => compareTitleLabelText;
+        private const string compareTitleLabelText = "Select Two Different Funds and Click Compare to View Results!";
 
         public ComparePage()
         {
             InitializeComponent();
             BindingContext = ViewModel = new CompareViewModel();
+            CompareTitleLabel.Text = CompareTitleLabelText;
         }
 
         public ComparePage(CompareViewModel viewModel)

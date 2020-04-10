@@ -10,11 +10,14 @@ namespace MFContrast.Views
     public partial class ItemsPage : ContentPage
     {
         private readonly ItemsViewModel ViewModel;
+        public static string ItemsTitleLabelText => itemsTitleLabelText;
+        private const string itemsTitleLabelText = "Select a Mutual Fund from below to view its Holdings";
 
         public ItemsPage()
         {
             InitializeComponent();
             BindingContext = ViewModel = new ItemsViewModel();
+            ItemsTitleLabel.Text = ItemsTitleLabelText;
         }
 
         private async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)

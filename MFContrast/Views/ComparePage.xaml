@@ -2,30 +2,28 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="MFContrast.Views.ComparePage">
     <ContentPage.Content>
         <StackLayout Spacing="20" Padding="15">
-
+            <Label x:Name="CompareTitleLabel"
+                   FontSize="Title"
+                   Margin="10, 5, 10, 0"
+                   HorizontalTextAlignment="Center"
+                   HorizontalOptions="CenterAndExpand" />
             <Label x:Name="Label1" Text="Mutual Fund 1" FontSize="Medium" />
             <Picker
                 ItemsSource="{Binding Funds}"
-                ItemDisplayBinding="{Binding FundName}"
+                ItemDisplayBinding="{Binding Ticker}"
                 x:Name="Picker1"
                 Title="Fund1"
-                FontSize="Medium"
-                >           
-            </Picker>
+                FontSize="Medium" />
 
-        <Label x:Name="Label2" Text="Mutual Fund 2" FontSize="Medium" />
+            <Label x:Name="Label2" Text="Mutual Fund 2" FontSize="Medium" />
             <Picker
                 ItemsSource="{Binding Funds}"
-                ItemDisplayBinding="{Binding FundName}"
+                ItemDisplayBinding="{Binding Ticker}"
                 x:Name="Picker2"
                 Title="Fund2"
-                FontSize="Medium" >           
-            </Picker>
+                FontSize="Medium" />
 
-
-            <Button Text="Contrast" FontSize="Large" Padding="10" Clicked="ContrastClicked" />
-
-            </StackLayout>
-
+            <Button Text="COMPARE" FontSize="Large" Padding="10" Clicked="ContrastClicked" />
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

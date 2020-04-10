@@ -63,11 +63,6 @@ namespace MFContrast.ViewModels
         internal new const string title = "Statistical View";
         public ObservableCollection<GroupedStatModel> StatsGrouped { get; set; }
 
-        // Move This Functionality To OverlapListPage
-        public string HGL1 { get; set; }
-        public string HGL2 { get; set; }
-        public string HGL3 { get; set; }
-
         public PostCompareOverlapViewModelSpecific(MutualFund f1, MutualFund f2) : base(f1, f2)
         {
             Title = title;
@@ -116,15 +111,6 @@ namespace MFContrast.ViewModels
             StatsGrouped.Add(holdingsNumberGroup);
             StatsGrouped.Add(percentXInYGroup);
             StatsGrouped.Add(topTenGroup);
-
-            HGL1 = "Overlap";
-            HGL2 = HGFormatter(UpperTicker1);
-            HGL3 = HGFormatter(UpperTicker2);
-        }
-
-        private string HGFormatter(string formatee)
-        {
-            return string.Join(separator: " ", formatee, "Unique");
         }
     }
 

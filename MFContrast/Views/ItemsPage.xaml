@@ -10,15 +10,25 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add" Clicked="AddItem_Clicked" />
     </ContentPage.ToolbarItems>
+    <StackLayout Orientation="Vertical"
+                 Spacing="20"
+                 Padding="15"
+                 VerticalOptions="FillAndExpand">
+        <Label x:Name="ItemsTitleLabel"
+                   FontSize="Title"
+                   Margin="10, 5, 10, 0"
+                   HorizontalTextAlignment="Center"
+                   HorizontalOptions="CenterAndExpand" />
         <ListView x:Name="ItemsListView" ItemsSource="{Binding Funds}" VerticalOptions="FillAndExpand"
                   HasUnevenRows="true" RefreshCommand="{Binding LoadItemsCommand}" IsPullToRefreshEnabled="true"
                   IsRefreshing="{Binding IsBusy, Mode=OneWay}" CachingStrategy="RecycleElement" ItemTapped="OnItemTapped">
-          <ListView.ItemTemplate>
+            <ListView.ItemTemplate>
                 <DataTemplate>
-                   <TextCell Text="{Binding FundName}" />
+                    <TextCell Text="{Binding Ticker}" />
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+    </StackLayout>
 </ContentPage>
 
   

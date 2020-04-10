@@ -14,7 +14,8 @@
                 IsGroupingEnabled="True"
                 GroupDisplayBinding="{Binding GroupStatTitle}"
                 Header="Analysis"
-                VerticalOptions="StartAndExpand" >
+                VerticalOptions="StartAndExpand"
+                >
                 <ListView.HeaderTemplate>
                     <DataTemplate>
                         <StackLayout Orientation="Horizontal">
@@ -30,7 +31,7 @@
                 </ListView.HeaderTemplate>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell Text="{Binding StatValue}" Detail="{Binding StatTitle}" />
+                    <TextCell Text="{Binding StatValue}" Detail="{Binding StatTitle}"  />
                 </DataTemplate>
             </ListView.ItemTemplate>
             </ListView>
