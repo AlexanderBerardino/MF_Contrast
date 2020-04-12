@@ -5,9 +5,9 @@ namespace MFContrast.Views
 {
     public partial class PostCompareOverlapPage : ContentPage
     {
-        public PostCompareOverlapViewModelSpecific ViewModel { get; set; }
+        public PostCompareOverlapStatisticalViewModel ViewModel { get; set; }
 
-        public PostCompareOverlapPage(PostCompareOverlapViewModelSpecific viewModel)
+        public PostCompareOverlapPage(PostCompareOverlapStatisticalViewModel viewModel)
         {
             InitializeComponent();
             BindingContext = ViewModel = viewModel;

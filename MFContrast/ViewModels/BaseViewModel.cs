@@ -57,6 +57,8 @@ namespace MFContrast.ViewModels
             changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
+        // Function for adding funds to an observable collection
+        // Executed through a Command property
         public async Task ExecuteLoadItemsCommand(ObservableCollection<MutualFund> Funds)
         {
             if (IsBusy)

@@ -8,28 +8,42 @@ namespace MFContrast.ViewModels
 {
     public class PostCompareOverlapViewModelV2 : BaseViewModel
     {
-
-        // This can later be set through composition or inherited depending on use
-        internal const string title = "Graphical View";
+        // Interface for comparison calculations
         public ICompare C { get; set; }
 
+        // Fund1, Fund2 objects
         public MutualFund Fund1 { get; set; }
         public MutualFund Fund2 { get; set; }
+
+        // Unique Holdings in Fund1, Fund2
         public List<Holding> Unique1 { get; set; }
         public List<Holding> Unique2 { get; set; }
+
+        // Holdings Overlapping from Fund1, Fund2
         public List<string> OverlapList { get; set; }
 
+        // Get Fund1, Fund2 AssetList(List<Holding>)
         public List<Holding> Holdings1 => Fund1.AssetList;
         public List<Holding> Holdings2 => Fund2.AssetList;
+
+        // Size of List Above
         public int OverlapListSize => OverlapList.Count;
         public int U1Size => Unique1.Count;
         public int U2Size => Unique2.Count;
+
+        // % of FundX in FundY
         public double F2InF1 => C.F2InF1;
         public double F1InF2 => C.F1InF2;
+
+        // % Similarity between Fund1, Fund2
         public double OverlapPercentage => C.OverlapPercentage;
         public double F1TopTen => C.F1TopTen;
         public double F2TopTen => C.F2TopTen;
+
+        // Largest Container of Funds (Used for choosing grid row number)
         public int ListMaxRow => MaxOfThree(OverlapListSize, U1Size, U2Size);
+
+        // Returns uppercase ticker
         public string UpperTicker1 => Fund1.Ticker.ToUpper();
         public string UpperTicker2 => Fund2.Ticker.ToUpper();
 
@@ -44,6 +58,7 @@ namespace MFContrast.ViewModels
             OverlapList = C.S1UnionS2;
         }
 
+        // Returns largest of three integer inputs
         private int MaxOfThree(int OverlapSize, int L2Count, int L3Count)
         {
             if(OverlapSize == 0)
@@ -57,19 +72,18 @@ namespace MFContrast.ViewModels
         }
     }
 
-    public class PostCompareOverlapViewModelSpecific : PostCompareOverlapViewModelV2
+    // ViewModel for Statistic Page
+    public class PostCompareOverlapStatisticalViewModel : PostCompareOverlapViewModelV2
     {
-
-        internal new const string title = "Statistical View";
+        // Collection of StatModels
         public ObservableCollection<GroupedStatModel> StatsGrouped { get; set; }
 
-        public PostCompareOverlapViewModelSpecific(MutualFund f1, MutualFund f2) : base(f1, f2)
+        public PostCompareOverlapStatisticalViewModel(MutualFund f1, MutualFund f2) : base(f1, f2)
         {
-            Title = title;
             StatsGrouped = new ObservableCollection<GroupedStatModel>();
-            var holdingsNumberGroup = new GroupedStatModel() { GroupStatTitle = "Number of Holdings" };
-            var percentXInYGroup = new GroupedStatModel() { GroupStatTitle = "Percent X In Y" };
-            var topTenGroup = new GroupedStatModel() { GroupStatTitle = "Top Ten Holdings" };
+            GroupedStatModel holdingsNumberGroup = new GroupedStatModel() { GroupStatTitle = "Number of Holdings" };
+            GroupedStatModel percentXInYGroup = new GroupedStatModel() { GroupStatTitle = "Percent X In Y" };
+            GroupedStatModel topTenGroup = new GroupedStatModel() { GroupStatTitle = "Top Ten Holdings" };
 
             holdingsNumberGroup.Add(new StatModel()
             {
@@ -114,21 +128,22 @@ namespace MFContrast.ViewModels
         }
     }
 
-    public class PostCompareGridViewModel : PostCompareOverlapViewModelV2
+    // ViewModel for Grid Page
+    public class PostCompareOverlapGridViewModel : PostCompareOverlapViewModelV2
     {
+        // HGL = Header Grid Label 
         public string HGL1 { get; set; }
         public string HGL2 { get; set; }
         public string HGL3 { get; set; }
-        internal new const string title = "Grid View";
 
-        public PostCompareGridViewModel(MutualFund f1, MutualFund f2) : base(f1, f2)
+        public PostCompareOverlapGridViewModel(MutualFund f1, MutualFund f2) : base(f1, f2)
         {
             HGL1 = "Overlap";
             HGL2 = HGFormatter(UpperTicker1);
             HGL3 = HGFormatter(UpperTicker2);
-            Title = title;
         }
 
+        // Returns formatted column header string 
         private string HGFormatter(string formatee)
         {
             return string.Join(separator: " ", formatee, "Unique");

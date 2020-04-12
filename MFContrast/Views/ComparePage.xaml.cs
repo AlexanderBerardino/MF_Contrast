@@ -11,6 +11,8 @@ namespace MFContrast.Views
     public partial class ComparePage : ContentPage
     {
         public CompareViewModel ViewModel { get; set; }
+
+        // Directions for UI usage
         public static string CompareTitleLabelText => compareTitleLabelText;
         private const string compareTitleLabelText = "Select Two Different Funds and Click Compare to View Results!";
 
@@ -27,6 +29,7 @@ namespace MFContrast.Views
             BindingContext = ViewModel = viewModel;
         }
 
+        // Event Handler for Compare Button
         public async void ContrastClicked(object sender, EventArgs eventArgs)
         {
             Picker picker1 = FindByName("Picker1") as Picker;

@@ -8,9 +8,9 @@ namespace MFContrast.Views
 {
     public partial class PostCompareGridPage : ContentPage
     {
-        public PostCompareGridViewModel ViewModel { get; set; }
+        public PostCompareOverlapGridViewModel ViewModel { get; set; }
 
-        public PostCompareGridPage(PostCompareGridViewModel viewModel)
+        public PostCompareGridPage(PostCompareOverlapGridViewModel viewModel)
         {
             InitializeComponent();
             BindingContext = ViewModel = viewModel;

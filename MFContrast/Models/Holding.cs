@@ -7,7 +7,6 @@
         public string Percentage { get; set; }
         public string Rank { get; set; }
 
-
         public Holding()
         {
         }

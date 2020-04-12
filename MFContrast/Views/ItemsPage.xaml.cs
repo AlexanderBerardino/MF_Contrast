@@ -10,6 +10,8 @@ namespace MFContrast.Views
     public partial class ItemsPage : ContentPage
     {
         private readonly ItemsViewModel ViewModel;
+
+        // Directions for UI usage
         public static string ItemsTitleLabelText => itemsTitleLabelText;
         private const string itemsTitleLabelText = "Select a Mutual Fund from below to view its Holdings";
 

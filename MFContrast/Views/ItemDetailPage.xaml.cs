@@ -15,6 +15,7 @@ namespace MFContrast.Views
             InitializeComponent();
             BindingContext = ViewModel = viewModel;
 
+            // Adds Labels to Grid
             for (int i = 0; i < ViewModel.HoldingsList.Count; i++)
             {
                 ItemDetailMainGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(4, GridUnitType.Auto) });

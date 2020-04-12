@@ -8,8 +8,8 @@ namespace MFContrast.Views
         public PostCompareCarouselPage(PostCompareOverlapViewModelV2 viewModel)
         {
             InitializeComponent();
-            PostCompareOverlapViewModelSpecific specific = new PostCompareOverlapViewModelSpecific(viewModel.Fund1, viewModel.Fund2);
-            PostCompareGridViewModel gridViewModel = new PostCompareGridViewModel(viewModel.Fund1, viewModel.Fund2);
+            PostCompareOverlapStatisticalViewModel specific = new PostCompareOverlapStatisticalViewModel(viewModel.Fund1, viewModel.Fund2);
+            PostCompareOverlapGridViewModel gridViewModel = new PostCompareOverlapGridViewModel(viewModel.Fund1, viewModel.Fund2);
 
             PostCompareOverlapPage OverlapPage = new PostCompareOverlapPage(specific);
             PostCompareGridPage GridPage = new PostCompareGridPage(gridViewModel);
