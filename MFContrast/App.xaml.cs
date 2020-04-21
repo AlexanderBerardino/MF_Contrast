@@ -1,6 +1,7 @@
 ﻿using Xamarin.Forms;
 using MFContrast.Services;
 using MFContrast.Views;
+using System.Threading.Tasks;
 
 namespace MFContrast
 {
@@ -35,6 +36,9 @@ namespace MFContrast
 
         protected override void OnStart()
         {
+            AWSDownloader aws = new AWSDownloader();
+            aws.S3Download("ogvxx_holdings.csv");
+
         }
 
         protected override void OnSleep()

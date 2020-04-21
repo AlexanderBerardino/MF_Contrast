@@ -13,6 +13,14 @@ namespace MFContrast.Services
         List<Holding> Create(string Ticker);
     }
 
+    public class Aws_GHL : IGetHoldingsList
+    {
+        public List<Holding> Create(string Ticker)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
     public class GenerateHoldingsList : IGetHoldingsList
     {
         public GenerateHoldingsList()
@@ -21,7 +29,7 @@ namespace MFContrast.Services
 
         static string CreateCsvPath(string urlPrefix)
         {
-            return "MFContrast." +  urlPrefix + "_holdings.csv";
+            return "MFContrast." + urlPrefix + "_holdings.csv";
         }
 
         static DataTable CreateDataTable(string tickerSymbol)

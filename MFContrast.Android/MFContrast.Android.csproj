@@ -60,6 +60,9 @@
     <PackageReference Include="Microcharts">
       <Version>0.7.1</Version>
     </PackageReference>
+    <PackageReference Include="AWSSDK.S3">
+      <Version>3.3.110.52</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />

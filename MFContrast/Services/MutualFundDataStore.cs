@@ -64,7 +64,6 @@ namespace MFContrast.Services
         public async Task<MutualFund> GetItemAsync(string id)
         {
             MutualFund fund = FundList.FirstOrDefault(Fund => Fund.Id == id);
-
             MutualFund returnFund = CopyFund(fund);
             return await Task.FromResult(returnFund);
         }
