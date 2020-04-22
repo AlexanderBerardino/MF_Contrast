@@ -1,12 +1,7 @@
 ﻿using Xamarin.Forms;
 using MFContrast.Services;
 using MFContrast.Views;
-using Amazon.S3;
-using Amazon.S3.Transfer;
-using System.Threading.Tasks;
 using System;
-using Amazon.CognitoIdentity;
-using Amazon;
 
 namespace MFContrast
 {
@@ -40,6 +35,7 @@ namespace MFContrast
 
         protected override async void OnStart()
         {
+            // DependencyService.Register<AWSDownloader>();
             var downloaded = await AWSDownloader.S3DirectoryDownloadAsync();
             Console.WriteLine(downloaded);
         }

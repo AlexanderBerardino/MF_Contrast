@@ -11,8 +11,9 @@ namespace MFContrast.Services
 
     public class AWSDownloader
     {
-        //private readonly string secretKey = "N5SyoZ3NjSUHAQtD84mpB22IAHM2GZOKF45SA88d";
-        //private readonly string accessKey = "AKIAQXPQOE6XFVCBIFN3";
+        //private static readonly string secretKey = "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";
+        //private static readonly string accessKey = "AKIAQXPQOE6XFVCBIFN3";
+
         private static readonly string bucketName = "mfcontrast";
         private static readonly string poolId = "us-east-2:7546fbcd-7125-4176-907c-6bb29085f213";
         private static readonly RegionEndpoint bucketRegion = RegionEndpoint.USEast2;

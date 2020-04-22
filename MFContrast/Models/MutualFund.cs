@@ -10,13 +10,9 @@ namespace MFContrast.Models
     public class MutualFund
     {
         // GetHoldingsList GetHoldingsList => DependencyService.Get<GetHoldingsList>();
-        //public IAWSGenerateHoldingsList AWSGenerate =>
-        //    DependencyService.Get<IAWSGenerateHoldingsList>() ?? new AWSGenerateHoldingsList();
 
         public string FundName { get; set; }
         public List<Holding> AssetList { get; set; }
-        public Command LoadAssetListCommand { get; set; }
-        public bool CanEx { get; set; }
         public string Ticker { get; set; }
         public string Id { get; set; }
         public string KeyName { get; set; }
@@ -31,10 +27,9 @@ namespace MFContrast.Models
         {
             this.Ticker = Ticker;
             KeyName = KeyNameSuffix(Ticker);
-            // CanEx = LoadAssetListCommand.CanExecute(ExecuteLoadAssetListCommand(KeyName));
-            // LoadAssetListCommand = new Command(async () => await ExecuteLoadAssetListCommand(KeyName));
-            // OLD WAY 
-            var lister = new GenerateHoldingsList();
+
+            // Binds to Asset List
+            GenerateHoldingsList lister = new GenerateHoldingsList();
             AssetList = lister.Create(Ticker);
         }
 
@@ -42,22 +37,5 @@ namespace MFContrast.Models
         {
             return string.Join("", "CsvDataTables/", Ticker.ToLower(), "_holdings.csv");
         }
-
-        //private async Task ExecuteLoadAssetListCommand(string keyName)
-        //{
-        //    try
-        //    {
-        //        AssetList = new List<Holding>();
-        //        var holdings = await AWSGenerate.CreateAsync(keyName);
-        //        foreach (var holding in holdings)
-        //        {
-        //            AssetList.Add(holding);
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Debug.WriteLine(ex);
-        //    }
-        //}
     }
 }
