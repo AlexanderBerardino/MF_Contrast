@@ -1,7 +1,12 @@
 ﻿using Xamarin.Forms;
 using MFContrast.Services;
 using MFContrast.Views;
+using Amazon.S3;
+using Amazon.S3.Transfer;
 using System.Threading.Tasks;
+using System;
+using Amazon.CognitoIdentity;
+using Amazon;
 
 namespace MFContrast
 {
@@ -13,8 +18,7 @@ namespace MFContrast
             InitializeComponent();
 
             DependencyService.Register<MockDataStore>();
-            // DependencyService.Register<GenerateHoldingsList>();
-            // DependencyService.Register<GenerateWebHoldingsList>();
+            DependencyService.Register<AWSDownloader>();
 
 
             // tabs is the Main Page
@@ -34,11 +38,10 @@ namespace MFContrast
 
         }
 
-        protected override void OnStart()
+        protected override async void OnStart()
         {
-            AWSDownloader aws = new AWSDownloader();
-            aws.S3Download("ogvxx_holdings.csv");
-
+            var downloaded = await AWSDownloader.S3DirectoryDownloadAsync();
+            Console.WriteLine(downloaded);
         }
 
         protected override void OnSleep()

@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
+﻿using Amazon;
+using Amazon.Util;
 using Foundation;
 using UIKit;
 
@@ -25,6 +23,12 @@ namespace MFContrast.iOS
             Xamarin.Calabash.Start();
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
+
+            LoggingConfig loggingConfig = AWSConfigs.LoggingConfig;
+            loggingConfig.LogMetrics = true;
+            loggingConfig.LogResponses = ResponseLoggingOption.Always;
+            loggingConfig.LogMetricsFormat = LogMetricsFormatOption.JSON;
+            loggingConfig.LogTo = LoggingOptions.SystemDiagnostics;
 
             return base.FinishedLaunching(app, options);
         }

@@ -1,45 +1,130 @@
-﻿using System.IO;
-using Amazon;
+﻿using Amazon;
 using Amazon.S3;
 using Amazon.S3.Transfer;
+using System.Threading.Tasks;
+using System;
+using Amazon.CognitoIdentity;
+using Amazon.S3.Model;
 
 namespace MFContrast.Services
 {
+
     public class AWSDownloader
     {
-        private const string bucketName = "mfcontrast";
-        private readonly string secretKey = "N5SyoZ3NjSUHAQtD84mpB22IAHM2GZOKF45SA88d";
-        private readonly string accessKey = "AKIAQXPQOE6XFVCBIFN3";
+        //private readonly string secretKey = "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";
+        //private readonly string accessKey = "AKIAQXPQOE6XFVCBIFN3";
+        private static readonly string bucketName = "mfcontrast";
+        private static readonly string poolId = "us-east-2:7546fbcd-7125-4176-907c-6bb29085f213";
         private static readonly RegionEndpoint bucketRegion = RegionEndpoint.USEast2;
-        private AmazonS3Client s3Client;
-        private TransferUtility transferUtility;
 
+        private static AmazonS3Client s3Client;
+        private static CognitoAWSCredentials cognitoCredentials;
+        private static TransferUtility transferUtility;
 
-        public AWSDownloader()
+        public static CognitoAWSCredentials Credentials
         {
-            s3Client = new AmazonS3Client(
-                accessKey,
-                secretKey,
-                bucketRegion);
-            var config = new TransferUtilityConfig();
-            // var file = Path.Combine(Android.Environment.ExternalStorageDirectory.AbsolutePath, Android.OS.Environment.DirectoryDownloads);
-
-            transferUtility = new TransferUtility(s3Client, config);
-
-            // TransferUtilityDownloadRequest request = new TransferUtilityDownloadRequest();
-
-            
+            get
+            {
+                if (cognitoCredentials == null)
+                {
+                    cognitoCredentials = new CognitoAWSCredentials(
+                    poolId,
+                    bucketRegion);
+                }
+                return cognitoCredentials;
+            }
         }
 
-        public void S3Download(string file)
+        public static IAmazonS3 S3Client
         {
-            string key = Path.Combine("CsvDataTables", file);
-
-            transferUtility.Download(
-                Path.Combine(@"d:\MFContrast", file),
-                bucketName,
-                key
-            );
+            get
+            {
+                if (s3Client == null)
+                {
+                    s3Client = new AmazonS3Client(Credentials, bucketRegion);
+                }
+                return s3Client;
+            }
         }
+
+        public static TransferUtility TransferUtility
+        {
+            get
+            {
+                if (transferUtility == null)
+                {
+                    transferUtility = new TransferUtility(S3Client);
+                }
+                return transferUtility;
+            }
+        }
+
+
+        public static async Task<bool> BucketExist()
+        {
+            try
+            {
+                var response = await S3Client.ListObjectsAsync(new ListObjectsRequest()
+                {
+                    BucketName = bucketName,
+                    MaxKeys = 0
+                }).ConfigureAwait(false);
+                return true;
+            }
+            catch (AmazonS3Exception e)
+            {
+                Console.WriteLine("S3 Exception Triggered" + e);
+                return false;
+            }
+        }
+
+
+        public static async Task<bool> S3DirectoryDownloadAsync()
+        {
+            try
+            {
+                TransferUtilityDownloadDirectoryRequest request = new TransferUtilityDownloadDirectoryRequest()
+                {
+                    BucketName = bucketName,
+                    S3Directory = "CsvDataTables/",
+                    LocalDirectory = @"d:\MFContrast\CsvData",
+
+                };
+                await TransferUtility.DownloadDirectoryAsync(request);
+                return true;
+            }
+            catch (AmazonS3Exception e)
+            {
+                Console.WriteLine("Error in S3DownloadAsync" + e);
+                return false;
+            }
+        }
+
+        //public async Task<bool> S3DownloadAsync(string file)
+        //{
+        //    try
+        //    {
+        //        string s3key = Path.Combine("CsvDataTables", file);
+        //        TransferUtilityDownloadRequest request = new TransferUtilityDownloadRequest()
+        //        {
+        //            Key = s3key,
+        //            BucketName = bucketName,
+        //            FilePath = Path.Combine(@"d:\MFContrast", file)
+        //        };
+        //        await TransferUtility.DownloadAsync(request);
+        //        return true;
+
+        //    }
+        //    catch (Exception)
+        //    {
+        //        Console.WriteLine("Error in S3DownloadAsync");
+        //    }
+        //    return false;
+        //    //TransferUtility.Download(
+        //    //    Path.Combine(@"d:\MFContrast", file),
+        //    //    bucketName,
+        //    //    s3key
+        //    //);
+        //}
     }
 }
