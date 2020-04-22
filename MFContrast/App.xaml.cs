@@ -13,7 +13,7 @@ namespace MFContrast
             InitializeComponent();
 
             DependencyService.Register<MockDataStore>();
-            DependencyService.Register<AWSDownloader>();
+            // DependencyService.Register<AWSDownloader>();
 
 
             // tabs is the Main Page
@@ -33,11 +33,11 @@ namespace MFContrast
 
         }
 
-        protected override async void OnStart()
+        protected override void OnStart() // if using AWSDownloader, make this method async
         {
             // DependencyService.Register<AWSDownloader>();
-            var downloaded = await AWSDownloader.S3DirectoryDownloadAsync();
-            Console.WriteLine(downloaded);
+            // var downloaded = await AWSDownloader.S3DirectoryDownloadAsync();
+            // Console.WriteLine(downloaded);
         }
 
         protected override void OnSleep()
