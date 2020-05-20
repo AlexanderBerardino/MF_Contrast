@@ -1,16 +1,10 @@
 ﻿using System.Collections.Generic;
 using MFContrast.Services;
-using Xamarin.Forms;
-using System.Threading.Tasks;
-using System;
-using System.Diagnostics;
 
 namespace MFContrast.Models
 {
     public class MutualFund
     {
-        // GetHoldingsList GetHoldingsList => DependencyService.Get<GetHoldingsList>();
-
         public string FundName { get; set; }
         public List<Holding> AssetList { get; set; }
         public string Ticker { get; set; }

@@ -13,14 +13,6 @@ namespace MFContrast.Services
         List<Holding> Create(string Ticker);
     }
 
-    public class Aws_GHL : IGetHoldingsList
-    {
-        public List<Holding> Create(string Ticker)
-        {
-            throw new NotImplementedException();
-        }
-    }
-
     public class GenerateHoldingsList : IGetHoldingsList
     {
         public GenerateHoldingsList()
