@@ -54,6 +54,5 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CustomViewElements\" />
-    <Folder Include="CsvData\" />
   </ItemGroup>
 </Project>

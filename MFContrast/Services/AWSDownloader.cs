@@ -11,8 +11,10 @@ namespace MFContrast.Services
 
     public class AWSDownloader
     {
-        private static readonly string bucketName = "mfcontrast";
-        private static readonly string poolId = "us-east-2:7546fbcd-7125-4176-907c-6bb29085f213";
+
+        //  Cloud Access Unavailable
+        private static readonly string bucketName = "";
+        private static readonly string poolId = "";
         private static readonly RegionEndpoint bucketRegion = RegionEndpoint.USEast2;
 
         private static AmazonS3Client s3Client;
@@ -97,32 +99,5 @@ namespace MFContrast.Services
                 return false;
             }
         }
-
-        //public async Task<bool> S3DownloadAsync(string file)
-        //{
-        //    try
-        //    {
-        //        string s3key = Path.Combine("CsvDataTables", file);
-        //        TransferUtilityDownloadRequest request = new TransferUtilityDownloadRequest()
-        //        {
-        //            Key = s3key,
-        //            BucketName = bucketName,
-        //            FilePath = Path.Combine(@"d:\MFContrast", file)
-        //        };
-        //        await TransferUtility.DownloadAsync(request);
-        //        return true;
-
-        //    }
-        //    catch (Exception)
-        //    {
-        //        Console.WriteLine("Error in S3DownloadAsync");
-        //    }
-        //    return false;
-        //    //TransferUtility.Download(
-        //    //    Path.Combine(@"d:\MFContrast", file),
-        //    //    bucketName,
-        //    //    s3key
-        //    //);
-        //}
     }
 }
